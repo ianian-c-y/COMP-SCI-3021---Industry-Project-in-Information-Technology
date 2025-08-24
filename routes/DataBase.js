@@ -3,7 +3,7 @@ const mysql = require('mysql2/promise');
 const cvePool = mysql.createPool({
     host: '127.0.0.1',
     port: '3306',
-    user: 'Users',
+    user: 'Userss',
     password: 'PassWord',
     database: 'CVE_DataBase',
     waitForConnections: true,
