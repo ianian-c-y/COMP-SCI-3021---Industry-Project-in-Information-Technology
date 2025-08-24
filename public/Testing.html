@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>固定前綴數字輸入框</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+            }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+        .method {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            }
+
+        .method h3 {
+            color: #333;
+            margin-top: 0;
+            }
+
+        /* 方法一：視覺固定前綴 */
+        .search-wrapper-1 {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            }
+
+        .prefix-display {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            pointer-events: none;
+            font-size: 14px;
+            z-index: 1;
+            }
+
+        .search-box-1 {
+            width: 100%;
+            padding: 10px 10px 10px 120px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+            }
+
+        .search-box-1:focus {
+            outline: none;
+            border-color: #007bff;
+            }
+
+        /* 方法二：JavaScript 控制 */
+        .search-wrapper-2 {
+            position: relative;
+            width: 100%;
+            }
+
+        .search-box-2 {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+            }
+
+        .search-box-2:focus {
+            outline: none;
+            border-color: #007bff;
+            }
+
+        /* 方法三：分離式設計 */
+        .search-wrapper-3 {
+            display: flex;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            }
+
+        .search-wrapper-3:focus-within {
+            border-color: #007bff;
+            }
+
+        .prefix-part {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-right: 1px solid #ddd;
+            color: #666;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            }
+
+        .search-box-3 {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            }
+
+        .close-icon {
+            background: none;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+            color: #999;
+            }
+
+        .demo-result {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            font-size: 12px;
+            color: #666;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="method">
+            <h3>方法一：視覺固定前綴（推薦）</h3>
+            <p>固定文字顯示在輸入框內，用戶只能在預留空間輸入數字</p>
+            <div class="search-wrapper-1">
+                <span class="prefix-display">產品編號：PROD-</span>
+                <input type="text"
+                       class="search-box-1"
+                       placeholder="請輸入數字"
+                       pattern="[0-9]*"
+                       inputmode="numeric"
+                       id="input1" />
+                <button class="close-icon" type="button" onclick="clearInput('input1')">✕</button>
+            </div>
+            <div class="demo-result" id="result1">完整值：</div>
+        </div>
+        <div class="method">
+            <h3>方法二：JavaScript 控制（完全保護）</h3>
+            <p>固定前綴無法被刪除，自動恢復</p>
+            <div class="search-wrapper-2">
+                <input type="text"
+                       class="search-box-2"
+                       id="input2"
+                       placeholder="ORDER-" />
+                <button class="close-icon" type="button" onclick="resetInput('input2')">✕</button>
+            </div>
+            <div class="demo-result" id="result2">當前值：ORDER-</div>
+        </div>
+        <div class="method">
+            <h3>方法三：分離式設計（最清晰）</h3>
+            <p>固定部分和輸入部分視覺上分離</p>
+            <div class="search-wrapper-3">
+                <div class="prefix-part">發票號碼：INV-</div>
+                <input type="text"
+                       class="search-box-3"
+                       placeholder="請輸入數字"
+                       pattern="[0-9]*"
+                       inputmode="numeric"
+                       id="input3" />
+                <button class="close-icon" type="button" onclick="clearInput('input3')">✕</button>
+            </div>
+            <div class="demo-result" id="result3">完整值：INV-</div>
+        </div>
+    </div>
+
+    <script>
+        // 方法一：視覺固定前綴
+        document.getElementById('input1').addEventListener('input', function(e) {
+            // 只允許數字
+            this.value = this.value.replace(/[^0-9]/g, '');
+            updateResult('result1', 'PROD-' + this.value);
+        });
+
+        // 方法二：JavaScript 完全控制
+        const input2 = document.getElementById('input2');
+        const prefix = 'ORDER-';
+
+        // 初始化
+        input2.value = prefix;
+
+        input2.addEventListener('input', function(e) {
+            let value = this.value;
+
+            // 確保前綴存在
+            if (!value.startsWith(prefix)) {
+                // 如果前綴被刪除，恢復它
+                this.value = prefix;
+                value = prefix;
+            }
+
+            // 提取前綴後的部分
+            let numberPart = value.substring(prefix.length);
+
+            // 只保留數字
+            numberPart = numberPart.replace(/[^0-9]/g, '');
+
+            // 更新輸入框
+            this.value = prefix + numberPart;
+
+            updateResult('result2', this.value);
+        });
+
+        input2.addEventListener('keydown', function(e) {
+            // 防止刪除前綴
+            if ((e.key === 'Backspace' || e.key === 'Delete') &&
+                this.selectionStart <= prefix.length) {
+                e.preventDefault();
+            }
+        });
+
+        input2.addEventListener('focus', function() {
+            // 焦點時，光標定位在前綴後
+            if (this.value === prefix) {
+                setTimeout(() => {
+                    this.setSelectionRange(prefix.length, prefix.length);
+                }, 0);
+            }
+        });
+
+        // 方法三：分離式設計
+        document.getElementById('input3').addEventListener('input', function(e) {
+            // 只允許數字
+            this.value = this.value.replace(/[^0-9]/g, '');
+            updateResult('result3', 'INV-' + this.value);
+        });
+
+        // 工具函數
+        function clearInput(inputId) {
+            const input = document.getElementById(inputId);
+            if (inputId === 'input2') {
+                input.value = prefix;
+                updateResult('result2', prefix);
+            } else {
+                input.value = '';
+                const prefixText = inputId === 'input1' ? 'PROD-' : 'INV-';
+                updateResult(inputId === 'input1' ? 'result1' : 'result3', prefixText);
+            }
+        }
+
+        function resetInput(inputId) {
+            const input = document.getElementById(inputId);
+            input.value = prefix;
+            updateResult('result2', prefix);
+        }
+
+        function updateResult(resultId, value) {
+            document.getElementById(resultId).textContent =
+                resultId === 'result2' ? '當前值：' + value : '完整值：' + value;
+        }
+    </script>
+</body>
+</html>

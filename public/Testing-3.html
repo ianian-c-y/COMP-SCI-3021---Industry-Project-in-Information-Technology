@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script> -->
+    <title>Terminal</title>
+    <style>
+        html, body {
+            height   : 100%;
+            overflow : hidden;
+            }
+
+        body {
+            background       : #3a7bd5;
+            background-image : -webkit-radial-gradient(top, circle cover, #00d2ff 0%, #3a7bd5 80%);
+            display          : flex;
+            justify-content  : center;
+            align-items      : center;
+            }
+
+        * {
+            box-sizing : border-box;
+            }
+
+        textarea, input, button {
+            outline : none;
+            }
+
+        .window-button, .window .buttons .maximize, .window .buttons .minimize, .window .buttons .close {
+            padding          : 0;
+            margin           : 0;
+            margin-right     : 4px;
+            width            : 12px;
+            height           : 12px;
+            background-color : gainsboro;
+            border           : 1px solid rgba(0, 0, 0, 0.2);
+            border-radius    : 6px;
+            color            : rgba(0, 0, 0, 0.5);
+            }
+
+        .window {
+            animation : bounceIn 1s ease-in-out;
+            width     : 640px;
+            }
+        .window .handle {
+            height                  : 22px;
+            background              : linear-gradient(0deg, #d8d8d8, #ececec);
+            border-top              : 1px solid white;
+            border-bottom           : 1px solid #b3b3b3;
+            border-top-left-radius  : 5px;
+            border-top-right-radius : 5px;
+            color                   : rgba(0, 0, 0, 0.7);
+            font-family             : Helvetica, sans-serif;
+            font-size               : 13px;
+            line-height             : 22px;
+            text-align              : center;
+            }
+        .window .buttons {
+            position : absolute;
+            float    : left;
+            margin   : 0 8px;
+            }
+        .window .buttons .close {
+            background-color : #ff6159;
+            }
+        .window .buttons .minimize {
+            background-color : #ffbf2f;
+            }
+        .window .buttons .maximize {
+            background-color : #25cc3e;
+            }
+        .window .terminal {
+            padding                    : 4px;
+            background-color           : black;
+            opacity                    : 0.7;
+            height                     : 218px;
+            color                      : white;
+            font-family                : "Source Code Pro", monospace;
+            font-weight                : 200;
+            font-size                  : 14px;
+            white-space                : pre-wrap;
+            white-space                : -moz-pre-wrap;
+            white-space                : -pre-wrap;
+            white-space                : -o-pre-wrap;
+            word-wrap                  : break-word;
+            border-bottom-left-radius  : 5px;
+            border-bottom-right-radius : 5px;
+            overflow-y                 : auto;
+            }
+        .window .terminal::after {
+            content   : "|";
+            animation : blink 2s steps(1) infinite;
+            }
+
+        .prompt {
+            color : #bde371;
+            }
+
+        .path {
+            color : #5ed7ff;
+            }
+
+        @keyframes blink {
+            50% {
+                color : transparent;
+                }
+            }
+        @keyframes bounceIn {
+            0% {
+                transform : translateY(-1000px);
+                }
+            60% {
+                transform : translateY(200px);
+                }
+            100% {
+                transform : translateY(0px);
+                }
+            }
+    </style>
+</head>
+<body>
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:200" rel="stylesheet" type="text/css">
+    <div class="container">
+        <div class="window">
+            <div class="handle">
+                <div class="buttons">
+                    <button class="close">
+                    </button>
+                    <button class="minimize">
+                    </button>
+                    <button class="maximize">
+                    </button>
+                </div>
+                <span class="title">1. marc@mbp: ~ (zsh)</span>
+            </div>
+            <div class="terminal"></div>
+        </div>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script id="rendered-js">
+        /*
+         //	Made with <3 by Marcus Bizal
+         //	github.com/marcbizal
+         //	linkedin.com/in/marcbizal
+         */
+
+        $(document).ready(function () {
+            "use strict";
+
+            // UTILITY
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min)) + min;
+            }
+
+            // END UTILITY
+
+            // COMMANDS
+            function clear() {
+                terminal.text("");
+            }
+
+            function help() {
+                terminal.append("There is no help... MUAHAHAHAHA. >:D\n");
+            }
+
+            function echo(args) {
+                var str = args.join(" ");
+                terminal.append(str + "\n");
+            }
+
+            function fortune() {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'https://cdn.rawgit.com/bmc/fortunes/master/fortunes', false);
+                xhr.send(null);
+
+                if (xhr.status === 200) {
+                    var fortunes = xhr.responseText.split("%");
+                    var fortune = fortunes[getRandomInt(0, fortunes.length)].trim();
+                    terminal.append(fortune + "\n");
+                }
+            }
+
+            // END COMMANDS
+
+            var title = $(".title");
+            var terminal = $(".terminal");
+            var prompt = "➜";
+            var path = "~";
+
+            var commandHistory = [];
+            var historyIndex = 0;
+
+            var command = "";
+            var commands = [{
+                "name": "clear",
+                "function": clear
+            },
+                {
+                    "name": "help",
+                    "function": help
+                },
+                {
+                    "name": "fortune",
+                    "function": fortune
+                },
+                {
+                    "name": "echo",
+                    "function": echo
+                }];
+
+
+            function processCommand() {
+                var isValid = false;
+
+                // Create args list by splitting the command
+                // by space characters and then shift off the
+                // actual command.
+
+                var args = command.split(" ");
+                var cmd = args[0];
+                args.shift();
+
+                // Iterate through the available commands to find a match.
+                // Then call that command and pass in any arguments.
+                for (var i = 0; i < commands.length; i++) {
+                    if (window.CP.shouldStopExecution(0)) break;
+                    if (cmd === commands[i].name) {
+                        commands[i].function(args);
+                        isValid = true;
+                        break;
+                    }
+                }
+
+                // No match was found...
+                window.CP.exitedLoop(0);
+                if (!isValid) {
+                    terminal.append("zsh: command not found: " + command + "\n");
+                }
+
+                // Add to command history and clean up.
+                commandHistory.push(command);
+                historyIndex = commandHistory.length;
+                command = "";
+            }
+
+            function displayPrompt() {
+                terminal.append("<span class=\"prompt\">" + prompt + "</span> ");
+                terminal.append("<span class=\"path\">" + path + "</span> ");
+            }
+
+            // Delete n number of characters from the end of our output
+            function erase(n) {
+                command = command.slice(0, -n);
+                terminal.html(terminal.html().slice(0, -n));
+            }
+
+            function clearCommand() {
+                if (command.length > 0) {
+                    erase(command.length);
+                }
+            }
+
+            function appendCommand(str) {
+                terminal.append(str);
+                command += str;
+            }
+
+            /*
+             //	Keypress doesn't catch special keys,
+             //	so we catch the backspace here and
+             //	prevent it from navigating to the previous
+             //	page. We also handle arrow keys for command history.
+             */
+
+            $(document).keydown(function (e) {
+                e = e || window.event;
+                var keyCode = typeof e.which === "number" ? e.which : e.keyCode;
+
+                // BACKSPACE
+                if (keyCode === 8 && e.target.tagName !== "INPUT" && e.target.tagName !== "TEXTAREA") {
+                    e.preventDefault();
+                    if (command !== "") {
+                        erase(1);
+                    }
+                }
+
+                // UP or DOWN
+                if (keyCode === 38 || keyCode === 40) {
+                    // Move up or down the history
+                    if (keyCode === 38) {
+                        // UP
+                        historyIndex--;
+                        if (historyIndex < 0) {
+                            historyIndex++;
+                        }
+                    } else if (keyCode === 40) {
+                        // DOWN
+                        historyIndex++;
+                        if (historyIndex > commandHistory.length - 1) {
+                            historyIndex--;
+                        }
+                    }
+
+                    // Get command
+                    var cmd = commandHistory[historyIndex];
+                    if (cmd !== undefined) {
+                        clearCommand();
+                        appendCommand(cmd);
+                    }
+                }
+            });
+
+            $(document).keypress(function (e) {
+                // Make sure we get the right event
+                e = e || window.event;
+                var keyCode = typeof e.which === "number" ? e.which : e.keyCode;
+
+                // Which key was pressed?
+                switch (keyCode) {
+                    // ENTER
+                    case 13: {
+                        terminal.append("\n");
+
+                        processCommand();
+                        displayPrompt();
+                        break;
+                    }
+                    default: {
+                        appendCommand(String.fromCharCode(keyCode));
+                    }
+                }
+
+            });
+
+            // Set the window title
+            title.text("1. marc@mbp: ~ (zsh)");
+
+            // Get the date for our fake last-login
+            var date = new Date().toString();
+            date = date.substr(0, date.indexOf("GMT") - 1);
+
+            // Display last-login and promt
+            terminal.append("Last login: " + date + " on ttys000\n");
+            displayPrompt();
+        });
+    </script>
+    <script defer>
+        window.HUB_EVENTS = {
+            ASSET_ADDED: "ASSET_ADDED",
+            ASSET_DELETED: "ASSET_DELETED",
+            ASSET_DESELECTED: "ASSET_DESELECTED",
+            ASSET_SELECTED: "ASSET_SELECTED",
+            ASSET_UPDATED: "ASSET_UPDATED",
+            CONSOLE_CHANGE: "CONSOLE_CHANGE",
+            CONSOLE_CLOSED: "CONSOLE_CLOSED",
+            CONSOLE_EVENT: "CONSOLE_EVENT",
+            CONSOLE_OPENED: "CONSOLE_OPENED",
+            CONSOLE_RUN_COMMAND: "CONSOLE_RUN_COMMAND",
+            CONSOLE_SERVER_CHANGE: "CONSOLE_SERVER_CHANGE",
+            EMBED_ACTIVE_PEN_CHANGE: "EMBED_ACTIVE_PEN_CHANGE",
+            EMBED_ACTIVE_THEME_CHANGE: "EMBED_ACTIVE_THEME_CHANGE",
+            EMBED_ATTRIBUTE_CHANGE: "EMBED_ATTRIBUTE_CHANGE",
+            EMBED_RESHOWN: "EMBED_RESHOWN",
+            FORMAT_FINISH: "FORMAT_FINISH",
+            FORMAT_ERROR: "FORMAT_ERROR",
+            FORMAT_START: "FORMAT_START",
+            IFRAME_PREVIEW_RELOAD_CSS: "IFRAME_PREVIEW_RELOAD_CSS",
+            IFRAME_PREVIEW_URL_CHANGE: "IFRAME_PREVIEW_URL_CHANGE",
+            KEY_PRESS: "KEY_PRESS",
+            LINTER_FINISH: "LINTER_FINISH",
+            LINTER_START: "LINTER_START",
+            PEN_CHANGE_SERVER: "PEN_CHANGE_SERVER",
+            PEN_CHANGE: "PEN_CHANGE",
+            PEN_EDITOR_CLOSE: "PEN_EDITOR_CLOSE",
+            PEN_EDITOR_CODE_FOLD: "PEN_EDITOR_CODE_FOLD",
+            PEN_EDITOR_ERRORS: "PEN_EDITOR_ERRORS",
+            PEN_EDITOR_EXPAND: "PEN_EDITOR_EXPAND",
+            PEN_EDITOR_FOLD_ALL: "PEN_EDITOR_FOLD_ALL",
+            PEN_EDITOR_LOADED: "PEN_EDITOR_LOADED",
+            PEN_EDITOR_REFRESH_REQUEST: "PEN_EDITOR_REFRESH_REQUEST",
+            PEN_EDITOR_RESET_SIZES: "PEN_EDITOR_RESET_SIZES",
+            PEN_EDITOR_SIZES_CHANGE: "PEN_EDITOR_SIZES_CHANGE",
+            PEN_EDITOR_UI_CHANGE_SERVER: "PEN_EDITOR_UI_CHANGE_SERVER",
+            PEN_EDITOR_UI_CHANGE: "PEN_EDITOR_UI_CHANGE",
+            PEN_EDITOR_UI_DISABLE: "PEN_EDITOR_UI_DISABLE",
+            PEN_EDITOR_UI_ENABLE: "PEN_EDITOR_UI_ENABLE",
+            PEN_EDITOR_UNFOLD_ALL: "PEN_EDITOR_UNFOLD_ALL",
+            PEN_ERROR_INFINITE_LOOP: "PEN_ERROR_INFINITE_LOOP",
+            PEN_ERROR_RUNTIME: "PEN_ERROR_RUNTIME",
+            PEN_ERRORS: "PEN_ERRORS",
+            PEN_LIVE_CHANGE: "PEN_LIVE_CHANGE",
+            PEN_LOGS: "PEN_LOGS",
+            PEN_MANIFEST_CHANGE: "PEN_MANIFEST_CHANGE",
+            PEN_MANIFEST_FULL: "PEN_MANIFEST_FULL",
+            PEN_PREVIEW_FINISH: "PEN_PREVIEW_FINISH",
+            PEN_PREVIEW_START: "PEN_PREVIEW_START",
+            PEN_SAVED: "PEN_SAVED",
+            POPUP_CLOSE: "POPUP_CLOSE",
+            POPUP_OPEN: "POPUP_OPEN",
+            POST_CHANGE: "POST_CHANGE",
+            POST_SAVED: "POST_SAVED",
+            PROCESSING_FINISH: "PROCESSING_FINISH",
+            PROCESSING_START: "PROCESSED_STARTED"
+        }, "object" != typeof window.CP && (window.CP = {}), window.CP.PenTimer = {
+            programNoLongerBeingMonitored: !1,
+            timeOfFirstCallToShouldStopLoop: 0,
+            _loopExits: {},
+            _loopTimers: {},
+            START_MONITORING_AFTER: 2e3,
+            STOP_ALL_MONITORING_TIMEOUT: 5e3,
+            MAX_TIME_IN_LOOP_WO_EXIT: 2200,
+            exitedLoop: function (E) {this._loopExits[E] = !0},
+            shouldStopLoop: function (E) {
+                if (this.programKilledSoStopMonitoring) return !0;
+                if (this.programNoLongerBeingMonitored) return !1;
+                if (this._loopExits[E]) return !1;
+                var _ = this._getTime();
+                if (0 === this.timeOfFirstCallToShouldStopLoop) return this.timeOfFirstCallToShouldStopLoop = _, !1;
+                var o = _ - this.timeOfFirstCallToShouldStopLoop;
+                if (o < this.START_MONITORING_AFTER) return !1;
+                if (o > this.STOP_ALL_MONITORING_TIMEOUT) return this.programNoLongerBeingMonitored = !0, !1;
+                try {
+                    this._checkOnInfiniteLoop(E, _)
+                } catch {
+                    return this._sendErrorMessageToEditor(), this.programKilledSoStopMonitoring = !0, !0
+                }
+                return !1
+            },
+            _sendErrorMessageToEditor: function () {
+                try {
+                    if (this._shouldPostMessage()) {
+                        var E = {topic: HUB_EVENTS.PEN_ERROR_INFINITE_LOOP, data: {line: this._findAroundLineNumber()}};
+                        parent.postMessage(E, "*")
+                    } else this._throwAnErrorToStopPen()
+                } catch {
+                    this._throwAnErrorToStopPen()
+                }
+            },
+            _shouldPostMessage: function () {return document.location.href.match(/boomboom/)},
+            _throwAnErrorToStopPen: function () {throw "We found an infinite loop in your Pen. We've stopped the Pen from running. More details and workarounds at https://blog.codepen.io/2016/06/08/can-adjust-infinite-loop-protection-timing/"},
+            _findAroundLineNumber: function () {
+                var E = new Error("ignored"), _ = 0;
+                if (E.stack) {
+                    var o = E.stack.match(/boomboom\S+:(\d+):\d+/);
+                    o && (_ = o[1])
+                }
+                return _
+            },
+            _checkOnInfiniteLoop: function (E, _) {
+                if (!this._loopTimers[E]) return this._loopTimers[E] = _, !1;
+                if (_ - this._loopTimers[E] > this.MAX_TIME_IN_LOOP_WO_EXIT) throw "Infinite Loop found on loop: " + E
+            },
+            _getTime: function () {return Date.now()}
+        }, window.CP.shouldStopExecution = function (E) {
+            var _ = window.CP.PenTimer.shouldStopLoop(E);
+            return !0 === _ && console.warn("[CodePen]: An infinite loop (or a loop taking too long) was detected, so we stopped its execution. More details at https://blog.codepen.io/2016/06/08/can-adjust-infinite-loop-protection-timing/"), _
+        }, window.CP.exitedLoop = function (E) {window.CP.PenTimer.exitedLoop(E)};
+    </script>
+</body>
+
+</html>
