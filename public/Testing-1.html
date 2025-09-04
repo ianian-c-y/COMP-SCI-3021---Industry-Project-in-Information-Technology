@@ -154,7 +154,7 @@
         document.getElementById('input3').addEventListener('input', function(e) {
             this.value = this.value.replace(/[^0-9]/g, '');
             updateResult('result3', 'INV-' + this.value);
-        });
+        })
         // 工具函數
         function clearInput(inputId) {
             const input = document.getElementById(inputId);
