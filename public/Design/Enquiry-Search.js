@@ -1,7 +1,7 @@
 const Main = document.querySelector('main');
 const body = document.querySelector('body');
-// const Wait_Time = 5000
-const Wait_Time = 1
+const Wait_Time = 5000
+// const Wait_Time = 1
 let loadingElement = null;
 let CVE_Result = null;
 const Result_Area = document.getElementById('Result_Area');
@@ -59,13 +59,8 @@ function search_results_display(result=null) {
                         <h1 class="cve_id">${result.cve_id}</h1>
                         <span class="cve_status">${result.vuln_status}</span>
                     </div>
-                    <div class="cve_content">
-                        ${create_score_section(result)}
-                        ${create_info_grid(result)}
-                        ${create_description_section(result)}
-                    </div>
-                    
                 `;
+        console.log(result)
     }
     Result_Area.appendChild(Result_Container)
     console.log(result)
