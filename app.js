@@ -19,7 +19,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 app.get('/CVE-Enquiry', async (req, res) => {res.sendFile(path.join(__dirname, 'public', 'COMP SCI 3021 - Industry Project in Information Technology', 'CVE-Enquiry.html'));});
-
+app.get('/search', async (req, res) => {res.sendFile(path.join(__dirname, 'public', 'Design', 'CVE-Enquiry.html'));});
 const CVE_Data = require('./routes/COMP_SCI_3021_Industry_Project_in_Information_Technology');
 app.use('/api/cve', CVE_Data);
 
