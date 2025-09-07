@@ -23,7 +23,7 @@ app.get('/search', async (req, res) => {res.sendFile(path.join(__dirname, 'publi
 const CVE_Data = require('./routes/COMP_SCI_3021_Industry_Project_in_Information_Technology');
 app.use('/api/cve', CVE_Data);
 
-app.use(function(req, res, next) {next(createError(404));});
+// app.use(function(req, res, next) {next(createError(404));});
 app.use(function(err, req, res, next) {
   res.status(err.status || 500).json({
     message: err.message,
