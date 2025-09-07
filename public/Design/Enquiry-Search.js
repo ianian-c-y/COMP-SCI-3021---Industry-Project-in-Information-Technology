@@ -1,7 +1,7 @@
 const Main = document.querySelector('main');
 const body = document.querySelector('body');
-const Wait_Time = 5000
-// const Wait_Time = 1
+// const Wait_Time = 5000
+const Wait_Time = 1
 // let loadingElement = null;
 let CVE_Result = null;
 const Result_Area = document.getElementById('Result_Area');
@@ -343,7 +343,8 @@ function search_results_display(result=null) {
 }
 async function Search() {
     loading()
-    // let results = await search_CVE_DB();
+    let results = await search_CVE_DB();
+    console.log(results)
     // setTimeout(() => {search_results_display(results)}, Wait_Time);
 }
 /* ---------------------------------------- */
