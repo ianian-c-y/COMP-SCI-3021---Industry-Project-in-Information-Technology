@@ -1,7 +1,7 @@
 const Main = document.querySelector('main');
 const body = document.querySelector('body');
-// const Wait_Time = 5000
-const Wait_Time = 1
+const Wait_Time = 5000
+// const Wait_Time = 1
 let loadingTimeout = null;
 let CVE_Result = null;
 const Result_Area = document.getElementById('Result_Area');
