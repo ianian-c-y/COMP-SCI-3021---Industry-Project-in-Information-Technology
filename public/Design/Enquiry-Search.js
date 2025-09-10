@@ -1,6 +1,6 @@
 const Main = document.querySelector('main');
 const body = document.querySelector('body');
-// const Wait_Time = 2000000000
+// const Wait_Time = 5000
 const Wait_Time = 1
 let loadingTimeout = null;
 let CVE_Result = null;
@@ -159,10 +159,17 @@ async function search_results_display(result = null) {
     console.log(result);
 }
 async function Search() {
+    const is_Result_Container_Exist = document.getElementById('Result_Container');
+    if (is_Result_Container_Exist) {is_Result_Container_Exist.remove();}
     loading()
-    let results = await search_CVE_DB();
-    console.log(results)
-    setTimeout(async () => {await search_results_display(results);}, Wait_Time);
+    try {
+        let results = await search_CVE_DB();
+        console.log(results);
+        setTimeout(async () => {
+            if (loadingElement && loadingElement.parentNode) {loadingElement.remove();}
+            await search_results_display(results);
+        }, Wait_Time);
+    } catch (error) {if (loadingElement && loadingElement.parentNode) {loadingElement.remove();}}
 }
 // ---------------------------------------- */
 if (Case_ID) {
@@ -181,8 +188,8 @@ if (Case_ID) {
 document.addEventListener('DOMContentLoaded', async function() {
     console.log('所有 Cookie:', document.cookie);
     update_preview('CVE-2024-1000')
-    let results = await search_CVE_DB(value=1000);
-    setTimeout(async () => {await search_results_display(results);}, Wait_Time);
+    let results = await search_CVE_DB(value=1001);
+    await search_results_display(results);
 });
 // ---------------------------------------- */
 // Auto Adjust Webpage Size
