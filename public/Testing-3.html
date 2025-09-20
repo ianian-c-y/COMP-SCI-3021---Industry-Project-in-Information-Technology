@@ -1,22 +1,134 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CVE System Features</title>
     <style>
         body {
-            --Markdown-H2-Title-Color: #ff0000
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+        th {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+            }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+            }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+            }
+
+        tr:hover {
+            background-color: #e8f4f8;
+            }
+
+        .feature-name {
+            font-weight: bold;
+            color: #34495e;
+            width: 30%;
+            }
+
+        .feature-description {
+            color: #555;
+            line-height: 1.4;
+            }
+
+        .section-header {
+            background-color: #34495e;
+            color: white;
+            font-weight: bold;
+            text-align: center;
             }
     </style>
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17.8711" height="19.0723">
-        <g>
-            <rect height="19.0723" opacity="0" width="17.8711" x="0" y="0"/>
-            <path d="M3.58398 19.0723C4.05273 19.0723 4.39453 18.8184 4.49219 18.3398L7.96875 1.11328C7.98828 1.05469 8.00781 0.927734 8.00781 0.800781C8.00781 0.322266 7.65625 0.0488281 7.1875 0.0488281C6.64062 0.0488281 6.38672 0.351562 6.29883 0.810547L2.82227 18.0176C2.80273 18.1152 2.7832 18.2324 2.7832 18.3301C2.7832 18.8086 3.11523 19.0723 3.58398 19.0723ZM9.93164 19.0723C10.4102 19.0723 10.7422 18.8184 10.8398 18.3398L14.3262 1.11328C14.3359 1.05469 14.3555 0.927734 14.3555 0.800781C14.3555 0.322266 14.0039 0.0488281 13.5449 0.0488281C12.9883 0.0488281 12.7441 0.351562 12.6562 0.810547L9.16992 18.0176C9.15039 18.1152 9.14062 18.2324 9.14062 18.3301C9.14062 18.8086 9.47266 19.0723 9.93164 19.0723ZM2.05078 6.74805L16.6016 6.74805C17.1387 6.74805 17.5098 6.35742 17.5098 5.83008C17.5098 5.40039 17.2168 5.04883 16.7773 5.04883L2.22656 5.04883C1.69922 5.04883 1.31836 5.45898 1.31836 5.99609C1.31836 6.43555 1.62109 6.74805 2.05078 6.74805ZM0.732422 13.6035L15.2832 13.6035C15.8105 13.6035 16.1914 13.2129 16.1914 12.6855C16.1914 12.2559 15.8887 11.9043 15.459 11.9043L0.908203 11.9043C0.371094 11.9043 0 12.3145 0 12.8516C0 13.291 0.292969 13.6035 0.732422 13.6035Z" fill="var(--Markdown-H2-Title-Color)" fill-opacity="0.85"/>
-        </g>
-    </svg>
+</head>
+<body>
+    <h1>CVE System Features Overview</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Feature Category</th>
+            <th>Feature Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="3" class="section-header">INTERACTION FEATURES</td>
+            </tr>
+            <tr>
+                <td rowspan="4">Search & Navigation</td>
+                <td class="feature-name">Complete Search Functionality</td>
+                <td class="feature-description">Click Magnifier Icon to Search / Enter Key to Search / Clear Search Button</td>
+            </tr>
+            <tr>
+                <td class="feature-name">Loading Spinner During Search</td>
+                <td class="feature-description">Show/hide loading animation while API processing</td>
+            </tr>
+            <tr>
+                <td class="feature-name">Click Row to Expand CVE Details</td>
+                <td class="feature-description">Accordion-style expand/collapse for detailed information</td>
+            </tr>
+            <tr>
+                <td class="feature-name">Back to Top Button</td>
+                <td class="feature-description">Floating scroll-to-top functionality</td>
+            </tr>
+            <tr>
+                <td>Search Enhancement</td>
+                <td class="feature-name">Search History Cache</td>
+                <td class="feature-description">Recent search terms dropdown with clickable history</td>
+            </tr>
+
+            <tr>
+                <td colspan="3" class="section-header">VISUALIZATION FEATURES</td>
+            </tr>
+            <tr>
+                <td rowspan="2">Information Display</td>
+                <td class="feature-name">CVE Detail Panel</td>
+                <td class="feature-description">The panel displays information about severity levels and CVSS scores together with publish/modify dates and analysis status and CVSS version</td>
+            </tr>
+            <tr>
+                <td class="feature-name">Severity Highlight</td>
+                <td class="feature-description">The system displays severity through text labels which include HIGH and uses color indicators and icon symbols to represent the levels</td>
+            </tr>
+            <tr>
+                <td rowspan="2">Data Organization</td>
+                <td class="feature-name">Metadata Grouping</td>
+                <td class="feature-description">The date of publication appears alongside the last modification date and analysis status</td>
+            </tr>
+            <tr>
+                <td class="feature-name">Vendor and Product Information</td>
+                <td class="feature-description">Block lists contain vendor information that links to product details and reference links</td>
+            </tr>
+            <tr>
+                <td rowspan="2">Content Presentation</td>
+                <td class="feature-name">Description Section</td>
+                <td class="feature-description">The following text maintains a readable format through strategic line breaks which enhance comprehension</td>
+            </tr>
+            <tr>
+                <td class="feature-name">Visual Separation</td>
+                <td class="feature-description">The content sections are separated by horizontal rules which organize information into three distinct areas: Basic Info and Impacted Systems and Description</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
