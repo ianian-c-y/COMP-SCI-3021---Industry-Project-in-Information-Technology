@@ -138,6 +138,37 @@ function formatCVEData(result) {
         reference_count: result.reference_count
     };
 }
+function initCVETimeline(publishedDate, modifiedDate) {
+    const timeline = document.getElementById('cveTimeline');
+    if (!timeline) return;
+
+    timeline.innerHTML = '';
+
+    const pubMonth = new Date(publishedDate).getMonth() + 1;
+    const modMonth = new Date(modifiedDate).getMonth() + 1;
+
+    for (let i = 1; i <= 12; i++) {
+        const li = document.createElement('li');
+        li.setAttribute('data-month', i);
+
+        const month = document.createElement('div');
+        month.className = 'month';
+        // month.textContent = i + '月';
+
+        if (i === pubMonth) {
+            li.classList.add('published');
+        }
+        if (i === modMonth && modMonth !== pubMonth) {
+            li.classList.add('modified');
+        }
+        if (i === modMonth && modMonth === pubMonth) {
+            li.classList.add('published', 'modified');
+        }
+
+        li.appendChild(month);
+        timeline.appendChild(li);
+    }
+}
 async function search_results_display(result = null) {
     const is_Result_Container_Exist = document.getElementById('Result_Container');
     if (is_Result_Container_Exist) {is_Result_Container_Exist.remove();}
@@ -153,6 +184,9 @@ async function search_results_display(result = null) {
                 processedHTML = processedHTML.replace(regex, formattedData[key]);
             });
             Result_Container.innerHTML = processedHTML;
+            setTimeout(() => {
+                initCVETimeline(result.published_date, result.last_modified);
+            }, 100);
         } else {Result_Container.innerHTML = `<div class="error_message">Cannot find relevant information</div>`;}
     }
     Result_Area.appendChild(Result_Container);

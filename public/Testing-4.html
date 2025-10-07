@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>月份時間軸</title>
+    <style>
+        html, body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            min-width: 500px;
+            }
+
+        .timeline {
+            position: relative;
+            display: block;
+            background-color: #f00;
+            height: 4px;
+            margin: 200px 50px;
+            list-style: none;
+            padding: 0;
+            }
+
+        .timeline::before, .timeline::after {
+            content: "";
+            position: absolute;
+            top: -8px;
+            display: block;
+            width: 0;
+            height: 0;
+            border-radius: 10px;
+            border: 10px solid #f00;
+            }
+
+        .timeline::before {
+            left: -20px;
+            }
+
+        .timeline::after {
+            right: -10px;
+            border: 10px solid transparent;
+            border-radius: 30px;
+            border-right: 0;
+            border-left: 20px solid #f00;
+            }
+
+        .timeline li {
+            position: relative;
+            display: block;
+            float: left;
+            width: calc(100% / 12);
+            height: 4px;
+            cursor: pointer;
+            }
+
+        .timeline li::before {
+            content: "";
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 3px solid #f00;
+            border-radius: 15px;
+            width: 10px;
+            height: 10px;
+            background: #f0f0f0;
+            transition: all 0.3s ease;
+            }
+
+        .timeline li .month {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            white-space: nowrap;
+            }
+
+        .timeline li:hover::before {
+            border: 4px solid #0f0;
+            width: 14px;
+            height: 14px;
+            }
+
+        .timeline li.active::before {
+            background: #0f0;
+            border-color: #0f0;
+            width: 14px;
+            height: 14px;
+            }
+    </style>
+</head>
+<body>
+    <ol class="timeline" id="timeline"></ol>
+    <script>
+        // 初始化時間軸
+        const timeline = document.getElementById('timeline');
+
+        for (let i = 1; i <= 12; i++) {
+            const li = document.createElement('li');
+            li.setAttribute('data-month', i);
+
+            const month = document.createElement('div');
+            month.className = 'month';
+            month.textContent = i + '月';
+
+            li.appendChild(month);
+
+            li.addEventListener('click', function() {
+                document.querySelectorAll('.timeline li').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.classList.add('active');
+
+                // 回傳月份數據
+                if (window.onMonthSelect) {
+                    window.onMonthSelect(i);
+                }
+            });
+
+            timeline.appendChild(li);
+        }
+
+        // API: 獲取選中的月份
+        window.getSelectedMonth = function() {
+            const active = document.querySelector('.timeline li.active');
+            return active ? parseInt(active.getAttribute('data-month')) : null;
+        };
+
+        // API: 設定選中的月份
+        window.setSelectedMonth = function(month) {
+            if (month >= 1 && month <= 12) {
+                document.querySelectorAll('.timeline li').forEach(item => {
+                    item.classList.remove('active');
+                });
+                document.querySelector(`[data-month="${month}"]`).classList.add('active');
+            }
+        };
+    </script>
+</body>
+</html>
