@@ -119,6 +119,14 @@ function formatCVEData(result) {
         return '';
     };
     const cvss_graph = createSVGGauge(score=result.cvss_score)
+    const threatLevels = { 'Critical': 'high', 'High': 'high', 'Medium': 'medium', 'Low': 'low' };
+    const trendingLevel = result.trending_score > 70 ? 'high' : result.trending_score > 40 ? 'moderate' : 'low';
+    const getThreatLevelClass = (level) => {
+        if (level === 'Critical' || level === 'High') return 'high';
+        if (level === 'Medium') return 'medium';
+        return 'low';
+    };
+
     return {
         cve_id: result.cve_id,
         description: result.description,
@@ -135,9 +143,201 @@ function formatCVEData(result) {
         status_class: getStatusClass(result.vuln_status),
         vendors: result.vendors || 'Unspecified',
         products: result.products || 'Unspecified',
-        reference_count: result.reference_count
+        reference_count: result.reference_count,
+        attack_vector: result.attack_vector || 'N/A',
+        attack_vector_class: (result.attack_vector || '').toLowerCase(),
+        attack_complexity: result.attack_complexity || 'N/A',
+        exploitability_score: result.exploitability_score || 0,
+        exploitability_percent: ((result.exploitability_score || 0) / 10 * 100).toFixed(0),
+        impact_score: result.impact_score || 0,
+        impact_percent: ((result.impact_score || 0) / 10 * 100).toFixed(0),
+        cwe_id: result.cwe_id || 'N/A',
+        tags: result.tags || '',
+        patch_status: result.patch_available ? '✓ Available' : '✗ Not Available',
+        threat_level: result.threat_level || 'Unknown',
+        exploit_status: result.exploit_available ? 'Available' : 'Not Found',
+        exploit_class: result.exploit_available ? 'danger' : '',
+        trending_score: result.trending_score || 0,
+        trending_level: trendingLevel,
+        affected_platforms: result.affected_platforms || '{}',
+        vulnerability_categories: result.vulnerability_categories || '',
+        threat_level_class: getThreatLevelClass(result.threat_level || 'Unknown')
     };
 }
+function createPlatformChart(platformData) {
+    const chart = document.getElementById('platformChart');
+    const legend = document.getElementById('platformLegend');
+    if (!chart || !platformData) return;
+
+    const data = JSON.parse(platformData);
+    const colors = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#43e97b'];
+    const total = Object.values(data).reduce((a, b) => a + b, 0);
+    let currentAngle = 0;
+
+    chart.innerHTML = '';
+    legend.innerHTML = '';
+
+    // 創建SVG圓餅圖
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('width', '200');
+    svg.setAttribute('height', '200');
+    svg.setAttribute('viewBox', '0 0 200 200');
+
+    Object.entries(data).forEach(([platform, count], index) => {
+        const percentage = count / total;
+        const angle = percentage * 360;
+
+        // 創建圓餅切片
+        const slice = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        const startAngle = currentAngle * Math.PI / 180;
+        const endAngle = (currentAngle + angle) * Math.PI / 180;
+
+        const x1 = 100 + 90 * Math.cos(startAngle);
+        const y1 = 100 + 90 * Math.sin(startAngle);
+        const x2 = 100 + 90 * Math.cos(endAngle);
+        const y2 = 100 + 90 * Math.sin(endAngle);
+
+        const largeArc = angle > 180 ? 1 : 0;
+        const pathData = `M 100 100 L ${x1} ${y1} A 90 90 0 ${largeArc} 1 ${x2} ${y2} Z`;
+
+        slice.setAttribute('d', pathData);
+        slice.setAttribute('fill', colors[index % colors.length]);
+        slice.style.transition = 'transform 0.3s';
+        slice.style.cursor = 'pointer';
+
+        slice.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+            this.style.transformOrigin = '100px 100px';
+        });
+        slice.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+
+        svg.appendChild(slice);
+
+        // 創建圖例
+        const legendItem = document.createElement('div');
+        legendItem.className = 'legend-item';
+        legendItem.innerHTML = `
+            <div class="legend-color" style="background: ${colors[index % colors.length]}"></div>
+            <span>${platform} (${count})</span>
+        `;
+        legend.appendChild(legendItem);
+
+        currentAngle += angle;
+    });
+
+    chart.appendChild(svg);
+}
+function createTagCloud(categories) {
+    const cloud = document.getElementById('tagCloud');
+    if (!cloud || !categories) return;
+
+    const tags = categories.split(',').map(t => t.trim()).filter(t => t);
+    const sizes = ['small', 'medium', 'large'];
+
+    cloud.innerHTML = tags.map((tag, index) => {
+        const size = sizes[Math.floor(Math.random() * sizes.length)];
+        return `<span class="tag ${size}">${tag}</span>`;
+    }).join('');
+}
+/* ---------------------------------------- */
+function createTagCloud(categories) {
+    const cloud = document.getElementById('tagCloud');
+    if (!cloud || !categories) return;
+
+    const tags = categories.split(',').map(t => t.trim()).filter(t => t);
+    const sizes = ['small', 'medium', 'large'];
+
+    cloud.innerHTML = tags.map((tag, index) => {
+        const size = sizes[Math.floor(Math.random() * sizes.length)];
+        return `<span class="tag ${size}">${tag}</span>`;
+    }).join('');
+}
+function createRadarChart(scores) {
+    const chart = document.getElementById('radarChart');
+    if (!chart) return;
+
+    const dimensions = [
+        { label: 'CVSS', value: scores.cvss || 0 },
+        { label: 'Exploitability', value: scores.exploitability || 0 },
+        { label: 'Impact', value: scores.impact || 0 },
+        { label: 'Trending', value: (scores.trending || 0) / 10 },
+        { label: 'Complexity', value: scores.complexity || 5 }
+    ];
+
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('width', '300');
+    svg.setAttribute('height', '300');
+    svg.setAttribute('viewBox', '0 0 300 300');
+
+    const centerX = 150;
+    const centerY = 150;
+    const maxRadius = 120;
+    const angleStep = (Math.PI * 2) / dimensions.length;
+
+    // 畫背景網格
+    for (let i = 1; i <= 5; i++) {
+        const radius = (maxRadius / 5) * i;
+        const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+        const points = dimensions.map((_, index) => {
+            const angle = angleStep * index - Math.PI / 2;
+            const x = centerX + radius * Math.cos(angle);
+            const y = centerY + radius * Math.sin(angle);
+            return `${x},${y}`;
+        }).join(' ');
+        polygon.setAttribute('points', points);
+        polygon.setAttribute('fill', 'none');
+        polygon.setAttribute('stroke', '#ddd');
+        polygon.setAttribute('stroke-width', '1');
+        svg.appendChild(polygon);
+    }
+
+    // 畫軸線和標籤
+    dimensions.forEach((dim, index) => {
+        const angle = angleStep * index - Math.PI / 2;
+        const x = centerX + maxRadius * Math.cos(angle);
+        const y = centerY + maxRadius * Math.sin(angle);
+
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', centerX);
+        line.setAttribute('y1', centerY);
+        line.setAttribute('x2', x);
+        line.setAttribute('y2', y);
+        line.setAttribute('stroke', '#ddd');
+        line.setAttribute('stroke-width', '1');
+        svg.appendChild(line);
+
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        const labelX = centerX + (maxRadius + 20) * Math.cos(angle);
+        const labelY = centerY + (maxRadius + 20) * Math.sin(angle);
+        text.setAttribute('x', labelX);
+        text.setAttribute('y', labelY);
+        text.setAttribute('text-anchor', 'middle');
+        text.setAttribute('font-size', '12');
+        text.textContent = dim.label;
+        svg.appendChild(text);
+    });
+
+    // 畫數據多邊形
+    const dataPoints = dimensions.map((dim, index) => {
+        const angle = angleStep * index - Math.PI / 2;
+        const radius = (dim.value / 10) * maxRadius;
+        const x = centerX + radius * Math.cos(angle);
+        const y = centerY + radius * Math.sin(angle);
+        return `${x},${y}`;
+    }).join(' ');
+
+    const dataPolygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+    dataPolygon.setAttribute('points', dataPoints);
+    dataPolygon.setAttribute('fill', 'rgba(220, 53, 69, 0.3)');
+    dataPolygon.setAttribute('stroke', '#dc3545');
+    dataPolygon.setAttribute('stroke-width', '2');
+    svg.appendChild(dataPolygon);
+
+    chart.appendChild(svg);
+}
+
 function initCVETimeline(publishedDate, modifiedDate) {
     const timeline = document.getElementById('cveTimeline');
     if (!timeline) return;
@@ -186,6 +386,20 @@ async function search_results_display(result = null) {
             Result_Container.innerHTML = processedHTML;
             setTimeout(() => {
                 initCVETimeline(result.published_date, result.last_modified);
+            }, 100);
+            setTimeout(() => {
+                initCVETimeline(result.published_date, result.last_modified);
+
+                // 初始化新的視覺化
+                createPlatformChart(result.affected_platforms);
+                createTagCloud(result.vulnerability_categories);
+                createRadarChart({
+                    cvss: result.cvss_score,
+                    exploitability: result.exploitability_score,
+                    impact: result.impact_score,
+                    trending: result.trending_score,
+                    complexity: result.attack_complexity === 'Low' ? 3 : 7
+                });
             }, 100);
         } else {Result_Container.innerHTML = `<div class="error_message">Cannot find relevant information</div>`;}
     }
