@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CVE Reference Section</title>
+    <style>
+        .cve-ref-container {
+            position      : fixed;
+            bottom        : 20px;
+            right         : 20px;
+            width         : 400px;
+            background    : #4a5358;
+            border-radius : 8px;
+            box-shadow    : 0 4px 12px rgba(0, 0, 0, 0.3);
+            overflow      : hidden;
+            transition    : all 0.3s ease;
+            z-index       : 9999;
+            }
+
+        .cve-ref-header {
+            padding         : 15px 20px;
+            background      : #4a5358;
+            display         : flex;
+            justify-content : space-between;
+            align-items     : center;
+            }
+
+        .cve-ref-header h3 {
+            color          : #fff;
+            font-size      : 16px;
+            font-weight    : 600;
+            letter-spacing : 1px;
+            font-style     : italic;
+            }
+
+        .cve-ref-count {
+            background    : #6b7479;
+            color         : #fff;
+            padding       : 6px 14px;
+            border-radius : 50%;
+            font-size     : 14px;
+            font-weight   : 600;
+            }
+
+        .cve-ref-buttons {
+            padding    : 12px 20px;
+            display    : flex;
+            gap        : 10px;
+            background : #4a5358;
+            }
+
+        .cve-ref-btn {
+            flex          : 1;
+            padding       : 10px 16px;
+            border        : none;
+            border-radius : 4px;
+            font-size     : 13px;
+            cursor        : pointer;
+            transition    : all 0.2s;
+            font-weight   : 500;
+            color         : #fff;
+            }
+
+        .cve-ref-btn-show {
+            background : #5d6368;
+            }
+
+        .cve-ref-btn-show:hover {
+            background : #6d737d;
+            transform  : translateY(-1px);
+            }
+
+        .cve-ref-btn-show:active {
+            background : #4d5358;
+            transform  : translateY(0);
+            }
+
+        .cve-ref-btn-copy {
+            background : #5d6368;
+            }
+
+        .cve-ref-btn-copy:hover {
+            background : #6d737d;
+            transform  : translateY(-1px);
+            }
+
+        .cve-ref-btn-copy:active {
+            background : #4d5358;
+            transform  : translateY(0);
+            }
+
+        .cve-ref-list {
+            max-height : 0;
+            overflow   : hidden;
+            transition : max-height 0.4s ease-in-out;
+            background : #3a3f44;
+            }
+
+        .cve-ref-list.cve-expanded {
+            max-height : 600px !important;
+            overflow-y : auto;
+            }
+
+        .cve-ref-item {
+            padding       : 15px 20px;
+            border-bottom : 1px solid #4a4f54;
+            transition    : background 0.2s;
+            }
+
+        .cve-ref-item:hover {
+            background : #454a4f;
+            }
+
+        .cve-ref-item:last-child {
+            border-bottom : none;
+            }
+
+        .cve-ref-number {
+            display       : inline-block;
+            background    : #5f6368;
+            color         : #fff;
+            padding       : 3px 9px;
+            border-radius : 3px;
+            font-size     : 11px;
+            font-weight   : 700;
+            margin-bottom : 8px;
+            }
+
+        .cve-ref-title {
+            color         : #e1e4e8;
+            font-size     : 13px;
+            font-weight   : 500;
+            margin-bottom : 6px;
+            line-height   : 1.5;
+            }
+
+        .cve-ref-source {
+            color         : #9ba1a6;
+            font-size     : 12px;
+            margin-bottom : 8px;
+            }
+
+        .cve-ref-link {
+            color           : #5b9eff;
+            text-decoration : none;
+            font-size       : 12px;
+            word-break      : break-all;
+            transition      : color 0.2s;
+            display         : block;
+            }
+
+        .cve-ref-link:hover {
+            color           : #7db3ff;
+            text-decoration : underline;
+            }
+
+        .cve-copy-notification {
+            position       : fixed;
+            bottom         : 85px;
+            right          : 20px;
+            background     : #28a745;
+            color          : white;
+            padding        : 12px 20px;
+            border-radius  : 4px;
+            font-size      : 13px;
+            font-weight    : 500;
+            opacity        : 0;
+            transform      : translateY(10px);
+            transition     : all 0.3s;
+            pointer-events : none;
+            z-index        : 10000;
+            box-shadow     : 0 2px 8px rgba(0, 0, 0, 0.2);
+            }
+
+        .cve-copy-notification.cve-show {
+            opacity   : 1;
+            transform : translateY(0);
+            }
+
+        .cve-ref-list::-webkit-scrollbar {
+            width : 8px;
+            }
+
+        .cve-ref-list::-webkit-scrollbar-track {
+            background : #3a3f44;
+            }
+
+        .cve-ref-list::-webkit-scrollbar-thumb {
+            background    : #5f6368;
+            border-radius : 4px;
+            }
+
+        .cve-ref-list::-webkit-scrollbar-thumb:hover {
+            background : #6c757d;
+            }
+    </style>
+</head>
+<body>
+    <div class="cve-ref-container" id="cveRefContainer">
+        <div class="cve-ref-header">
+            <h3>REFERENCE COUNT</h3>
+            <span class="cve-ref-count">6</span>
+        </div>
+
+        <div class="cve-ref-buttons">
+            <button class="cve-ref-btn cve-ref-btn-show" id="cveShowBtn">Show all</button>
+            <button class="cve-ref-btn cve-ref-btn-copy" id="cveCopyBtn">Copy refs</button>
+        </div>
+
+        <div class="cve-ref-list" id="cveRefList">
+            <div class="cve-ref-item">
+                <span class="cve-ref-number">REF-1</span>
+                <div class="cve-ref-title">NVD - General</div>
+                <div class="cve-ref-source">Source: National Vulnerability Database</div>
+                <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-1001" class="cve-ref-link" target="_blank">https://nvd.nist.gov/vuln/detail/CVE-2024-1001</a>
+            </div>
+
+            <div class="cve-ref-item">
+                <span class="cve-ref-number">REF-2</span>
+                <div class="cve-ref-title">VDB-252270 | Totolink N200RE /cgi-bin/cstecgi.cgi main stack-based overflow</div>
+                <div class="cve-ref-source">Source: VulDB - Third Party Advisory</div>
+                <a href="https://vuldb.com/?id.252270" class="cve-ref-link" target="_blank">https://vuldb.com/?id.252270</a>
+            </div>
+
+            <div class="cve-ref-item">
+                <span class="cve-ref-number">REF-3</span>
+                <div class="cve-ref-title">VDB-252270 | Totolink N200RE Exploit Publication</div>
+                <div class="cve-ref-source">Source: VulDB - Exploit</div>
+                <a href="https://vuldb.com/?id.252270" class="cve-ref-link" target="_blank">https://vuldb.com/?id.252270</a>
+            </div>
+
+            <div class="cve-ref-item">
+                <span class="cve-ref-number">REF-4</span>
+                <div class="cve-ref-title">CVE-2024-1001 - Totolink Vendor Information</div>
+                <div class="cve-ref-source">Source: VulDB - Vendor Advisory</div>
+                <a href="https://vuldb.com/?vendor.totolink" class="cve-ref-link" target="_blank">https://vuldb.com/?vendor.totolink</a>
+            </div>
+
+            <div class="cve-ref-item">
+                <span class="cve-ref-number">REF-5</span>
+                <div class="cve-ref-title">CVE Details - Totolink N200RE Firmware</div>
+                <div class="cve-ref-source">Source: CVE Details</div>
+                <a href="https://www.cvedetails.com/product/77039/Totolink-N200re-Firmware.html" class="cve-ref-link" target="_blank">https://www.cvedetails.com/product/77039/</a>
+            </div>
+
+            <div class="cve-ref-item">
+                <span class="cve-ref-number">REF-6</span>
+                <div class="cve-ref-title">CWE-121: Stack-based Buffer Overflow</div>
+                <div class="cve-ref-source">Source: Common Weakness Enumeration</div>
+                <a href="https://cwe.mitre.org/data/definitions/121.html" class="cve-ref-link" target="_blank">https://cwe.mitre.org/data/definitions/121.html</a>
+            </div>
+        </div>
+    </div>
+    <div class="cve-copy-notification" id="cveCopyNotif">
+        ✓ References copied to clipboard
+    </div>
+    <script>
+        (function () {
+            'use strict';
+
+            // 等待页面完全加载
+            function initCVEReferences() {
+                let cveExpanded = false;
+
+                const showBtn = document.getElementById('cveShowBtn');
+                const copyBtn = document.getElementById('cveCopyBtn');
+                const refList = document.getElementById('cveRefList');
+                const notification = document.getElementById('cveCopyNotif');
+
+                if (!showBtn || !copyBtn || !refList || !notification) {
+                    console.error('CVE Reference elements not found!');
+                    return;
+                }
+
+                // Toggle展开/收起
+                showBtn.onclick = function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    cveExpanded = !cveExpanded;
+
+                    if (cveExpanded) {
+                        refList.classList.add('cve-expanded');
+                        showBtn.textContent = 'Hide all';
+                    } else {
+                        refList.classList.remove('cve-expanded');
+                        showBtn.textContent = 'Show all';
+                    }
+                };
+
+                // 复制引用
+                copyBtn.onclick = function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const refs = `[1] NVD - General
+    https://nvd.nist.gov/vuln/detail/CVE-2024-1001
+
+[2] VDB-252270 | Totolink N200RE /cgi-bin/cstecgi.cgi main stack-based overflow
+    https://vuldb.com/?id.252270
+
+[3] VDB-252270 | Totolink N200RE Exploit Publication
+    https://vuldb.com/?id.252270
+
+[4] CVE-2024-1001 - Totolink Vendor Information
+    https://vuldb.com/?vendor.totolink
+
+[5] CVE Details - Totolink N200RE Firmware
+    https://www.cvedetails.com/product/77039/Totolink-N200re-Firmware.html
+
+[6] CWE-121: Stack-based Buffer Overflow
+    https://cwe.mitre.org/data/definitions/121.html`;
+
+                    // 尝试复制
+                    if (navigator.clipboard && window.isSecureContext) {
+                        navigator.clipboard.writeText(refs).then(function () {
+                            showNotification();
+                        }).catch(function (err) {
+                            fallbackCopy(refs);
+                        });
+                    } else {
+                        fallbackCopy(refs);
+                    }
+                };
+
+                // 备用复制方法
+                function fallbackCopy(text) {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = text;
+                    textarea.style.position = 'fixed';
+                    textarea.style.left = '-9999px';
+                    document.body.appendChild(textarea);
+                    textarea.select();
+
+                    try {
+                        document.execCommand('copy');
+                        showNotification();
+                    } catch (err) {
+                        alert('Copy failed. Please copy manually.');
+                    }
+
+                    document.body.removeChild(textarea);
+                }
+
+                // 显示通知
+                function showNotification() {
+                    notification.classList.add('cve-show');
+                    setTimeout(function () {
+                        notification.classList.remove('cve-show');
+                    }, 2000);
+                }
+
+                console.log('✓ CVE References initialized successfully');
+            }
+
+            // 多种方式确保初始化
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initCVEReferences);
+            } else {
+                initCVEReferences();
+            }
+
+            // 额外的备用初始化
+            window.addEventListener('load', function () {
+                if (!document.getElementById('cveShowBtn').onclick) {
+                    initCVEReferences();
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

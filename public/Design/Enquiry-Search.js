@@ -525,43 +525,6 @@ async function search_results_display(result = null) {
     Result_Area.appendChild(Result_Container);
     console.log(result);
 }
-async function search_results_display_(result = null) {
-    const is_Result_Container_Exist = document.getElementById('Result_Container');
-    if (is_Result_Container_Exist) {is_Result_Container_Exist.remove();}
-    const Result_Container = document.createElement('div');
-    Result_Container.id = 'Result_Container';
-    if (!result) {Result_Container.innerHTML = `<div class="error_message">Cannot find relevant information</div>`;} else {
-        const template = await loadCVETemplate();
-        if (template) {
-            const formattedData = formatCVEData(result);
-            let processedHTML = template;
-            Object.keys(formattedData).forEach(key => {
-                const regex = new RegExp(`{{${key}}}`, 'g');
-                processedHTML = processedHTML.replace(regex, formattedData[key]);
-            });
-            Result_Container.innerHTML = processedHTML;
-            setTimeout(() => {
-                initCVETimeline(result.published_date, result.last_modified);
-            }, 100);
-            setTimeout(() => {
-                initCVETimeline(result.published_date, result.last_modified);
-
-                // 初始化新的視覺化
-                createPlatformChart(result.affected_platforms);
-                createTagCloud(result.vulnerability_categories);
-                createRadarChart({
-                    cvss: result.cvss_score,
-                    exploitability: result.exploitability_score,
-                    impact: result.impact_score,
-                    trending: result.trending_score,
-                    complexity: result.attack_complexity === 'Low' ? 3 : 7
-                });
-            }, 100);
-        } else {Result_Container.innerHTML = `<div class="error_message">Cannot find relevant information</div>`;}
-    }
-    Result_Area.appendChild(Result_Container);
-    console.log(result);
-}
 async function Search() {
     const is_Result_Container_Exist = document.getElementById('Result_Container');
     if (is_Result_Container_Exist) {is_Result_Container_Exist.remove();}
@@ -629,3 +592,112 @@ document.addEventListener('DOMContentLoaded', adjustViewportSize);
 window.addEventListener('resize', adjustViewportSize);
 window.addEventListener('orientationchange', () => {setTimeout(adjustViewportSize, 100);});
 /* ---------------------------------------- */
+
+
+function initCVEReferences() {
+    let cveExpanded = false;
+
+    const showBtn = document.getElementById('cveShowBtn');
+    const copyBtn = document.getElementById('cveCopyBtn');
+    const refList = document.getElementById('cveRefList');
+    const notification = document.getElementById('cveCopyNotif');
+
+    if (!showBtn || !copyBtn || !refList || !notification) {
+        console.error('CVE Reference elements not found!');
+        return;
+    }
+
+    // Toggle展开/收起
+    showBtn.onclick = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        cveExpanded = !cveExpanded;
+
+        if (cveExpanded) {
+            refList.classList.add('cve-expanded');
+            showBtn.textContent = 'Hide all';
+        } else {
+            refList.classList.remove('cve-expanded');
+            showBtn.textContent = 'Show all';
+        }
+    };
+
+    // 复制引用
+    copyBtn.onclick = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const refs = `[1] NVD - General
+    https://nvd.nist.gov/vuln/detail/CVE-2024-1001
+
+[2] VDB-252270 | Totolink N200RE /cgi-bin/cstecgi.cgi main stack-based overflow
+    https://vuldb.com/?id.252270
+
+[3] VDB-252270 | Totolink N200RE Exploit Publication
+    https://vuldb.com/?id.252270
+
+[4] CVE-2024-1001 - Totolink Vendor Information
+    https://vuldb.com/?vendor.totolink
+
+[5] CVE Details - Totolink N200RE Firmware
+    https://www.cvedetails.com/product/77039/Totolink-N200re-Firmware.html
+
+[6] CWE-121: Stack-based Buffer Overflow
+    https://cwe.mitre.org/data/definitions/121.html`;
+
+        // 尝试复制
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(refs).then(function () {
+                showNotification();
+            }).catch(function (err) {
+                fallbackCopy(refs);
+            });
+        } else {
+            fallbackCopy(refs);
+        }
+    };
+
+    // 备用复制方法
+    function fallbackCopy(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+            document.execCommand('copy');
+            showNotification();
+        } catch (err) {
+            alert('Copy failed. Please copy manually.');
+        }
+
+        document.body.removeChild(textarea);
+    }
+
+    // 显示通知
+    function showNotification() {
+        notification.classList.add('cve-show');
+        setTimeout(function () {
+            notification.classList.remove('cve-show');
+        }, 2000);
+    }
+
+    console.log('✓ CVE References initialized successfully');
+}
+
+// 多种方式确保初始化
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCVEReferences);
+} else {
+    initCVEReferences();
+}
+
+// 额外的备用初始化
+window.addEventListener('load', function () {
+    if (!document.getElementById('cveShowBtn').onclick) {
+        initCVEReferences();
+    }
+});
