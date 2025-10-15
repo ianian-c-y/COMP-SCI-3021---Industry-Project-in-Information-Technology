@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>響應式側邊欄</title>
+</head>
+<body>
+    <!-- 側邊欄 -->
+    <div class="side-navbar" id="sidebar">
+        <ul class="nav flex-column text-white w-100">
+            <a href="#" class="nav-link h3 text-white my-2">
+                Responsive <br>SideBar Nav
+            </a>
+            <li href="#" class="nav-link">
+                <i class="bx bxs-dashboard"></i>
+                <span class="mx-2">Home</span>
+            </li>
+            <li href="#" class="nav-link">
+                <i class="bx bx-user-check"></i>
+                <span class="mx-2">Profile</span>
+            </li>
+            <li href="#" class="nav-link">
+                <i class="bx bx-conversation"></i>
+                <span class="mx-2">Contact</span>
+            </li>
+        </ul>
+
+        <span class="nav-link h4 w-100 mb-5">
+    <a href=""><i class="bx bxl-instagram-alt text-white"></i></a>
+    <a href=""><i class="bx bxl-twitter px-2 text-white"></i></a>
+    <a href=""><i class="bx bxl-facebook text-white"></i></a>
+  </span>
+    </div>
+
+    <!-- 開關按鈕 -->
+    <button class="btn border-0" id="menu-btn">
+        <i class="bx bx-menu"></i>
+    </button>
+</body>
+<style>
+    .side-navbar {
+        width: 250px;
+        height: 100vh;
+        position: fixed;
+        left: -250px;
+        top: 0;
+        background-color: #100901;
+        transition: left 0.5s ease;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        padding: 20px 0;
+        }
+
+    .side-navbar.active-nav {
+        left: 0;
+        }
+
+    .side-navbar .nav-link {
+        color: #fff;
+        padding: 15px 20px;
+        transition: background-color 0.3s;
+        }
+
+    .side-navbar .nav-link:hover,
+    .side-navbar .nav-link:focus {
+        background-color: #ffffff26;
+        }
+
+    #menu-btn {
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        background-color: #100901;
+        color: #fff;
+        z-index: 999;
+        padding: 10px 15px;
+        border-radius: 5px;
+        }
+</style>
+<script>
+    const menuBtn = document.querySelector("#menu-btn");
+    const sidebar = document.querySelector("#sidebar");
+
+    menuBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("active-nav");
+    });
+</script>
+</html>

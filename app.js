@@ -16,7 +16,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', indexRouter);
-app.get('/', async (req, res) => {res.sendFile(path.join(__dirname, 'public', 'Design', 'CVE-Enquiry.html'));});
+app.get('/', async (req, res) => {res.sendFile(path.join(__dirname, 'public', 'HTML', 'CVE-Enquiry.html'));});
 app.use('/users', usersRouter);
 
 app.get('/CVE-Enquiry', async (req, res) => {res.sendFile(path.join(__dirname, 'public', 'COMP SCI 3021 - Industry Project in Information Technology', 'CVE-Enquiry.html'));});

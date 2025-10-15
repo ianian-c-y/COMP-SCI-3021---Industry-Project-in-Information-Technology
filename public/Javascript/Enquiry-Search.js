@@ -40,7 +40,7 @@ async function loading() {
     loadingTimeout = setTimeout(() => {
         if (loadingElement && loadingElement.parentNode) { loadingElement.remove();}
         loadingTimeout = null;
-        }, Wait_Time);
+    }, Wait_Time);
 }
 async function search_CVE_DB(value=null) {
     let cveNumber = Case_ID.value.trim();
@@ -70,7 +70,7 @@ async function search_CVE_DB(value=null) {
 // ---------------------------------------- */
 async function loadCVETemplate() {
     try {
-        const response = await fetch('/public/Design/CVE-Results.html');
+        const response = await fetch('../HTML/CVE-Results.html');
         return await response.text();
     } catch (error) {
         console.error('載入 CVE 模板失敗:', error);
@@ -78,26 +78,39 @@ async function loadCVETemplate() {
     }
 }
 function createSVGGauge(score) {
+    const getScoreColor = (s) => {
+        if (s >= 9.0) return '#dc3545';
+        if (s >= 7.0) return '#fd7e14';
+        if (s >= 4.0) return '#ffc107';
+        if (s > 0) return '#28a745';
+        return '#6c757d';
+    };
+
+    const color = getScoreColor(score);
     const percentage = (score / 10) * 100;
     const circumference = 2 * Math.PI * 45; // radius = 45
     const strokeDasharray = (percentage / 100) * circumference;
 
     return `
-        <svg width="120" height="120" class="gauge-svg">
+        <svg viewBox="0 0 120 120" class="gauge-svg">
+            <defs>
+                <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="${color}" stop-opacity="0.7" />
+                    <stop offset="100%" stop-color="${color}" stop-opacity="1" />
+                </linearGradient>
+            </defs>
+            <circle cx="60" cy="60" r="45" stroke="#e9ecef" stroke-width="12" fill="none"/>
             <circle cx="60" cy="60" r="45" 
-                stroke="#e9ecef" stroke-width="8" fill="none"/>
-            <circle cx="60" cy="60" r="45" 
-                stroke="${getScoreColor(score)}" 
-                stroke-width="8" 
+                stroke="url(#gaugeGradient)"
+                stroke-width="12" 
                 fill="none"
-                stroke-dasharray="${strokeDasharray} ${circumference}"
-                stroke-dashoffset="${circumference * 0.25}"
-                transform="rotate(-90 60 60)"
-                style="transition: stroke-dasharray 1s ease-out"/>
-            <text x="60" y="55" text-anchor="middle" 
-                font-size="18" font-weight="bold">${score}</text>
-            <text x="60" y="75" text-anchor="middle" 
-                font-size="10" fill="#666">CVSS</text>
+                stroke-linecap="round"
+                stroke-dasharray="${circumference}"
+                stroke-dashoffset="${circumference}"
+                transform="rotate(-90 60 60)">
+                <animate attributeName="stroke-dashoffset" from="${circumference}" to="${circumference - strokeDasharray}" dur="1.5s" fill="freeze" begin="0.2s" calcMode="spline" keyTimes="0; 1" keySplines="0.25 1 0.5 1"/>
+            </circle>
+            <text x="60" y="65" text-anchor="middle" font-size="24" font-weight="bold" fill="${color}">${score}</text>
         </svg>
     `;
 }
@@ -263,20 +276,31 @@ function createRadarChart(scores) {
         { label: 'Exploitability', value: scores.exploitability || 0 },
         { label: 'Impact', value: scores.impact || 0 },
         { label: 'Trending', value: (scores.trending || 0) / 10 },
-        { label: 'Complexity', value: scores.complexity || 5 }
+        { label: 'Complexity', value: 10 - (scores.complexity || 5) } // Invert complexity: low complexity = high score
     ];
 
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('width', '300');
-    svg.setAttribute('height', '300');
     svg.setAttribute('viewBox', '0 0 300 300');
+
+    // Add definitions for gradient and filter
+    svg.innerHTML = `
+        <defs>
+            <radialGradient id="radarGradient" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="rgba(220, 53, 69, 0.4)" />
+                <stop offset="100%" stop-color="rgba(220, 53, 69, 0.1)" />
+            </radialGradient>
+            <filter id="glow">
+                <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#dc3545" />
+            </filter>
+        </defs>
+    `;
 
     const centerX = 150;
     const centerY = 150;
-    const maxRadius = 120;
+    const maxRadius = 110;
     const angleStep = (Math.PI * 2) / dimensions.length;
 
-    // 畫背景網格
+    // Draw background grid
     for (let i = 1; i <= 5; i++) {
         const radius = (maxRadius / 5) * i;
         const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
@@ -288,53 +312,56 @@ function createRadarChart(scores) {
         }).join(' ');
         polygon.setAttribute('points', points);
         polygon.setAttribute('fill', 'none');
-        polygon.setAttribute('stroke', '#ddd');
-        polygon.setAttribute('stroke-width', '1');
+        polygon.setAttribute('stroke', '#ccc');
+        polygon.setAttribute('stroke-width', i === 5 ? '1.5' : '0.5');
         svg.appendChild(polygon);
     }
 
-    // 畫軸線和標籤
+    // Draw axis lines and labels
     dimensions.forEach((dim, index) => {
         const angle = angleStep * index - Math.PI / 2;
-        const x = centerX + maxRadius * Math.cos(angle);
-        const y = centerY + maxRadius * Math.sin(angle);
-
+        const x2 = centerX + maxRadius * Math.cos(angle);
+        const y2 = centerY + maxRadius * Math.sin(angle);
         const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        line.setAttribute('x1', centerX);
-        line.setAttribute('y1', centerY);
-        line.setAttribute('x2', x);
-        line.setAttribute('y2', y);
-        line.setAttribute('stroke', '#ddd');
-        line.setAttribute('stroke-width', '1');
-        svg.appendChild(line);
+        line.setAttribute('x1', centerX); line.setAttribute('y1', centerY);
+        line.setAttribute('x2', x2); line.setAttribute('y2', y2);
+        line.setAttribute('stroke', '#ddd'); svg.appendChild(line);
 
         const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        const labelX = centerX + (maxRadius + 20) * Math.cos(angle);
-        const labelY = centerY + (maxRadius + 20) * Math.sin(angle);
-        text.setAttribute('x', labelX);
-        text.setAttribute('y', labelY);
+        text.setAttribute('x', centerX + (maxRadius + 15) * Math.cos(angle));
+        text.setAttribute('y', centerY + (maxRadius + 15) * Math.sin(angle));
         text.setAttribute('text-anchor', 'middle');
-        text.setAttribute('font-size', '12');
-        text.textContent = dim.label;
-        svg.appendChild(text);
+        text.setAttribute('font-size', '12'); text.setAttribute('fill', '#333');
+        text.textContent = dim.label; svg.appendChild(text);
     });
 
-    // 畫數據多邊形
+    // Draw data polygon
     const dataPoints = dimensions.map((dim, index) => {
         const angle = angleStep * index - Math.PI / 2;
         const radius = (dim.value / 10) * maxRadius;
         const x = centerX + radius * Math.cos(angle);
         const y = centerY + radius * Math.sin(angle);
-        return `${x},${y}`;
-    }).join(' ');
+        return {x, y};
+    });
 
     const dataPolygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
-    dataPolygon.setAttribute('points', dataPoints);
-    dataPolygon.setAttribute('fill', 'rgba(220, 53, 69, 0.3)');
+    dataPolygon.setAttribute('points', dataPoints.map(p => `${p.x},${p.y}`).join(' '));
+    dataPolygon.setAttribute('fill', 'url(#radarGradient)');
     dataPolygon.setAttribute('stroke', '#dc3545');
     dataPolygon.setAttribute('stroke-width', '2');
+    dataPolygon.style.filter = 'url(#glow)';
     svg.appendChild(dataPolygon);
 
+    // Draw data points
+    dataPoints.forEach(p => {
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', p.x); circle.setAttribute('cy', p.y);
+        circle.setAttribute('r', '4'); circle.setAttribute('fill', '#dc3545');
+        circle.setAttribute('stroke', 'white'); circle.setAttribute('stroke-width', '2');
+        svg.appendChild(circle);
+    });
+
+    chart.innerHTML = '';
     chart.appendChild(svg);
 }
 
@@ -369,136 +396,13 @@ function initCVETimeline(publishedDate, modifiedDate) {
         timeline.appendChild(li);
     }
 }
-
 async function search_results_display(result = null) {
     const is_Result_Container_Exist = document.getElementById('Result_Container');
     if (is_Result_Container_Exist) {is_Result_Container_Exist.remove();}
     const Result_Container = document.createElement('div');
     Result_Container.id = 'Result_Container';
-
-    if (!result) {
-        // Use the 403-style error page from Testing-5.html
-        Result_Container.innerHTML = `
-       
-<!-- include the svg assets later used in the project -->
-<svg style="display: none;">
-    <symbol id="keyhole" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 26.458333 26.458334"><g transform="translate(0 -270.542)"><circle cx="13.229" cy="279.141" r="8.599" fill="#f1eedb" paint-order="stroke fill markers"></circle><path d="M10.516 283.271h5.427c1.164 0 1.768.861 2.102 1.802l3.59 10.125c.334.94-.937 1.802-2.102 1.802H6.926c-1.165 0-2.437-.861-2.103-1.802l3.59-10.125c.334-.94.938-1.802 2.103-1.802z" fill="#f1eedb" paint-order="stroke fill markers"></path><circle r="6.06" cy="279.141" cx="13.229" fill="#282b24" paint-order="stroke fill markers"></circle><path d="M11.502 283.76h3.455c.741 0 1.126.733 1.338 1.534l2.286 8.614c.213.8-.597 1.534-1.338 1.534H9.216c-.742 0-1.551-.733-1.339-1.534l2.286-8.614c.212-.8.597-1.534 1.339-1.534z" fill="#282b24" paint-order="stroke fill markers"></path></g></symbol>
-    <symbol id="key" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 26.458333 26.458334"><circle cx="13.229" cy="279.141" r="8.599" paint-order="stroke fill markers" transform="matrix(0 -.76923 .7499 0 -202.882 23.405)" fill="#f1eedb"></circle><circle r="8.599" cy="279.141" cx="13.229" paint-order="stroke fill markers" transform="matrix(0 -.5887 .57392 0 -153.756 21.017)" fill="#282b24"></circle><path fill="#f1eedb" paint-order="stroke fill markers" d="M12.03 12.13h14.428v2.2H12.03z"></path><path fill="#f1eedb" paint-order="stroke fill markers" d="M18.147 12.13h2.895v6.772h-2.895zM22.113 12.13h2.716v5.065h-2.716z"></path></symbol>
-    <symbol id="ghost" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 26.458333 26.458334"><g transform="translate(0 -270.542)"><path d="M4.63 279.293c0-4.833 3.85-8.751 8.6-8.751 4.748 0 8.598 3.918 8.598 8.75H13.23zM4.725 279.293h16.914c.052 0 .19.043.19.096l-.095 14.329c0 .026-.011.05-.028.068a.093.093 0 0 1-.067.028c-.881 0-1.235-1.68-2.114-1.616-.995.072-1.12 2.082-2.114 2.154-.88.064-1.233-1.615-2.115-1.615-.881 0-1.233 1.615-2.114 1.615-.881 0-1.233-1.615-2.114-1.615-.882 0-1.236 1.679-2.115 1.615-.994-.072-1.12-2.082-2.114-2.154-.88-.063-1.41 1.077-2.114 1.616-.021.016-.05-.01-.067-.028a.097.097 0 0 1-.028-.068v-14.33c0-.052.042-.095.095-.095z" fill="#f1eedb" paint-order="stroke fill markers"></path><path d="M15.453 281.27a1.987 1.94 0 0 1-.994 1.68 1.987 1.94 0 0 1-1.987 0 1.987 1.94 0 0 1-.994-1.68h1.988z" fill="#282b24" paint-order="stroke fill markers"></path><g fill="#282b24" transform="matrix(1 0 0 1.0177 .283 -5.653)"><ellipse cx="10.205" cy="278.668" rx="1.231" ry="1.181" paint-order="stroke fill markers"></ellipse><ellipse ry="1.181" rx="1.231" cy="278.668" cx="16.159" paint-order="stroke fill markers"></ellipse><ellipse ry=".331" rx=".853" cy="280.936" cx="10.205" opacity=".5" paint-order="stroke fill markers"></ellipse><ellipse cx="16.159" cy="280.936" rx=".853" ry=".331" opacity=".5" paint-order="stroke fill markers"></ellipse></g><ellipse ry=".614" rx="8.082" cy="296.386" cx="13.229" opacity=".1" fill="#f1eedb" paint-order="stroke fill markers"></ellipse></g></symbol>
-
-</svg>
-
-<!-- include in a container a heading, paragraph and svg for the keyhole -->
-<div class="container">
-    <h1>403</h1>
-    <p>access not granted</p>
-    <svg class="keyhole" style="animation-play-state: running;">
-        <use href="#keyhole"></use>
-    </svg>
-</div>
-
-<!-- outside of the container, to have them absolute positioned in relation to the body, include an svg for the key and one for the ghost -->
-<svg class="key" style="animation-play-state: running; pointer-events: none; left: -106.333px; top: 27px;">
-    <use href="#key"></use>
-</svg>
-
-<!--
-  ! nest the svg in a vi, give the svg and vi the same class
-  the div and svg behave differently when translating the element through the transform property, giving a nice distance between the text (included with a pseudo element on the div) and the svg
--->
-<div class="ghost">
-    <svg class="ghost">
-        <use href="#ghost"></use>
-    </svg>
-</div>
-
-<script id="rendered-js">
-    // target the elements in the DOM used in the project
-
-    /**
-     * svg for the key and keyhole
-     * div nesting the ghost
-     * heading and paragraph
-     */
-    const key = document.querySelector(".key");
-    const keyhole = document.querySelector(".keyhole");
-    const ghost = document.querySelector(".ghost");
-
-    const heading = document.querySelector("h1");
-    const paragraph = document.querySelector("p");
-
-
-    // for the length of the timout, consider the --animation-duration custom property and add a small delay
-    // retrieve properties on the root element
-    const root = document.querySelector(":root");
-    const rootStyles = getComputedStyle(root);
-    // retrieve the animation-duration custom property
-    // ! this is specified as "40s", in seconds, so parse the number and includ it in milliseconds
-    const animationDuration = parseInt(rootStyles.getPropertyValue("--animation-duration")) * 100;
-    let keyTimer = animationDuration * 9 / 8;
-
-
-    // retrieve the dimensions of the key (to have the key exactly where the cursor would lie)
-    const keyBox = key.getBoundingClientRect();
-    // console.log(keyBox);
-
-
-    // KEY & KEYHOLE ANIMATION
-    // include a timeout with the specified time frame
-    const timeoutID = setTimeout(() => {
-        // after the specified time, change the cursor as to seemingly grab the key
-        key.parentElement.parentElement.style.cursor = "grab";
-
-        // introduce the key and keyhole svg elements by triggering the paused-by-default animation
-        key.style.animationPlayState = "running";
-        keyhole.style.animationPlayState = "running";
-
-        // ! pointer-events set to none on the key to allow for a mouseover event on the keyhole
-        // the key is indeed used in stead of the normal cursor and would overlap on top of everything
-        key.style.pointerEvents = "none";
-
-        // when the cursor hovers anywhere in the window, call a function to update the position of the key and have it match the cursor
-        window.addEventListener("mousemove", updateKeyPosition);
-
-        // when the cursor hovers on the keyhole, call a function to grant access and remove present listeners
-        keyhole.addEventListener("mouseover", grantAccess);
-
-        clearTimeout(timeoutID);
-    }, keyTimer);
-
-
-    // define the function which updates the position of the absolute-positioned key according to the mouse coordinates (and the keys own dimensions)
-    const updateKeyPosition = e => {
-        let x = e.clientX;
-        let y = e.clientY;
-        key.style.left = x - keyBox.width / 1.5;
-        key.style.top = y - keyBox.height / 2;
-    };
-
-    // define the function which notifies the user of the grant access
-    const grantAccess = () => {
-        // restore the cursor
-        key.parentElement.parentElement.style.cursor = "default";
-
-        // change the text of the heading and paragraph elements
-        heading.textContent = '🎉 yay 🎉';
-        paragraph.textContent = 'access granted';
-
-        // remove the svg elements for the key and keywhole from the flow of the document
-        keyhole.style.display = "none";
-        key.style.display = "none";
-
-        // remove the event listeners, most notably the one on the window
-        window.removeEventListener("mousemove", updateKeyPosition);
-        keyhole.removeEventListener("mouseover", grantAccess);
-    };
-    //# sourceURL=pen.js
-</script>
-
-
-
-        `;
-    } else {
+    if (!result) {Result_Container.innerHTML = `<div class="error_message">Cannot find relevant information</div>`;} else {
+        displayReferences(result);
         const template = await loadCVETemplate();
         if (template) {
             const formattedData = formatCVEData(result);
@@ -510,6 +414,11 @@ async function search_results_display(result = null) {
             Result_Container.innerHTML = processedHTML;
             setTimeout(() => {
                 initCVETimeline(result.published_date, result.last_modified);
+            }, 100);
+            setTimeout(() => {
+                initCVETimeline(result.published_date, result.last_modified);
+
+                // 初始化新的視覺化
                 createPlatformChart(result.affected_platforms);
                 createTagCloud(result.vulnerability_categories);
                 createRadarChart({
@@ -538,6 +447,52 @@ async function Search() {
         }, Wait_Time);
     } catch (error) {if (loadingElement && loadingElement.parentNode) {loadingElement.remove();}}
 }
+// 顯示參考文獻
+function displayReferences(result) {
+    const refWindow = document.getElementById('ref-Window');
+    if (!refWindow || !result) return;
+
+    const cveId = result.cve_id;
+    const cveNumber = cveId.replace('CVE-2024-', '');
+    const cweId = result.cwe_id || 'N/A';
+
+    const references = `
+        <div class="ref-content">
+            <h4>Reference Resource:</h4>
+            <div class="ref-item">
+                <span class="ref-number">[1]</span>
+                <div class="ref-details">
+                    <div class="ref-title">NVD - General</div>
+                    <a href="https://nvd.nist.gov/vuln/detail/${cveId}" target="_blank">
+                        https://nvd.nist.gov/vuln/detail/${cveId}
+                    </a>
+                </div>
+            </div>
+            <div class="ref-item">
+                <span class="ref-number">[2]</span>
+                <div class="ref-details">
+                    <div class="ref-title">${cveId} - Vendor Information</div>
+                    <a href="https://vuldb.com/?id.${cveNumber}" target="_blank">
+                        https://vuldb.com/?id.${cveNumber}
+                    </a>
+                </div>
+            </div>
+            ${cweId !== 'N/A' ? `
+            <div class="ref-item">
+                <span class="ref-number">[3]</span>
+                <div class="ref-details">
+                    <div class="ref-title">${cweId} - Common Weakness Enumeration</div>
+                    <a href="https://cwe.mitre.org/data/definitions/${cweId.replace('CWE-', '')}.html" target="_blank">
+                        https://cwe.mitre.org/data/definitions/${cweId.replace('CWE-', '')}.html
+                    </a>
+                </div>
+            </div>
+            ` : ''}
+        </div>
+    `;
+
+    refWindow.innerHTML = references;
+}
 // ---------------------------------------- */
 if (Case_ID) {
     Case_ID.addEventListener('input', function () {
@@ -559,27 +514,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     await search_results_display(results);
 });
 // ---------------------------------------- */
-function renderMessage(type, { title, detail, actions = [] }) {
-    const wrap = document.createElement('div');
-    wrap.className = `msg ${type}`;
-    wrap.innerHTML = `
-    <div>
-      <div class="title">${title}</div>
-      <div class="detail">${detail || ''}</div>
-    </div>
-    <div class="actions"></div>
-  `;
-    const actionsBox = wrap.querySelector('.actions');
-    actions.forEach(({ label, onClick }) => {
-        const btn = document.createElement('button');
-        btn.className = 'btn';
-        btn.textContent = label;
-        btn.addEventListener('click', onClick);
-        actionsBox.appendChild(btn);
-    });
-    return wrap;
-}
-
 // Auto Adjust Webpage Size
 function adjustViewportSize() {
     const Screen_Width = document.documentElement.clientWidth;
@@ -591,113 +525,23 @@ function adjustViewportSize() {
 document.addEventListener('DOMContentLoaded', adjustViewportSize);
 window.addEventListener('resize', adjustViewportSize);
 window.addEventListener('orientationchange', () => {setTimeout(adjustViewportSize, 100);});
-/* ---------------------------------------- */
+// 切換參考資料窗口
+document.addEventListener('DOMContentLoaded', function() {
+    const refButton = document.getElementById('Ref');
+    const refWindow = document.getElementById('ref-Window');
 
+    if (refButton && refWindow) {
+        refButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            refWindow.classList.toggle('ref-Window-Active');
+        });
 
-function initCVEReferences() {
-    let cveExpanded = false;
-
-    const showBtn = document.getElementById('cveShowBtn');
-    const copyBtn = document.getElementById('cveCopyBtn');
-    const refList = document.getElementById('cveRefList');
-    const notification = document.getElementById('cveCopyNotif');
-
-    if (!showBtn || !copyBtn || !refList || !notification) {
-        console.error('CVE Reference elements not found!');
-        return;
-    }
-
-    // Toggle展开/收起
-    showBtn.onclick = function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        cveExpanded = !cveExpanded;
-
-        if (cveExpanded) {
-            refList.classList.add('cve-expanded');
-            showBtn.textContent = 'Hide all';
-        } else {
-            refList.classList.remove('cve-expanded');
-            showBtn.textContent = 'Show all';
-        }
-    };
-
-    // 复制引用
-    copyBtn.onclick = function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const refs = `[1] NVD - General
-    https://nvd.nist.gov/vuln/detail/CVE-2024-1001
-
-[2] VDB-252270 | Totolink N200RE /cgi-bin/cstecgi.cgi main stack-based overflow
-    https://vuldb.com/?id.252270
-
-[3] VDB-252270 | Totolink N200RE Exploit Publication
-    https://vuldb.com/?id.252270
-
-[4] CVE-2024-1001 - Totolink Vendor Information
-    https://vuldb.com/?vendor.totolink
-
-[5] CVE Details - Totolink N200RE Firmware
-    https://www.cvedetails.com/product/77039/Totolink-N200re-Firmware.html
-
-[6] CWE-121: Stack-based Buffer Overflow
-    https://cwe.mitre.org/data/definitions/121.html`;
-
-        // 尝试复制
-        if (navigator.clipboard && window.isSecureContext) {
-            navigator.clipboard.writeText(refs).then(function () {
-                showNotification();
-            }).catch(function (err) {
-                fallbackCopy(refs);
-            });
-        } else {
-            fallbackCopy(refs);
-        }
-    };
-
-    // 备用复制方法
-    function fallbackCopy(text) {
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        textarea.style.position = 'fixed';
-        textarea.style.left = '-9999px';
-        document.body.appendChild(textarea);
-        textarea.select();
-
-        try {
-            document.execCommand('copy');
-            showNotification();
-        } catch (err) {
-            alert('Copy failed. Please copy manually.');
-        }
-
-        document.body.removeChild(textarea);
-    }
-
-    // 显示通知
-    function showNotification() {
-        notification.classList.add('cve-show');
-        setTimeout(function () {
-            notification.classList.remove('cve-show');
-        }, 2000);
-    }
-
-    console.log('✓ CVE References initialized successfully');
-}
-
-// 多种方式确保初始化
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCVEReferences);
-} else {
-    initCVEReferences();
-}
-
-// 额外的备用初始化
-window.addEventListener('load', function () {
-    if (!document.getElementById('cveShowBtn').onclick) {
-        initCVEReferences();
+        // 點擊窗口外部關閉
+        document.addEventListener('click', function(e) {
+            if (!refWindow.contains(e.target) && !refButton.contains(e.target)) {
+                refWindow.classList.remove('ref-Window-Active');
+            }
+        });
     }
 });
+/* ---------------------------------------- */
