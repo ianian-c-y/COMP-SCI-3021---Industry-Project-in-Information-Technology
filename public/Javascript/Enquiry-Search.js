@@ -278,9 +278,9 @@ function createRadarChart(scores) {
         { label: 'Trending', value: (scores.trending || 0) / 10 },
         { label: 'Complexity', value: 10 - (scores.complexity || 5) } // Invert complexity: low complexity = high score
     ];
-
+    const svg_size = 750
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('viewBox', '0 0 300 300');
+    svg.setAttribute('viewBox', `0 0 ${svg_size} ${svg_size}`);
 
     // Add definitions for gradient and filter
     svg.innerHTML = `
@@ -295,9 +295,9 @@ function createRadarChart(scores) {
         </defs>
     `;
 
-    const centerX = 150;
-    const centerY = 150;
-    const maxRadius = 110;
+    const centerX = svg_size/2;
+    const centerY = svg_size/2;
+    const maxRadius = svg_size*0.3;
     const angleStep = (Math.PI * 2) / dimensions.length;
 
     // Draw background grid
@@ -331,7 +331,9 @@ function createRadarChart(scores) {
         text.setAttribute('x', centerX + (maxRadius + 15) * Math.cos(angle));
         text.setAttribute('y', centerY + (maxRadius + 15) * Math.sin(angle));
         text.setAttribute('text-anchor', 'middle');
-        text.setAttribute('font-size', '12'); text.setAttribute('fill', '#333');
+        text.setAttribute('font-size', 'xx-large');
+        text.setAttribute('fill', '#333');
+        text.classList = "Radar-Chart-Text"
         text.textContent = dim.label; svg.appendChild(text);
     });
 
@@ -373,15 +375,29 @@ function initCVETimeline(publishedDate, modifiedDate) {
 
     const pubMonth = new Date(publishedDate).getMonth() + 1;
     const modMonth = new Date(modifiedDate).getMonth() + 1;
+    const Mouth_Names = {
+        1: 'Jan',
+        2: 'Feb',
+        3: 'Mar',
+        4: 'Apr',
+        5: 'May',
+        6: 'Jun',
+        7: 'Jul',
+        8: 'Aug',
+        9: 'Sep',
+        10: 'Oct',
+        11: 'Nov',
+        12: 'Dec'
+    };
 
     for (let i = 1; i <= 12; i++) {
         const li = document.createElement('li');
         li.setAttribute('data-month', i);
 
         const month = document.createElement('div');
-        month.className = 'month';
-        // month.textContent = i + '月';
-
+        month.className = 'month Time-line-mouth';
+        // month.textContent = i + '';
+        month.textContent = Mouth_Names[i];
         if (i === pubMonth) {
             li.classList.add('published');
         }
