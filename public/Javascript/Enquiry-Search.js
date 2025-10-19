@@ -464,7 +464,7 @@ async function Search() {
     } catch (error) {if (loadingElement && loadingElement.parentNode) {loadingElement.remove();}}
 }
 // 顯示參考文獻
-function displayReferences(result) {
+function displayReferences_(result) {
     const refWindow = document.getElementById('ref-Window');
     if (!refWindow || !result) return;
 
@@ -509,6 +509,173 @@ function displayReferences(result) {
 
     refWindow.innerHTML = references;
 }
+/* ======================================== */
+let currentCVEData = null;
+let cveChatHistory = [];
+function displayReferences(result) {
+    const refWindow = document.getElementById('ref-Window');
+    if (!refWindow || !result) return;
+
+    const cveId = result.cve_id;
+    const cveNumber = cveId.replace('CVE-2024-', '');
+    const cweId = result.cwe_id || 'N/A';
+
+    const references = `
+        <div class="cve-references-section">
+            <h4>Reference Resources:</h4>
+            <div class="ref-item">
+                <span class="ref-number">[1]</span>
+                <div class="ref-details">
+                    <div class="ref-title">NVD - General</div>
+                    <a href="https://nvd.nist.gov/vuln/detail/${cveId}" target="_blank">
+                        https://nvd.nist.gov/vuln/detail/${cveId}
+                    </a>
+                </div>
+            </div>
+            <div class="ref-item">
+                <span class="ref-number">[2]</span>
+                <div class="ref-details">
+                    <div class="ref-title">${cveId} - Vendor Information</div>
+                    <a href="https://vuldb.com/?id.${cveNumber}" target="_blank">
+                        https://vuldb.com/?id.${cveNumber}
+                    </a>
+                </div>
+            </div>
+            ${cweId !== 'N/A' ? `
+            <div class="ref-item">
+                <span class="ref-number">[3]</span>
+                <div class="ref-details">
+                    <div class="ref-title">${cweId} - Common Weakness Enumeration</div>
+                    <a href="https://cwe.mitre.org/data/definitions/${cweId.replace('CWE-', '')}.html" target="_blank">
+                        https://cwe.mitre.org/data/definitions/${cweId.replace('CWE-', '')}.html
+                    </a>
+                </div>
+            </div>
+            ` : ''}
+        </div>
+    `;
+    const refSection = refWindow.querySelector('.cve-references-section');
+    if (refSection) {
+        refSection.innerHTML = references;
+    }
+
+    // Add initial system message
+    appendCVEMessage('system', `I can help you analyze ${cveId}. Ask me anything about this vulnerability!`);
+}
+async function sendCVEMessage() {
+    const input = document.getElementById('cve-chat-input');
+    const message = input.value.trim();
+
+    if (!message) return;
+
+    // Add user message to chat
+    appendCVEMessage('user', message);
+    input.value = '';
+
+    // Add loading indicator
+    const loadingElement = document.createElement('div');
+    loadingElement.className = 'cve-message cve-loading';
+    loadingElement.textContent = 'Claude is thinking...';
+    document.getElementById('cve-chatbox').appendChild(loadingElement);
+
+    try {
+        // Prepare context with CVE data
+        const contextMessage = currentCVEData ?
+            `Context: Discussing ${currentCVEData.cve_id}${currentCVEData.description ? ` - ${currentCVEData.description}` : ''}` : '';
+
+        const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                message: contextMessage + '\n\nUser question: ' + message,
+                role: 'Default',
+                chatroomId: null, // No chatroom storage
+                model: 'claude-3-5-sonnet-20240620',
+                temporary: true // Flag for temporary chat
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error('Server error: ' + response.status);
+        }
+
+        const data = await response.json();
+
+        // Remove loading indicator
+        loadingElement.remove();
+
+        // Add Claude's response
+        appendCVEMessage('claude', data.response);
+
+    } catch (error) {
+        console.error('CVE Chat Error:', error);
+        loadingElement.remove();
+        appendCVEMessage('system', 'Error: Could not get response. Please try again.');
+    }
+}
+function appendCVEMessage(sender, message) {
+    const chatbox = document.getElementById('cve-chatbox');
+    const messageElement = document.createElement('div');
+    messageElement.className = `cve-message cve-${sender}-message`;
+
+    const bubbleElement = document.createElement('div');
+    bubbleElement.className = 'cve-message-bubble';
+
+    if (sender === 'user') {
+        bubbleElement.innerHTML = marked.parse(message);
+    } else {
+        // Typewriter effect for Claude/system messages
+        typeWriterCVE(message, bubbleElement);
+    }
+
+    messageElement.appendChild(bubbleElement);
+
+    // Add copy button for Claude messages
+    if (sender === 'claude') {
+        const copyButton = document.createElement('button');
+        copyButton.className = 'cve-copy-button';
+        copyButton.onclick = function() {
+            navigator.clipboard.writeText(message).then(() => {
+                copyButton.classList.add('copied');
+                setTimeout(() => copyButton.classList.remove('copied'), 2000);
+            });
+        };
+        messageElement.appendChild(copyButton);
+    }
+
+    chatbox.appendChild(messageElement);
+    chatbox.scrollTop = chatbox.scrollHeight;
+
+    // Store in history
+    cveChatHistory.push({ sender, message, timestamp: Date.now() });
+}
+function typeWriterCVE(text, element, index = 0) {
+    if (index < text.length) {
+        element.innerHTML += text.charAt(index);
+        document.getElementById('cve-chatbox').scrollTop =
+            document.getElementById('cve-chatbox').scrollHeight;
+        setTimeout(() => typeWriterCVE(text, element, index + 1), 10);
+    } else {
+        element.innerHTML = marked.parse(text);
+        element.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightElement(block);
+        });
+    }
+}
+document.addEventListener('DOMContentLoaded', function() {
+    const cveInput = document.getElementById('cve-chat-input');
+    if (cveInput) {
+        cveInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+                e.preventDefault();
+                sendCVEMessage();
+            }
+        });
+    }
+});
+
+/* ======================================== */
+
 // ---------------------------------------- */
 if (Case_ID) {
     Case_ID.addEventListener('input', function () {
