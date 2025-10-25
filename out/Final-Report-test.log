@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  26 OCT 2025 01:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  26 OCT 2025 01:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -685,7 +685,9 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 \@quotelevel=\count434
 \@quotereset=\count435
 
-No file Final-Report-test.aux.
+(/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Documents/Ian's Inter
+preter/Github·Project/COMP-SCI-3021---Industry-Project-in-Information-Technolo
+gy/out/Final-Report-test.aux)
 \openout1 = `Final-Report-test.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
@@ -706,6 +708,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 51.
 LaTeX Font Info:    ... okay on input line 51.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 51.
 LaTeX Font Info:    ... okay on input line 51.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -780,6 +783,13 @@ Package color Info: Driver file: pdftex.def on input line 149.
 (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/graphics/ma
 thcolor.ltx))
 Package hyperref Info: Link coloring ON on input line 51.
+
+(/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Documents/Ian's Inter
+preter/Github·Project/COMP-SCI-3021---Industry-Project-in-Information-Technolo
+gy/out/Final-Report-test.out)
+(/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Documents/Ian's Inter
+preter/Github·Project/COMP-SCI-3021---Industry-Project-in-Information-Technolo
+gy/out/Final-Report-test.out)
 \@outlinefile=\write4
 \openout4 = `Final-Report-test.out'.
 
@@ -801,7 +811,7 @@ Package biblatex Info: ... file 'Final-Report-test.bbl' not found.
 No file Final-Report-test.bbl.
 Package biblatex Info: Reference section=0 on input line 51.
 Package biblatex Info: Reference segment=0 on input line 51.
-<UoA_logo_col_vert.jpg, id=4, 438.63875pt x 334.24875pt>
+<UoA_logo_col_vert.jpg, id=96, 438.63875pt x 334.24875pt>
 File: UoA_logo_col_vert.jpg Graphic file (type jpg)
 <use UoA_logo_col_vert.jpg>
 Package pdftex.def Info: UoA_logo_col_vert.jpg  used on input line 59.
@@ -826,14 +836,13 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/map/pdftex/updm
 ap/pdftex.map}{/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/e
 nc/dvips/cm-super/cm-super-t1.enc} <./UoA_logo_col_vert.jpg>]
-No file Final-Report-test.toc.
+(/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Documents/Ian's Inter
+preter/Github·Project/COMP-SCI-3021---Industry-Project-in-Information-Technolo
+gy/out/Final-Report-test.toc)
 \tf@toc=\write5
 \openout5 = `Final-Report-test.toc'.
 
 
-
-
-LaTeX Warning: Reference `LastPage' on page i undefined on input line 107.
 
 [1
 
@@ -857,9 +866,6 @@ you left one out. Proceed, with fingers crossed.
 
 
 
-LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 121.
-
-
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
@@ -869,13 +875,10 @@ l.121     \clearpage
 
 ]
 
-
-LaTeX Warning: Reference `LastPage' on page 2 undefined on input line 133.
-
 [2
 
 ]
-<flowchart-summarising.png, id=38, 4143.48pt x 1634.105pt>
+<flowchart-summarising.png, id=152, 4143.48pt x 1634.105pt>
 File: flowchart-summarising.png Graphic file (type png)
 <use flowchart-summarising.png>
 Package pdftex.def Info: flowchart-summarising.png  used on input line 139.
@@ -888,9 +891,6 @@ Overfull \hbox (17.70558pt too wide) in paragraph at lines 151--152
 
 
 
-
-LaTeX Warning: Reference `LastPage' on page 3 undefined on input line 152.
-
 [3
 
  <./flowchart-summarising.png>]
@@ -901,38 +901,23 @@ r-formed to en-sure the front-end JavaScript
 
 
 
-
-LaTeX Warning: Reference `LastPage' on page 4 undefined on input line 168.
-
 [4]
-
-LaTeX Warning: Reference `fig:prototype' on page 5 undefined on input line 183.
-
-
-<prototype-website.jpg, id=57, 770.88pt x 770.88pt>
+<prototype-website.jpg, id=169, 770.88pt x 770.88pt>
 File: prototype-website.jpg Graphic file (type jpg)
 <use prototype-website.jpg>
 Package pdftex.def Info: prototype-website.jpg  used on input line 186.
 (pdftex.def)             Requested size: 455.24411pt x 455.23872pt.
-
-LaTeX Warning: Reference `fig:final_ui' on page 5 undefined on input line 190.
-
-<Timeline-UI.png, id=58, 562.1pt x 179.67125pt>
+<Timeline-UI.png, id=171, 562.1pt x 179.67125pt>
 File: Timeline-UI.png Graphic file (type png)
 <use Timeline-UI.png>
 Package pdftex.def Info: Timeline-UI.png  used on input line 193.
 (pdftex.def)             Requested size: 455.24411pt x 145.51645pt.
-<CVE-Enquiry.jpg, id=59, 2890.8pt x 2686.035pt>
+<CVE-Enquiry.jpg, id=172, 2890.8pt x 2686.035pt>
 File: CVE-Enquiry.jpg Graphic file (type jpg)
 <use CVE-Enquiry.jpg>
 Package pdftex.def Info: CVE-Enquiry.jpg  used on input line 199.
 (pdftex.def)             Requested size: 455.24411pt x 422.97078pt.
 
-Overfull \hbox (3.92433pt too wide) in paragraph at lines 183--203
-\T1/cmr/m/n/12 Figure [] shows the ini-tial, hand-drawn pro-to-type that served
- as the foun-da-tional blueprint
- []
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -942,19 +927,12 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-LaTeX Warning: Reference `fig:ai_chatbox' on page 5 undefined on input line 211
-.
-
-<AI-ChatBox.png, id=60, 642.4pt x 963.6pt>
+<AI-ChatBox.png, id=174, 642.4pt x 963.6pt>
 File: AI-ChatBox.png Graphic file (type png)
 <use AI-ChatBox.png>
 Package pdftex.def Info: AI-ChatBox.png  used on input line 214.
 (pdftex.def)             Requested size: 364.19667pt x 546.30234pt.
 
-
-
-LaTeX Warning: Reference `LastPage' on page 5 undefined on input line 221.
 
 [5
 
@@ -964,22 +942,13 @@ LaTeX Warning: Text page 6 contains only floats.
 
 
 
-
-LaTeX Warning: Reference `LastPage' on page 6 undefined on input line 221.
-
 [6 <./prototype-website.jpg> <./Timeline-UI.png>]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-
-LaTeX Warning: Reference `LastPage' on page 7 undefined on input line 221.
-
 [7 <./CVE-Enquiry.jpg>]
-
-
-LaTeX Warning: Reference `LastPage' on page 8 undefined on input line 221.
 
 [8 <./AI-ChatBox.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 223--225
@@ -993,16 +962,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 226--228
 
 
 
-
-LaTeX Warning: Reference `LastPage' on page 9 undefined on input line 239.
-
 [9
 
 {/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/cm-su
 per/cm-super-ts1.enc}]
-
-
-LaTeX Warning: Reference `LastPage' on page 10 undefined on input line 252.
 
 [10
 
@@ -1012,9 +975,6 @@ LaTeX Warning: Citation 'example_website' on page 11 undefined on input line 25
 9.
 
 
-
-
-LaTeX Warning: Reference `LastPage' on page 11 undefined on input line 274.
 
 [11
 
@@ -1036,20 +996,8 @@ L3 programming layer <2025-01-18>
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `Final-Report-test.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Final-Report-test.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  BE98380825B01B5079641040743C07AC;3998.
-
-Package lastpage Warning: Rerun to get the references right on input line 278.
-
+Package rerunfilecheck Info: File `Final-Report-test.out' has not changed.
+(rerunfilecheck)             Checksum: BE98380825B01B5079641040743C07AC;3998.
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                Final-Report-test
@@ -1060,10 +1008,10 @@ Package logreq Info: Writing requests to 'Final-Report-test.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 19074 strings out of 473190
- 337678 string characters out of 5704335
- 1250273 words of memory out of 5000000
- 42071 multiletter control sequences out of 15000+600000
+ 19110 strings out of 473190
+ 339620 string characters out of 5704335
+ 1249802 words of memory out of 5000000
+ 42099 multiletter control sequences out of 15000+600000
  572260 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,11n,81p,947b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1085,10 +1033,10 @@ ist/fonts/type1/public/cm-super/sfrm1440.pfb></opt/homebrew/Cellar/texlive/2025
 0.pfb>
 Output written on "/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Doc
 uments/Ian's Interpreter/Github·Project/COMP-SCI-3021---Industry-Project-in-In
-formation-Technology/out/Final-Report-test.pdf" (13 pages, 5650894 bytes).
+formation-Technology/out/Final-Report-test.pdf" (13 pages, 5656053 bytes).
 PDF statistics:
- 179 PDF objects out of 1000 (max. 8388607)
- 128 compressed objects within 2 object streams
+ 288 PDF objects out of 1000 (max. 8388607)
+ 236 compressed objects within 3 object streams
  42 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 215 words of extra memory for PDF output out of 10000 (max. 10000000)
 
