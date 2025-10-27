@@ -92,8 +92,11 @@
             % Must be 150-200 words.
             % Answer: 1. What problem? 2. What approach? 3. What results?
             \noindent % No indentation for the first line
-            \lipsum[1] % --- REPLACE THIS with your 150-200 word abstract ---
+            The report describes the development process and assessment results of the \textit{Vulnerability Information System}, which functions as a complete web application for easy CVE data access and visualization. The system addresses the requirement for user-friendly cybersecurity data access through its interface, which simplifies complex technical information.
 
+            The system uses Node.js/Express as its backend to access MySQL database information about pre-processed CVE 2024 data, while its front-end interface shows vulnerability details through a newspaper-style design. The system includes a generative AI assistant based on the Claude 3.5 Sonnet model, which delivers human-like analysis of context-specific information.
+
+            The system demonstrated reliable operation on different devices while verifying that all visualization elements and interactive features function correctly. The project shows that it is possible to merge AI-based interpretation with structured CVE data to create a system which helps users perform quick vulnerability assessments regardless of their technical background.
         \end{minipage}
         \vfill % Fill remaining space
     \end{titlepage}
@@ -239,10 +242,19 @@
     \clearpage
     \section{Limitations}
     % (List and explain at least three limitations)
+    The project achieved success but multiple restrictions need to be recognized during its execution.
+
     \begin{itemize}[label=$\bullet$, leftmargin=*]
-        \item \textbf{Technical Constraint:} (e.g., We were limited by...) \lipsum[13]
-        \item \textbf{Time Limitation:} (e.g., Due to the project timeline, we could not...) \lipsum[14]
-        \item \textbf{Scope Limitation:} (e.g., The project scope did not include...) \lipsum[15]
+
+        \item \textbf{Technical Constraints:}
+        The system depends on a MySQL database installed locally and requires manual execution of data parsing scripts. The system requires manual intervention through Python parser execution to update its dataset at scheduled intervals. The system operated from a local environment which prevented researchers from testing real-time scalability and network latency effects and multi-user system performance.
+
+        \item \textbf{Time Constraints:}
+        The project team operated under strict semester deadlines which restricted their available development period. The project team postponed three essential features which included authentication systems, vendor-specific exploit type filtering, and historical CVE trend analysis for future development. The AI assistant operated correctly but received insufficient training for cybersecurity domain terminology because of restricted API access and a brief development period.
+
+        \item \textbf{Scope Constraints:}
+        The project concentrated on user interface improvements instead of developing security solutions that detect threats or perform automated vulnerability fixes. The project designers chose to exclude security system integration because they wanted to keep the project within reasonable boundaries. The tool delivers general security information but users should understand it does not substitute for expert security evaluations or decision-making systems.
+
     \end{itemize}
 
 
@@ -256,8 +268,13 @@
     % - What you achieved
     % - What could be done next (future improvements)
 %    \parencite{example_book}
-    \cite{example_website}
-    \lipsum[16-17]
+    The \textit{Vulnerability Information System} converted complicated cybersecurity information into an interactive digital platform which users can easily understand. The system shows how open CVE data can become an accessible risk-awareness platform through its combination of data visualization, structured querying, and AI-assisted interpretation.
+
+    The study shows that users without cybersecurity expertise can understand complex information better when designers use simple visual elements and plain language. The project demonstrates how academic teams can work together effectively to build agile solutions within limited resources.
+
+    The system will benefit from additional dataset expansion to achieve real-time API synchronization and cloud deployment for multi-user access and enhanced AI assistant domain expertise. The project develops an operational system which connects complex technical vulnerability information to user-friendly cybersecurity communication methods.
+
+    The project shows how data visualization combined with AI interpretation can enhance cybersecurity awareness and decision-making processes for academic and real-world applications.
 
 
 %==============================================================================
