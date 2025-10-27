@@ -509,6 +509,273 @@ function displayReferences(result) {
 
     refWindow.innerHTML = references;
 }
+/* ======================================== */
+let currentCVEData = null;
+let chatHistory = [];
+
+// 打開聊天框
+function openChatBox() {
+    const chatbox = document.getElementById('AI-ChatBox');
+    const floatingBtn = document.getElementById('open-chatbox-btn');
+
+    chatbox.classList.add('active');
+    floatingBtn.classList.add('hidden');
+
+    // 如果是首次打開且有CVE數據，發送歡迎消息
+    if (chatHistory.length === 0 && currentCVEData) {
+        const welcomeMsg = `Hello! I'm your CVE AI Assistant. I can help you analyze ${currentCVEData.cve_id} in detail. Feel free to ask me anything about this vulnerability, such as:\n\n• How severe is this vulnerability?\n• What systems are affected?\n• How can this be fixed?\n• How might attackers exploit this?`;
+        appendChatMessage('assistant', welcomeMsg);
+    }
+}
+
+// 關閉聊天框
+function toggleChatBox() {
+    const chatbox = document.getElementById('AI-ChatBox');
+    const floatingBtn = document.getElementById('open-chatbox-btn');
+
+    chatbox.classList.remove('active');
+    floatingBtn.classList.remove('hidden');
+}
+
+// 處理鍵盤事件
+function handleChatKeypress(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        sendChatMessage();
+    }
+}
+
+// 發送聊天消息
+async function sendChatMessage() {
+    const input = document.getElementById('chatbox-input');
+    const message = input.value.trim();
+
+    if (!message) return;
+
+    // 清空輸入框
+    input.value = '';
+    input.style.height = 'auto';
+
+    // 顯示用戶消息
+    appendChatMessage('user', message);
+
+    // 顯示載入動畫
+    const loadingId = showChatLoading();
+
+    try {
+        // 構建包含CVE上下文的消息
+        const contextMessage = buildContextMessage(message);
+
+        // 發送到後端
+        const response = await fetch('/api/cve-chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: contextMessage,
+                cveData: currentCVEData,
+                history: chatHistory
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error('發送請求失敗');
+        }
+
+        const data = await response.json();
+
+        // 移除載入動畫
+        removeChatLoading(loadingId);
+
+        // 顯示AI回復
+        appendChatMessage('assistant', data.response);
+
+        // 更新聊天歷史
+        chatHistory.push(
+            { role: 'user', content: message },
+            { role: 'assistant', content: data.response }
+        );
+
+    } catch (error) {
+        console.error('聊天錯誤:', error);
+        removeChatLoading(loadingId);
+        appendChatMessage('assistant', '抱歉，發生錯誤，請稍後再試。');
+    }
+}
+
+// 構建包含CVE上下文的消息
+function buildContextMessage(userMessage) {
+    if (!currentCVEData) {
+        return userMessage;
+    }
+
+    const context = `
+You are a CVE security expert assistant. Here is the detailed information about the current CVE:
+
+CVE ID: ${currentCVEData.cve_id}
+Description: ${currentCVEData.description}
+Severity: ${currentCVEData.severity}
+CVSS Score: ${currentCVEData.cvss_score}
+Attack Vector: ${currentCVEData.attack_vector || 'N/A'}
+Attack Complexity: ${currentCVEData.attack_complexity || 'N/A'}
+Affected Vendors: ${currentCVEData.vendors || 'N/A'}
+Affected Products: ${currentCVEData.products || 'N/A'}
+CWE ID: ${currentCVEData.cwe_id || 'N/A'}
+Vulnerability Status: ${currentCVEData.vuln_status}
+
+User Question: ${userMessage}
+
+Please provide a professional and accurate answer in English. If the question involves technical details, please explain them clearly.
+`.trim();
+
+    return context;
+}
+
+// 顯示聊天消息
+function appendChatMessage(role, content) {
+    const messagesContainer = document.getElementById('chatbox-messages');
+
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `chat-message ${role}`;
+
+    const bubbleDiv = document.createElement('div');
+    bubbleDiv.className = 'message-bubble';
+
+    // 使用marked.js渲染markdown（如果可用）
+    if (typeof marked !== 'undefined') {
+        bubbleDiv.innerHTML = marked.parse(content);
+    } else {
+        bubbleDiv.textContent = content;
+    }
+
+    const timeDiv = document.createElement('div');
+    timeDiv.className = 'message-time';
+    timeDiv.textContent = new Date().toLocaleTimeString('zh-HK', {
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+
+    messageDiv.appendChild(bubbleDiv);
+    messageDiv.appendChild(timeDiv);
+    messagesContainer.appendChild(messageDiv);
+
+    // 滾動到底部
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+// 顯示載入動畫
+function showChatLoading() {
+    const messagesContainer = document.getElementById('chatbox-messages');
+    const loadingId = 'loading-' + Date.now();
+
+    const loadingDiv = document.createElement('div');
+    loadingDiv.id = loadingId;
+    loadingDiv.className = 'chat-message assistant';
+    loadingDiv.innerHTML = `
+        <div class="chat-loading">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    `;
+
+    messagesContainer.appendChild(loadingDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    return loadingId;
+}
+
+// 移除載入動畫
+function removeChatLoading(loadingId) {
+    const loadingElement = document.getElementById(loadingId);
+    if (loadingElement) {
+        loadingElement.remove();
+    }
+}
+
+// 更新當前CVE數據並重置聊天
+function updateCVEChatContext(cveData) {
+    currentCVEData = cveData;
+    chatHistory = [];
+
+    // 清空聊天記錄
+    const messagesContainer = document.getElementById('chatbox-messages');
+    if (messagesContainer) {
+        messagesContainer.innerHTML = '';
+    }
+
+    // 更新聊天框標題
+    const titleElement = document.getElementById('chatbox-cve-title');
+    if (titleElement && cveData) {
+        titleElement.textContent = `CVE AI Assistant - ${cveData.cve_id}`;
+
+    }
+}
+
+// 在顯示搜索結果時調用此函數
+async function search_results_display(result = null) {
+    const is_Result_Container_Exist = document.getElementById('Result_Container');
+    if (is_Result_Container_Exist) {
+        is_Result_Container_Exist.remove();
+    }
+
+    const Result_Container = document.createElement('div');
+    Result_Container.id = 'Result_Container';
+
+    if (!result) {
+        Result_Container.innerHTML = `<div class="error_message">Cannot find relevant information</div>`;
+    } else {
+        // 更新CVE聊天上下文
+        updateCVEChatContext(result);
+
+        displayReferences(result);
+        const template = await loadCVETemplate();
+
+        if (template) {
+            const formattedData = formatCVEData(result);
+            let processedHTML = template;
+
+            Object.keys(formattedData).forEach(key => {
+                const regex = new RegExp(`{{${key}}}`, 'g');
+                processedHTML = processedHTML.replace(regex, formattedData[key]);
+            });
+
+            Result_Container.innerHTML = processedHTML;
+
+            setTimeout(() => {
+                initCVETimeline(result.published_date, result.last_modified);
+                createPlatformChart(result.affected_platforms);
+                createTagCloud(result.vulnerability_categories);
+                createRadarChart({
+                    cvss: result.cvss_score,
+                    exploitability: result.exploitability_score,
+                    impact: result.impact_score,
+                    trending: result.trending_score,
+                    complexity: result.attack_complexity === 'Low' ? 3 : 7
+                });
+            }, 100);
+        } else {
+            Result_Container.innerHTML = `<div class="error_message">Cannot find relevant information</div>`;
+        }
+    }
+
+    Result_Area.appendChild(Result_Container);
+    console.log(result);
+}
+
+// 自動調整textarea高度
+document.addEventListener('DOMContentLoaded', function() {
+    const textarea = document.getElementById('chatbox-input');
+    if (textarea) {
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+        });
+    }
+});
+/* ======================================== */
+
 // ---------------------------------------- */
 if (Case_ID) {
     Case_ID.addEventListener('input', function () {
@@ -523,12 +790,25 @@ if (Case_ID) {
     });
 }
 // ---------------------------------------- */
-document.addEventListener('DOMContentLoaded', async function() {
-    console.log('所有 Cookie:', document.cookie);
-    update_preview('CVE-2024-1000')
-    let results = await search_CVE_DB(value=1001);
+async function initializePage() {
+    // 1. Check if Claude API Key exists
+    try {
+        const configResponse = await fetch('/api/check-claude');
+        const config = await configResponse.json();
+        if (config.isClaudeAvailable) {
+            // if API key exists, show the chat button
+            const chatBtn = document.getElementById('open-chatbox-btn');
+            if (chatBtn) {chatBtn.style.display = 'flex';}
+        }
+    } catch (error) {
+        console.error('Error checking API config, AI Chat will be disabled:', error);
+    }
+    console.log('All Cookies:', document.cookie);
+    update_preview('CVE-2024-1000');
+    let results = await search_CVE_DB(value = 1001);
     await search_results_display(results);
-});
+}
+document.addEventListener('DOMContentLoaded', initializePage);
 // ---------------------------------------- */
 // Auto Adjust Webpage Size
 function adjustViewportSize() {

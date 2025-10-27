@@ -83,20 +83,27 @@
 
         % --- ABSTRACT (on the Title Page as requested) ---
         \par
-        \begin{minipage}{0.9\textwidth} % Constrain width for readability
-            \normalsize % Ensure normal font size
+        \begin{minipage}{0.9\textwidth}
+            \normalsize
             \centering
             {\bfseries Abstract}
-            \par\medskip % Add a little space after the heading
-
+            \par\medskip
+            % Add a little space after the heading
             % Must be 150-200 words.
             % Answer: 1. What problem? 2. What approach? 3. What results?
-            \noindent % No indentation for the first line
-            The report describes the development process and assessment results of the \textit{Vulnerability Information System}, which functions as a complete web application for easy CVE data access and visualization. The system addresses the requirement for user-friendly cybersecurity data access through its interface, which simplifies complex technical information.
-
-            The system uses Node.js/Express as its backend to access MySQL database information about pre-processed CVE 2024 data, while its front-end interface shows vulnerability details through a newspaper-style design. The system includes a generative AI assistant based on the Claude 3.5 Sonnet model, which delivers human-like analysis of context-specific information.
-
-            The system demonstrated reliable operation on different devices while verifying that all visualization elements and interactive features function correctly. The project shows that it is possible to merge AI-based interpretation with structured CVE data to create a system which helps users perform quick vulnerability assessments regardless of their technical background.
+            \noindent
+%            \lipsum[1]
+            The effective management of cybersecurity risks is often hindered by the dense, highly technical presentation of data in official repositories like the National Vulnerability Database.
+            This complexity creates a significant barrier for non-specialist stakeholders who require a ``quick look'' solution for rapid risk assessment.
+            This project addresses this problem by designing and implementing a three-tier, full-stack web application.
+            The approach involved parsing raw CVE JSON data using a Python script and populating a local MySQL database.
+            A custom Node.js backend API serves this data to a highly visual front-end, which features an intuitive ``newspaper-style'' layout.
+            The system's main outcomes are the successful translation of complex data into accessible visualisations, including interactive timelines, CVSS score gauges, and risk radar charts.
+            Furthermore, the application integrates a generative AI assistant using Anthropic Claude 3.5 Sonnet, allowing users to analyse vulnerabilities through natural-language dialogue.
+            The final prototype serves as an effective ``first-response'' tool that accelerates the triage and risk assessment process.
+%            The report describes the development process and assessment results of the \textit{Vulnerability Information System}, which functions as a complete web application for easy CVE data access and visualization. The system addresses the requirement for user-friendly cybersecurity data access through its interface, which simplifies complex technical information.
+%            The system uses Node.js/Express as its backend to access MySQL database information about pre-processed CVE 2024 data, while its front-end interface shows vulnerability details through a newspaper-style design. The system includes a generative AI assistant based on the Claude 3.5 Sonnet model, which delivers human-like analysis of context-specific information.
+%            The system demonstrated reliable operation on different devices while verifying that all visualization elements and interactive features function correctly. The project shows that it is possible to merge AI-based interpretation with structured CVE data to create a system which helps users perform quick vulnerability assessments regardless of their technical background.
         \end{minipage}
         \vfill % Fill remaining space
     \end{titlepage}
@@ -241,50 +248,86 @@
 %==============================================================================
     \clearpage
     \section{Limitations}
-    % (List and explain at least three limitations)
     The project achieved success but multiple restrictions need to be recognized during its execution.
 
-    \begin{itemize}[label=$\bullet$, leftmargin=*]
 
-        \item \textbf{Technical Constraints:}
-        The system depends on a MySQL database installed locally and requires manual execution of data parsing scripts. The system requires manual intervention through Python parser execution to update its dataset at scheduled intervals. The system operated from a local environment which prevented researchers from testing real-time scalability and network latency effects and multi-user system performance.
+    \subsection{Data and Technical Limitations}
+    The most significant limitation is the static nature of the data.
+    The system's backend relies on a local MySQL database populated from a one-time data import.
+%    [cite: COMP_SCI_3_021_Industry_Project_in_Information_Technology.js]
+    There is no automated pipeline for data ingestion.
+    To incorporate new vulnerabilities, an administrator must manually download the latest CVE JSON data from cve.org,
+    then execute the Python parsing script to convert it to CSV, and then re-import it into the database.
+    This means the application does not provide real-time information and its data will inevitably become outdated.
+    \\
+    \\
+    Furthermore, the system has critical external dependencies.
+    In its intended deployed state, the entire web application requires a stable internet connection to be accessible.
+    Moreover, the \textbf{AI Assistant} feature \ref{fig:ai_chatbox} is fundamentally dependent on the availability
+    and network connectivity of the third-party Anthropic Claude API.
+%    [cite: Claude.js].
+    \\
+    Any downtime from this external service or a user's lack of internet access would render the chat feature non-functional.
+    \\
+    Finally, as the application was only tested in a local environment,its performance under real-world network latency or concurrent multi-user load has not been evaluated.
+    \subsection{Scope and Feature Limitations}
+    The project's scope was explicitly defined by the client's request to use the 2024 CVE dataset as a test example.
+%    [cite: COMP_SCI_3_021_Industry_Project_in_Information_Technology.js].
+    As a result, the application in its current form cannot retrieve information for any vulnerabilities from previous years (e.g., CVE-2023-xxxx).
+    \\
+    \\
+    Additionally, due to the strict time constraints of an academic semester,several planned ``quality-of-life'' features were postponed.
+    These descoped features include a ``Search History Cache'' for user convenience and a dynamic dashboard module to display the ``most recently updated'' CVEs.
+    Other complex functionalities, such as user authentication and advanced vendor-specific filtering, were also left for future development.
+    \subsection{Purpose Limitation}
+    It is important to clarify that this tool is an informational and visualisation platform, not an active security solution.
+    It was designed to improve the user interface for \textit{accessing} CVE data, not to perform automated threat detection, system scanning, or vulnerability remediation.
+    The tool is intended to augment and accelerate the risk assessment process for an IT professional, not to replace expert security evaluation or decision-making.
 
-        \item \textbf{Time Constraints:}
-        The project team operated under strict semester deadlines which restricted their available development period. The project team postponed three essential features which included authentication systems, vendor-specific exploit type filtering, and historical CVE trend analysis for future development. The AI assistant operated correctly but received insufficient training for cybersecurity domain terminology because of restricted API access and a brief development period.
-
-        \item \textbf{Scope Constraints:}
-        The project concentrated on user interface improvements instead of developing security solutions that detect threats or perform automated vulnerability fixes. The project designers chose to exclude security system integration because they wanted to keep the project within reasonable boundaries. The tool delivers general security information but users should understand it does not substitute for expert security evaluations or decision-making systems.
-
-    \end{itemize}
-
-
+%    \subsection{Technical Constraints}
+%    The system depends on a MySQL database installed locally and requires manual execution of data parsing scripts. The system requires manual intervention through Python parser execution to update its dataset at scheduled intervals. The system operated from a local environment which prevented researchers from testing real-time scalability and network latency effects and multi-user system performance.
+%    \subsection{Time Constraints}
+%    The project team operated under strict semester deadlines which restricted their available development period. The project team postponed three essential features which included authentication systems, vendor-specific exploit type filtering, and historical CVE trend analysis for future development. The AI assistant operated correctly but received insufficient training for cybersecurity domain terminology because of restricted API access and a brief development period.
+%    \subsection{Scope Constraints}
+%    The project concentrated on user interface improvements instead of developing security solutions that detect threats or perform automated vulnerability fixes. The project designers chose to exclude security system integration because they wanted to keep the project within reasonable boundaries. The tool delivers general security information but users should understand it does not substitute for expert security evaluations or decision-making systems.
 %==============================================================================
 % --- 6. CONCLUSION ---
 %==============================================================================
     \clearpage
     \section{Conclusion}
-    % Summarise:
-    % - What you set out to do
-    % - What you achieved
-    % - What could be done next (future improvements)
-%    \parencite{example_book}
-    The \textit{Vulnerability Information System} converted complicated cybersecurity information into an interactive digital platform which users can easily understand. The system shows how open CVE data can become an accessible risk-awareness platform through its combination of data visualization, structured querying, and AI-assisted interpretation.
-
-    The study shows that users without cybersecurity expertise can understand complex information better when designers use simple visual elements and plain language. The project demonstrates how academic teams can work together effectively to build agile solutions within limited resources.
-
-    The system will benefit from additional dataset expansion to achieve real-time API synchronization and cloud deployment for multi-user access and enhanced AI assistant domain expertise. The project develops an operational system which connects complex technical vulnerability information to user-friendly cybersecurity communication methods.
-
-    The project shows how data visualization combined with AI interpretation can enhance cybersecurity awareness and decision-making processes for academic and real-world applications.
+    This project set out to address the challenge of information accessibility in cybersecurity by transforming dense, technical Common Vulnerabilities and Exposures (CVE) data into a streamlined, highly visual ``quick look'' tool.
+    \\
+    The project successfully achieved this objective through the delivery of a complete, three-tier web application.
+    The primary deliverables include:
+    \begin{enumerate}
+        \item A fully configured MySQL database populated with processed 2024 CVE data
+        \item A robust backend API service built with Node.js, providing standardised JSON endpoints for data retrieval
+        \item A responsive, front-end web platform that presents the data through an intuitive ``newspaper-style'' interface with multiple visualisations. The solution effectively translates complex vulnerability data into an accessible dashboard, augmented by a novel AI-powered chat assistant for contextual analysis.
+    \end{enumerate}
+    \\
+    \\
+    Future work should focus on overcoming the current limitations.
+    The immediate priority would be to replace the manual data import process with an automated, real-time data ingestion pipeline.
+    Further enhancements could include expanding the database to support historical CVE data (pre-2024), implementing user-centric features such as a search history cache, and conducting performance testing in a live, multi-user environment.
+%    \\
+%    \\
+%    The \textit{Vulnerability Information System} converted complicated cybersecurity information into an interactive digital platform which users can easily understand. The system shows how open CVE data can become an accessible risk-awareness platform through its combination of data visualization, structured querying, and AI-assisted interpretation.
+%    \\
+%    The study shows that users without cybersecurity expertise can understand complex information better when designers use simple visual elements and plain language. The project demonstrates how academic teams can work together effectively to build agile solutions within limited resources.
+%    \\
+%    The system will benefit from additional dataset expansion to achieve real-time API synchronization and cloud deployment for multi-user access and enhanced AI assistant domain expertise. The project develops an operational system which connects complex technical vulnerability information to user-friendly cybersecurity communication methods.
+%    \\
+%    The project shows how data visualization combined with AI interpretation can enhance cybersecurity awareness and decision-making processes for academic and real-world applications.
 
 
 %==============================================================================
 % --- 7. REPLICATION PACKAGE ---
 %==============================================================================
+    \clearpage
     \section{Replication Package}
     The complete source code, documentation, and setup instructions for this project are available at the following publicly accessible GitHub repository:
     \url{https://github.com/ianian-c-y/COMP-SCI-3021---Industry-Project-in-Information-Technology}
     The repository includes a \texttt{README.md} file with detailed instructions for setting up the environment and running the system.
-
 %==============================================================================
 % --- REFERENCES ---
 %==============================================================================

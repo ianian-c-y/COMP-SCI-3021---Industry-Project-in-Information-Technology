@@ -1,11 +1,13 @@
-var express = require('express');
-var createError = require('http-errors');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+require('dotenv').config();
+const express = require('express');
+const createError = require('http-errors');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var claudeRouter = require('./routes/Claude');
 
 var app = express();
 
@@ -26,6 +28,16 @@ app.get('/public/Design/CVE-Results.html', async (req, res) => {res.sendFile(pat
 
 const CVE_Data = require('./routes/COMP_SCI_3021_Industry_Project_in_Information_Technology');
 app.use('/api/cve', CVE_Data);
+app.use('/api', claudeRouter);
+
+
+/* ---------------------------------------- */
+app.get('/api/check-claude', (req, res) => {
+  res.json({
+    isClaudeAvailable: !!process.env.CLAUDE_API_KEY
+  });
+});
+/* ---------------------------------------- */
 
 // app.use(function(req, res, next) {next(createError(404));});
 app.use(function(err, req, res, next) {
