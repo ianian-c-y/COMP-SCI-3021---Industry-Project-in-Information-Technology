@@ -1,11 +1,11 @@
 const mysql = require('mysql2/promise');
 
 const cvePool = mysql.createPool({
-    host: '127.0.0.1',
-    port: '3306',
-    user: 'User',
-    password: 'PassWord',
-    database: 'CVE_DataBase',
+    host: process.env.DB_HOST || '127.0.0.1',
+    port: process.env.DB_PORT || '3306',
+    user: process.env.DB_USER || 'User',
+    password: process.env.DB_PASSWORD || 'PassWord',
+    database: process.env.DB_DATABASE || 'CVE_DataBase',
     waitForConnections: true,
     connectionLimit: 1,
     queueLimit: 0,
