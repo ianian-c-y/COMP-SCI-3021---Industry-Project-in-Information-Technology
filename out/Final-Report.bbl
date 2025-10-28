@@ -16,5 +16,934 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{databahn_From_Noise_to_Knowledge}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=ccb05309f8d71ca14ae9941a7e2a45c6}{%
+           family={AI},
+           familyi={A\bibinitperiod},
+           given={Databahn},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{ccb05309f8d71ca14ae9941a7e2a45c6}
+      \strng{fullhash}{ccb05309f8d71ca14ae9941a7e2a45c6}
+      \strng{fullhashraw}{ccb05309f8d71ca14ae9941a7e2a45c6}
+      \strng{bibnamehash}{ccb05309f8d71ca14ae9941a7e2a45c6}
+      \strng{authorbibnamehash}{ccb05309f8d71ca14ae9941a7e2a45c6}
+      \strng{authornamehash}{ccb05309f8d71ca14ae9941a7e2a45c6}
+      \strng{authorfullhash}{ccb05309f8d71ca14ae9941a7e2a45c6}
+      \strng{authorfullhashraw}{ccb05309f8d71ca14ae9941a7e2a45c6}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{24}
+      \field{month}{10}
+      \field{title}{From Noise to Knowledge: Turning Security Data into Actionable Insight}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.databahn.ai/blog/from-noise-to-knowledge-turning-security-data-into-actionable-insight
+      \endverb
+      \verb{url}
+      \verb https://www.databahn.ai/blog/from-noise-to-knowledge-turning-security-data-into-actionable-insight
+      \endverb
+    \endentry
+    \entry{anthropic_Building_AI_for_cyber_defenders}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=f431db65cea024a5f19eab835afefee2}{%
+           family={Anthropic},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{fullhash}{f431db65cea024a5f19eab835afefee2}
+      \strng{fullhashraw}{f431db65cea024a5f19eab835afefee2}
+      \strng{bibnamehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authorbibnamehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authornamehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authorfullhash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authorfullhashraw}{f431db65cea024a5f19eab835afefee2}
+      \field{extraname}{1}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{4}
+      \field{month}{10}
+      \field{title}{Building AI for cyber defenders}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.anthropic.com/research/building-ai-cyber-defenders
+      \endverb
+      \verb{url}
+      \verb https://www.anthropic.com/research/building-ai-cyber-defenders
+      \endverb
+    \endentry
+    \entry{Claude_Sonnet}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=f431db65cea024a5f19eab835afefee2}{%
+           family={Anthropic},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{fullhash}{f431db65cea024a5f19eab835afefee2}
+      \strng{fullhashraw}{f431db65cea024a5f19eab835afefee2}
+      \strng{bibnamehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authorbibnamehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authornamehash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authorfullhash}{f431db65cea024a5f19eab835afefee2}
+      \strng{authorfullhashraw}{f431db65cea024a5f19eab835afefee2}
+      \field{extraname}{2}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{28}
+      \field{month}{10}
+      \field{title}{Claude Sonnet 4.5}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.anthropic.com/claude/sonnet
+      \endverb
+      \verb{url}
+      \verb https://www.anthropic.com/claude/sonnet
+      \endverb
+    \endentry
+    \entry{macOS_Tahoe}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=9f6290f4436e5a2351f12e03b6433c3c}{%
+           family={Apple},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{fullhash}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{fullhashraw}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{bibnamehash}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{authorbibnamehash}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{authornamehash}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{authorfullhash}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{authorfullhashraw}{9f6290f4436e5a2351f12e03b6433c3c}
+      \field{extraname}{1}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{28}
+      \field{month}{10}
+      \field{title}{macOS Tahoe}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.apple.com/au/os/macos/
+      \endverb
+      \verb{url}
+      \verb https://www.apple.com/au/os/macos/
+      \endverb
+    \endentry
+    \entry{Apple_Safari}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=9f6290f4436e5a2351f12e03b6433c3c}{%
+           family={Apple},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{fullhash}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{fullhashraw}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{bibnamehash}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{authorbibnamehash}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{authornamehash}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{authorfullhash}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{authorfullhashraw}{9f6290f4436e5a2351f12e03b6433c3c}
+      \field{extraname}{2}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{28}
+      \field{month}{10}
+      \field{title}{Safari Blazing fast. Incredibly private.}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.apple.com/au/safari/
+      \endverb
+      \verb{url}
+      \verb https://www.apple.com/au/safari/
+      \endverb
+    \endentry
+    \entry{bhartiya2025}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=e2a96aee8665cf2d01bf9a5ac2ee5403}{%
+           family={Bhartiya},
+           familyi={B\bibinitperiod},
+           given={Anshuman},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{e2a96aee8665cf2d01bf9a5ac2ee5403}
+      \strng{fullhash}{e2a96aee8665cf2d01bf9a5ac2ee5403}
+      \strng{fullhashraw}{e2a96aee8665cf2d01bf9a5ac2ee5403}
+      \strng{bibnamehash}{e2a96aee8665cf2d01bf9a5ac2ee5403}
+      \strng{authorbibnamehash}{e2a96aee8665cf2d01bf9a5ac2ee5403}
+      \strng{authornamehash}{e2a96aee8665cf2d01bf9a5ac2ee5403}
+      \strng{authorfullhash}{e2a96aee8665cf2d01bf9a5ac2ee5403}
+      \strng{authorfullhashraw}{e2a96aee8665cf2d01bf9a5ac2ee5403}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{3}
+      \field{month}{1}
+      \field{title}{How to build a defensive AI security agent with RAG}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.anshumanbhartiya.com/posts/defenseagent
+      \endverb
+      \verb{url}
+      \verb https://www.anshumanbhartiya.com/posts/defenseagent
+      \endverb
+    \endentry
+    \entry{CVE_Program}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=b942ed18be994dddc9bec83c2b028961}{%
+           family={Corporation},
+           familyi={C\bibinitperiod},
+           given={MITRE},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{b942ed18be994dddc9bec83c2b028961}
+      \strng{fullhash}{b942ed18be994dddc9bec83c2b028961}
+      \strng{fullhashraw}{b942ed18be994dddc9bec83c2b028961}
+      \strng{bibnamehash}{b942ed18be994dddc9bec83c2b028961}
+      \strng{authorbibnamehash}{b942ed18be994dddc9bec83c2b028961}
+      \strng{authornamehash}{b942ed18be994dddc9bec83c2b028961}
+      \strng{authorfullhash}{b942ed18be994dddc9bec83c2b028961}
+      \strng{authorfullhashraw}{b942ed18be994dddc9bec83c2b028961}
+      \field{extraname}{1}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{CVE™ Program}
+      \verb{urlraw}
+      \verb https://www.cve.org/
+      \endverb
+      \verb{url}
+      \verb https://www.cve.org/
+      \endverb
+      \warn{\item online entry 'CVE_Program' (/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Documents/Ian's Interpreter/Github·Project/COMP-SCI-3021---Industry-Project-in-Information-Technology/Final-Report/references.bib): Invalid format '2023-5-22' of date field 'date' - ignoring}
+    \endentry
+    \entry{Mysql}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=2baf8209f62fd23c32fa375f52fbf33f}{%
+           family={Corporation},
+           familyi={C\bibinitperiod},
+           given={Oracle},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{2baf8209f62fd23c32fa375f52fbf33f}
+      \strng{fullhash}{2baf8209f62fd23c32fa375f52fbf33f}
+      \strng{fullhashraw}{2baf8209f62fd23c32fa375f52fbf33f}
+      \strng{bibnamehash}{2baf8209f62fd23c32fa375f52fbf33f}
+      \strng{authorbibnamehash}{2baf8209f62fd23c32fa375f52fbf33f}
+      \strng{authornamehash}{2baf8209f62fd23c32fa375f52fbf33f}
+      \strng{authorfullhash}{2baf8209f62fd23c32fa375f52fbf33f}
+      \strng{authorfullhashraw}{2baf8209f62fd23c32fa375f52fbf33f}
+      \field{extraname}{2}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{28}
+      \field{month}{10}
+      \field{title}{Mysql}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.mysql.com/
+      \endverb
+      \verb{url}
+      \verb https://www.mysql.com/
+      \endverb
+    \endentry
+    \entry{Express_5.1.0}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=9683d9b8ddf62039af1caf4b8efb88de}{%
+           family={ExpressJS},
+           familyi={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{9683d9b8ddf62039af1caf4b8efb88de}
+      \strng{fullhash}{9683d9b8ddf62039af1caf4b8efb88de}
+      \strng{fullhashraw}{9683d9b8ddf62039af1caf4b8efb88de}
+      \strng{bibnamehash}{9683d9b8ddf62039af1caf4b8efb88de}
+      \strng{authorbibnamehash}{9683d9b8ddf62039af1caf4b8efb88de}
+      \strng{authornamehash}{9683d9b8ddf62039af1caf4b8efb88de}
+      \strng{authorfullhash}{9683d9b8ddf62039af1caf4b8efb88de}
+      \strng{authorfullhashraw}{9683d9b8ddf62039af1caf4b8efb88de}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Express5.1.0 Fast, unopinionated, minimalist web framework for Node.js}
+      \field{urlday}{28}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://expressjs.com/
+      \endverb
+      \verb{url}
+      \verb https://expressjs.com/
+      \endverb
+    \endentry
+    \entry{Firefox}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=763f7f1aec350cd1a46238d1d5c3c229}{%
+           family={Firefox},
+           familyi={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{763f7f1aec350cd1a46238d1d5c3c229}
+      \strng{fullhash}{763f7f1aec350cd1a46238d1d5c3c229}
+      \strng{fullhashraw}{763f7f1aec350cd1a46238d1d5c3c229}
+      \strng{bibnamehash}{763f7f1aec350cd1a46238d1d5c3c229}
+      \strng{authorbibnamehash}{763f7f1aec350cd1a46238d1d5c3c229}
+      \strng{authornamehash}{763f7f1aec350cd1a46238d1d5c3c229}
+      \strng{authorfullhash}{763f7f1aec350cd1a46238d1d5c3c229}
+      \strng{authorfullhashraw}{763f7f1aec350cd1a46238d1d5c3c229}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{28}
+      \field{month}{10}
+      \field{title}{Take control of your internet}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.firefox.com/en-US/
+      \endverb
+      \verb{url}
+      \verb https://www.firefox.com/en-US/
+      \endverb
+    \endentry
+    \entry{CVSS_v3_Scoring_Systems_Documentation}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=2c2624a5059934a947d6e25fe8332ade}{%
+           family={FIRST},
+           familyi={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{2c2624a5059934a947d6e25fe8332ade}
+      \strng{fullhash}{2c2624a5059934a947d6e25fe8332ade}
+      \strng{fullhashraw}{2c2624a5059934a947d6e25fe8332ade}
+      \strng{bibnamehash}{2c2624a5059934a947d6e25fe8332ade}
+      \strng{authorbibnamehash}{2c2624a5059934a947d6e25fe8332ade}
+      \strng{authornamehash}{2c2624a5059934a947d6e25fe8332ade}
+      \strng{authorfullhash}{2c2624a5059934a947d6e25fe8332ade}
+      \strng{authorfullhashraw}{2c2624a5059934a947d6e25fe8332ade}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{CVSS v3 Scoring Systems Documentation}
+      \verb{urlraw}
+      \verb https://www.first.org/cvss/specification-document
+      \endverb
+      \verb{url}
+      \verb https://www.first.org/cvss/specification-document
+      \endverb
+      \warn{\item online entry 'CVSS_v3_Scoring_Systems_Documentation' (/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Documents/Ian's Interpreter/Github·Project/COMP-SCI-3021---Industry-Project-in-Information-Technology/Final-Report/references.bib): Invalid format '2015-6-1' of date field 'date' - ignoring}
+    \endentry
+    \entry{Python}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=9688a568902e4b07b60557b566bdd820}{%
+           family={Foundation},
+           familyi={F\bibinitperiod},
+           given={Python\bibnamedelima Software},
+           giveni={P\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{9688a568902e4b07b60557b566bdd820}
+      \strng{fullhash}{9688a568902e4b07b60557b566bdd820}
+      \strng{fullhashraw}{9688a568902e4b07b60557b566bdd820}
+      \strng{bibnamehash}{9688a568902e4b07b60557b566bdd820}
+      \strng{authorbibnamehash}{9688a568902e4b07b60557b566bdd820}
+      \strng{authornamehash}{9688a568902e4b07b60557b566bdd820}
+      \strng{authorfullhash}{9688a568902e4b07b60557b566bdd820}
+      \strng{authorfullhashraw}{9688a568902e4b07b60557b566bdd820}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{28}
+      \field{month}{10}
+      \field{title}{python}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.python.org/
+      \endverb
+      \verb{url}
+      \verb https://www.python.org/
+      \endverb
+    \endentry
+    \entry{Google_Chrome}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=8b36e9207c24c76e6719268e49201d94}{%
+           family={Google},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{fullhash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{fullhashraw}{8b36e9207c24c76e6719268e49201d94}
+      \strng{bibnamehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authorbibnamehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authornamehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authorfullhash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authorfullhashraw}{8b36e9207c24c76e6719268e49201d94}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{28}
+      \field{month}{10}
+      \field{title}{The browser built to be yours}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.google.com/intl/en_au/chrome/
+      \endverb
+      \verb{url}
+      \verb https://www.google.com/intl/en_au/chrome/
+      \endverb
+    \endentry
+    \entry{vulnerability_dashboard_examples}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=4ef4dc1b52a8deb3f6764900eee41ac4}{%
+           family={Jaques},
+           familyi={J\bibinitperiod},
+           given={Shawn},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{4ef4dc1b52a8deb3f6764900eee41ac4}
+      \strng{fullhash}{4ef4dc1b52a8deb3f6764900eee41ac4}
+      \strng{fullhashraw}{4ef4dc1b52a8deb3f6764900eee41ac4}
+      \strng{bibnamehash}{4ef4dc1b52a8deb3f6764900eee41ac4}
+      \strng{authorbibnamehash}{4ef4dc1b52a8deb3f6764900eee41ac4}
+      \strng{authornamehash}{4ef4dc1b52a8deb3f6764900eee41ac4}
+      \strng{authorfullhash}{4ef4dc1b52a8deb3f6764900eee41ac4}
+      \strng{authorfullhashraw}{4ef4dc1b52a8deb3f6764900eee41ac4}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{8 Vulnerability Dashboard examples used by customers}
+      \verb{urlraw}
+      \verb https://feedly.com/new-features/posts/8-vulnerability-dashboard-examples
+      \endverb
+      \verb{url}
+      \verb https://feedly.com/new-features/posts/8-vulnerability-dashboard-examples
+      \endverb
+      \warn{\item online entry 'vulnerability_dashboard_examples' (/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Documents/Ian's Interpreter/Github·Project/COMP-SCI-3021---Industry-Project-in-Information-Technology/Final-Report/references.bib): Invalid format '2024-11-1' of date field 'date' - ignoring}
+    \endentry
+    \entry{JIANG2022100209}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=50b19fa0d073b0e04e584a8b6277eb0b}{%
+           family={Jiang},
+           familyi={J\bibinitperiod},
+           given={Yuning},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=34c77274467ef111ef13851dafef1939}{%
+           family={Atif},
+           familyi={A\bibinitperiod},
+           given={Yacine},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{5e1bb00507fac11cefe96ef769106d23}
+      \strng{fullhash}{5e1bb00507fac11cefe96ef769106d23}
+      \strng{fullhashraw}{5e1bb00507fac11cefe96ef769106d23}
+      \strng{bibnamehash}{5e1bb00507fac11cefe96ef769106d23}
+      \strng{authorbibnamehash}{5e1bb00507fac11cefe96ef769106d23}
+      \strng{authornamehash}{5e1bb00507fac11cefe96ef769106d23}
+      \strng{authorfullhash}{5e1bb00507fac11cefe96ef769106d23}
+      \strng{authorfullhashraw}{5e1bb00507fac11cefe96ef769106d23}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2590-0056}
+      \field{journaltitle}{Array}
+      \field{title}{Towards automatic discovery and assessment of vulnerability severity in cyber–physical systems}
+      \field{volume}{15}
+      \field{year}{2022}
+      \field{pages}{100209}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.array.2022.100209
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S2590005622000558
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S2590005622000558
+      \endverb
+    \endentry
+    \entry{Data_Visualization_for_UI_UX_Design}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=77de8dfd2aa0471dd67424e7ab8d694e}{%
+           family={Kaarwan},
+           familyi={K\bibinitperiod},
+           given={Team},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{77de8dfd2aa0471dd67424e7ab8d694e}
+      \strng{fullhash}{77de8dfd2aa0471dd67424e7ab8d694e}
+      \strng{fullhashraw}{77de8dfd2aa0471dd67424e7ab8d694e}
+      \strng{bibnamehash}{77de8dfd2aa0471dd67424e7ab8d694e}
+      \strng{authorbibnamehash}{77de8dfd2aa0471dd67424e7ab8d694e}
+      \strng{authornamehash}{77de8dfd2aa0471dd67424e7ab8d694e}
+      \strng{authorfullhash}{77de8dfd2aa0471dd67424e7ab8d694e}
+      \strng{authorfullhashraw}{77de8dfd2aa0471dd67424e7ab8d694e}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{11}
+      \field{month}{7}
+      \field{title}{Data Visualization for UI-UX Design: Telling Stories with Data}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.kaarwan.com/blog/ui-ux-design/data-visualization-for-ui-ux-design?id=635
+      \endverb
+      \verb{url}
+      \verb https://www.kaarwan.com/blog/ui-ux-design/data-visualization-for-ui-ux-design?id=635
+      \endverb
+    \endentry
+    \entry{10.1145/3491418.3535176}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=b040e7f1c5a3464f74a08ae37c55b4b5}{%
+           family={Manatova},
+           familyi={M\bibinitperiod},
+           given={Dalyapraz},
+           giveni={D\bibinitperiod}}}%
+        {{hash=bbeecec12c9fd3c4dfacb5dfc21b25c8}{%
+           family={Kouper},
+           familyi={K\bibinitperiod},
+           given={Inna},
+           giveni={I\bibinitperiod}}}%
+        {{hash=3eba5bee7abe52b472ef8fa1d2c233cd}{%
+           family={Samtani},
+           familyi={S\bibinitperiod},
+           given={Sagar},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Boston, MA, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{53d9893088256afee0744a6f3e81aa59}
+      \strng{fullhash}{53d9893088256afee0744a6f3e81aa59}
+      \strng{fullhashraw}{53d9893088256afee0744a6f3e81aa59}
+      \strng{bibnamehash}{53d9893088256afee0744a6f3e81aa59}
+      \strng{authorbibnamehash}{53d9893088256afee0744a6f3e81aa59}
+      \strng{authornamehash}{53d9893088256afee0744a6f3e81aa59}
+      \strng{authorfullhash}{53d9893088256afee0744a6f3e81aa59}
+      \strng{authorfullhashraw}{53d9893088256afee0744a6f3e81aa59}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Practice and Experience in Advanced Research Computing 2022: Revolutionary: Computing, Connections, You}
+      \field{isbn}{9781450391610}
+      \field{series}{PEARC '22}
+      \field{title}{Designing a Vulnerability Management Dashboard to Enhance Security Analysts’ Decision Making Processes}
+      \field{year}{2022}
+      \verb{doi}
+      \verb 10.1145/3491418.3535176
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/3491418.3535176
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/3491418.3535176
+      \endverb
+    \endentry
+    \entry{apriorit2025}{online}{}{}
+      \name{author}{2}{}{%
+        {{hash=4f8fb3c47b1079dbf35d8d6a0e298679}{%
+           family={Mandrovna},
+           familyi={M\bibinitperiod},
+           given={Lidiia},
+           giveni={L\bibinitperiod}}}%
+        {{hash=3b336fdb8dbe91ffa18010ce366a2d9c}{%
+           family={Svitlana},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{76897dfdec9a7434ff4c37fe5e308ca3}
+      \strng{fullhash}{76897dfdec9a7434ff4c37fe5e308ca3}
+      \strng{fullhashraw}{76897dfdec9a7434ff4c37fe5e308ca3}
+      \strng{bibnamehash}{76897dfdec9a7434ff4c37fe5e308ca3}
+      \strng{authorbibnamehash}{76897dfdec9a7434ff4c37fe5e308ca3}
+      \strng{authornamehash}{76897dfdec9a7434ff4c37fe5e308ca3}
+      \strng{authorfullhash}{76897dfdec9a7434ff4c37fe5e308ca3}
+      \strng{authorfullhashraw}{76897dfdec9a7434ff4c37fe5e308ca3}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{29}
+      \field{month}{9}
+      \field{title}{How to Use Data Visualization and AI-Powered Knowledge Graphs to Enhance Your Cybersecurity Product}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.apriorit.com/dev-blog/threat-visualization-in-cybersecurity
+      \endverb
+      \verb{url}
+      \verb https://www.apriorit.com/dev-blog/threat-visualization-in-cybersecurity
+      \endverb
+    \endentry
+    \entry{Microsoft_Edge}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=140864078aeca1c7c35b4beb33c53c34}{%
+           family={Microsoft},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{fullhash}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{fullhashraw}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{bibnamehash}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{authorbibnamehash}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{authornamehash}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{authorfullhash}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{authorfullhashraw}{140864078aeca1c7c35b4beb33c53c34}
+      \field{extraname}{1}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{28}
+      \field{month}{10}
+      \field{title}{Get Microsoft Edge for Mac}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.microsoft.com/en-us/edge?form=MA13FJ
+      \endverb
+      \verb{url}
+      \verb https://www.microsoft.com/en-us/edge?form=MA13FJ
+      \endverb
+    \endentry
+    \entry{Windows_11}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=140864078aeca1c7c35b4beb33c53c34}{%
+           family={Microsoft},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{fullhash}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{fullhashraw}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{bibnamehash}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{authorbibnamehash}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{authornamehash}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{authorfullhash}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{authorfullhashraw}{140864078aeca1c7c35b4beb33c53c34}
+      \field{extraname}{2}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{28}
+      \field{month}{10}
+      \field{title}{Windows 11}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.microsoft.com/en-gb/windows/windows-11?r=1
+      \endverb
+      \verb{url}
+      \verb https://www.microsoft.com/en-gb/windows/windows-11?r=1
+      \endverb
+    \endentry
+    \entry{Nodejs}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=c5274056d0c6e29ef089895d39f08dc0}{%
+           family={nodeJS},
+           familyi={n\bibinitperiod}}}%
+      }
+      \strng{namehash}{c5274056d0c6e29ef089895d39f08dc0}
+      \strng{fullhash}{c5274056d0c6e29ef089895d39f08dc0}
+      \strng{fullhashraw}{c5274056d0c6e29ef089895d39f08dc0}
+      \strng{bibnamehash}{c5274056d0c6e29ef089895d39f08dc0}
+      \strng{authorbibnamehash}{c5274056d0c6e29ef089895d39f08dc0}
+      \strng{authornamehash}{c5274056d0c6e29ef089895d39f08dc0}
+      \strng{authorfullhash}{c5274056d0c6e29ef089895d39f08dc0}
+      \strng{authorfullhashraw}{c5274056d0c6e29ef089895d39f08dc0}
+      \field{sortinit}{n}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{28}
+      \field{month}{10}
+      \field{title}{Run JavaScript Everywhere}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://nodejs.org/en
+      \endverb
+      \verb{url}
+      \verb https://nodejs.org/en
+      \endverb
+    \endentry
+    \entry{proofpoint_Data_Visualization}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=5395b375554f07efc09ad209b30d6c16}{%
+           family={Proofpoint},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{5395b375554f07efc09ad209b30d6c16}
+      \strng{fullhash}{5395b375554f07efc09ad209b30d6c16}
+      \strng{fullhashraw}{5395b375554f07efc09ad209b30d6c16}
+      \strng{bibnamehash}{5395b375554f07efc09ad209b30d6c16}
+      \strng{authorbibnamehash}{5395b375554f07efc09ad209b30d6c16}
+      \strng{authornamehash}{5395b375554f07efc09ad209b30d6c16}
+      \strng{authorfullhash}{5395b375554f07efc09ad209b30d6c16}
+      \strng{authorfullhashraw}{5395b375554f07efc09ad209b30d6c16}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Data Visualization}
+      \field{urlday}{28}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.proofpoint.com/us/threat-reference/data-visualization
+      \endverb
+      \verb{url}
+      \verb https://www.proofpoint.com/us/threat-reference/data-visualization
+      \endverb
+    \endentry
+    \entry{Notes_on_CVE_assessment}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=bfc21e5917ef0703a8ad4b05ae7fcf79}{%
+           family={Resca},
+           familyi={R\bibinitperiod},
+           given={Samuele},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{bfc21e5917ef0703a8ad4b05ae7fcf79}
+      \strng{fullhash}{bfc21e5917ef0703a8ad4b05ae7fcf79}
+      \strng{fullhashraw}{bfc21e5917ef0703a8ad4b05ae7fcf79}
+      \strng{bibnamehash}{bfc21e5917ef0703a8ad4b05ae7fcf79}
+      \strng{authorbibnamehash}{bfc21e5917ef0703a8ad4b05ae7fcf79}
+      \strng{authornamehash}{bfc21e5917ef0703a8ad4b05ae7fcf79}
+      \strng{authorfullhash}{bfc21e5917ef0703a8ad4b05ae7fcf79}
+      \strng{authorfullhashraw}{bfc21e5917ef0703a8ad4b05ae7fcf79}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{22}
+      \field{month}{3}
+      \field{title}{Notes on CVE assessment}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://samueleresca.net/notes-on-cve-assessment/
+      \endverb
+      \verb{url}
+      \verb https://samueleresca.net/notes-on-cve-assessment/
+      \endverb
+    \endentry
+    \entry{cybersecurity_dashboard_ui_ux_design}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=db4b8c248200c4544bf4d017d2cc6d1a}{%
+           family={S},
+           familyi={S\bibinitperiod},
+           given={Aparna\bibnamedelima K},
+           giveni={A\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{db4b8c248200c4544bf4d017d2cc6d1a}
+      \strng{fullhash}{db4b8c248200c4544bf4d017d2cc6d1a}
+      \strng{fullhashraw}{db4b8c248200c4544bf4d017d2cc6d1a}
+      \strng{bibnamehash}{db4b8c248200c4544bf4d017d2cc6d1a}
+      \strng{authorbibnamehash}{db4b8c248200c4544bf4d017d2cc6d1a}
+      \strng{authornamehash}{db4b8c248200c4544bf4d017d2cc6d1a}
+      \strng{authorfullhash}{db4b8c248200c4544bf4d017d2cc6d1a}
+      \strng{authorfullhashraw}{db4b8c248200c4544bf4d017d2cc6d1a}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{28}
+      \field{month}{2}
+      \field{title}{The Ultimate Guide to Cybersecurity Dashboard UI/UX: 10 Principles for Designing an Effective Security Interface}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.aufaitux.com/blog/cybersecurity-dashboard-ui-ux-design/
+      \endverb
+      \verb{url}
+      \verb https://www.aufaitux.com/blog/cybersecurity-dashboard-ui-ux-design/
+      \endverb
+    \endentry
+    \entry{What_is_a_CVSS_score_and_how_to_prioritise_WordPress_vulnerabilities}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=a99584c7a0e3a5c6b9f132ce76c3f61f}{%
+           family={Sild},
+           familyi={S\bibinitperiod},
+           given={Oliver},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{a99584c7a0e3a5c6b9f132ce76c3f61f}
+      \strng{fullhash}{a99584c7a0e3a5c6b9f132ce76c3f61f}
+      \strng{fullhashraw}{a99584c7a0e3a5c6b9f132ce76c3f61f}
+      \strng{bibnamehash}{a99584c7a0e3a5c6b9f132ce76c3f61f}
+      \strng{authorbibnamehash}{a99584c7a0e3a5c6b9f132ce76c3f61f}
+      \strng{authornamehash}{a99584c7a0e3a5c6b9f132ce76c3f61f}
+      \strng{authorfullhash}{a99584c7a0e3a5c6b9f132ce76c3f61f}
+      \strng{authorfullhashraw}{a99584c7a0e3a5c6b9f132ce76c3f61f}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{What is a CVSS score and how to prioritise WordPress vulnerabilities?}
+      \verb{urlraw}
+      \verb https://theadminbar.com/security-weekly/what-is-a-cvss-score-and-how-to-prioritise-wordpress-vulnerabilities/
+      \endverb
+      \verb{url}
+      \verb https://theadminbar.com/security-weekly/what-is-a-cvss-score-and-how-to-prioritise-wordpress-vulnerabilities/
+      \endverb
+      \warn{\item online entry 'What_is_a_CVSS_score_and_how_to_prioritise_WordPress_vulnerabilities' (/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Documents/Ian's Interpreter/Github·Project/COMP-SCI-3021---Industry-Project-in-Information-Technology/Final-Report/references.bib): Invalid format '2024-11-1' of date field 'date' - ignoring}
+    \endentry
+    \entry{National_Vulnerability_Database}{online}{}{}
+      \name{author}{2}{}{%
+        {{hash=91348c04260bd8fbee564adff6c9431e}{%
+           family={Standards},
+           familyi={S\bibinitperiod},
+           given={National\bibnamedelima Institute},
+           giveni={N\bibinitperiod\bibinitdelim I\bibinitperiod},
+           prefix={of},
+           prefixi={o\bibinitperiod}}}%
+        {{hash=e7e767d7c0e58b16e57d3ab16150db80}{%
+           family={Technology},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{e94f05990128e9f2bf16dd176922276f}
+      \strng{fullhash}{e94f05990128e9f2bf16dd176922276f}
+      \strng{fullhashraw}{e94f05990128e9f2bf16dd176922276f}
+      \strng{bibnamehash}{e94f05990128e9f2bf16dd176922276f}
+      \strng{authorbibnamehash}{e94f05990128e9f2bf16dd176922276f}
+      \strng{authornamehash}{e94f05990128e9f2bf16dd176922276f}
+      \strng{authorfullhash}{e94f05990128e9f2bf16dd176922276f}
+      \strng{authorfullhashraw}{e94f05990128e9f2bf16dd176922276f}
+      \field{extraname}{1}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{National Vulnerability Database}
+      \verb{urlraw}
+      \verb https://nvd.nist.gov/vuln-metrics/cvss
+      \endverb
+      \verb{url}
+      \verb https://nvd.nist.gov/vuln-metrics/cvss
+      \endverb
+      \warn{\item online entry 'National_Vulnerability_Database' (/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Documents/Ian's Interpreter/Github·Project/COMP-SCI-3021---Industry-Project-in-Information-Technology/Final-Report/references.bib): Invalid format '2024-7-27' of date field 'date' - ignoring}
+    \endentry
+    \entry{Vulnerability_Visualizations}{online}{}{}
+      \name{author}{2}{}{%
+        {{hash=91348c04260bd8fbee564adff6c9431e}{%
+           family={Standards},
+           familyi={S\bibinitperiod},
+           given={National\bibnamedelima Institute},
+           giveni={N\bibinitperiod\bibinitdelim I\bibinitperiod},
+           prefix={of},
+           prefixi={o\bibinitperiod}}}%
+        {{hash=e7e767d7c0e58b16e57d3ab16150db80}{%
+           family={Technology},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{e94f05990128e9f2bf16dd176922276f}
+      \strng{fullhash}{e94f05990128e9f2bf16dd176922276f}
+      \strng{fullhashraw}{e94f05990128e9f2bf16dd176922276f}
+      \strng{bibnamehash}{e94f05990128e9f2bf16dd176922276f}
+      \strng{authorbibnamehash}{e94f05990128e9f2bf16dd176922276f}
+      \strng{authornamehash}{e94f05990128e9f2bf16dd176922276f}
+      \strng{authorfullhash}{e94f05990128e9f2bf16dd176922276f}
+      \strng{authorfullhashraw}{e94f05990128e9f2bf16dd176922276f}
+      \field{extraname}{2}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Vulnerability Visualizations - The NVD hosts four visualizations for data found from vulnerabilities.}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://nvd.nist.gov/general/visualizations/vulnerability-visualizations
+      \endverb
+      \verb{url}
+      \verb https://nvd.nist.gov/general/visualizations/vulnerability-visualizations
+      \endverb
+    \endentry
+    \entry{10152204}{inproceedings}{}{}
+      \name{author}{5}{}{%
+        {{hash=3502f692d733b08cf09fa9670f7488de}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Hanning},
+           giveni={H\bibinitperiod}}}%
+        {{hash=5d67196305113dac48e1c14e58722233}{%
+           family={Schafeitel-Tähtinen},
+           familyi={S\bibinithyphendelim T\bibinitperiod},
+           given={Tiina},
+           giveni={T\bibinitperiod}}}%
+        {{hash=991d45c862d42bf921b46f24e717e4f6}{%
+           family={Verkkosaari},
+           familyi={V\bibinitperiod},
+           given={Harri},
+           giveni={H\bibinitperiod}}}%
+        {{hash=fe9570b6101120c805bde0dc198a3f41}{%
+           family={Helenius},
+           familyi={H\bibinitperiod},
+           given={Marko},
+           giveni={M\bibinitperiod}}}%
+        {{hash=cf093864cbec096452cf31cd336ccbb5}{%
+           family={Silverajan},
+           familyi={S\bibinitperiod},
+           given={Bilhanan},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{02f7e0e778b2d4af24a445c71d73077f}
+      \strng{fullhash}{ab36e2953cc154f4b2b1a77e40612917}
+      \strng{fullhashraw}{ab36e2953cc154f4b2b1a77e40612917}
+      \strng{bibnamehash}{02f7e0e778b2d4af24a445c71d73077f}
+      \strng{authorbibnamehash}{02f7e0e778b2d4af24a445c71d73077f}
+      \strng{authornamehash}{02f7e0e778b2d4af24a445c71d73077f}
+      \strng{authorfullhash}{ab36e2953cc154f4b2b1a77e40612917}
+      \strng{authorfullhashraw}{ab36e2953cc154f4b2b1a77e40612917}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2022 IEEE 8th World Forum on Internet of Things (WF-IoT)}
+      \field{title}{Security Dashboard Design for Non-Experts in Sigfox-based Smart Spaces}
+      \field{year}{2022}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/WF-IoT54382.2022.10152204
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 

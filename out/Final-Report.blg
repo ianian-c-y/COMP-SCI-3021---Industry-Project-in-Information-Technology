@@ -1,9 +1,21 @@
 [0] Config.pm:308> INFO - This is Biber 2.20
 [0] Config.pm:311> INFO - Logfile is 'Final-Report.blg'
-[29] biber-darwin:340> INFO - === Mon Oct 27, 2025, 19:27:59
-[38] Biber.pm:420> INFO - Reading 'Final-Report.bcf'
-[69] Biber.pm:994> INFO - Found 0 citekeys in bib section 0
-[75] bbl.pm:676> INFO - Writing 'Final-Report.bbl' with encoding 'UTF-8'
-[75] bbl.pm:779> INFO - Output to Final-Report.bbl
-[75] Biber.pm:131> WARN - The file 'Final-Report.bcf' does not contain any citations!
-[75] Biber.pm:133> INFO - WARNINGS: 1
+[33] biber-darwin:340> INFO - === Tue Oct 28, 2025, 18:46:21
+[44] Biber.pm:420> INFO - Reading 'Final-Report.bcf'
+[79] Biber.pm:994> INFO - Found 28 citekeys in bib section 0
+[85] Biber.pm:4463> INFO - Processing section 0
+[91] Biber.pm:4654> INFO - Looking for bibtex file 'references.bib' for section 0
+[166] bibtex.pm:1713> INFO - LaTeX decoding ...
+[175] bibtex.pm:1519> INFO - Found BibTeX data source '/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Documents/Ian's Interpreter/Github·Project/COMP-SCI-3021---Industry-Project-in-Information-Technology/Final-Report/references.bib'
+[258] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[258] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[258] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[258] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
+[272] bbl.pm:676> INFO - Writing 'Final-Report.bbl' with encoding 'UTF-8'
+[277] bbl.pm:779> INFO - Output to Final-Report.bbl
+[277] Biber.pm:131> WARN - online entry 'CVE_Program' (/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Documents/Ian's Interpreter/Github·Project/COMP-SCI-3021---Industry-Project-in-Information-Technology/Final-Report/references.bib): Invalid format '2023-5-22' of date field 'date' - ignoring
+[277] Biber.pm:131> WARN - online entry 'National_Vulnerability_Database' (/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Documents/Ian's Interpreter/Github·Project/COMP-SCI-3021---Industry-Project-in-Information-Technology/Final-Report/references.bib): Invalid format '2024-7-27' of date field 'date' - ignoring
+[277] Biber.pm:131> WARN - online entry 'CVSS_v3_Scoring_Systems_Documentation' (/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Documents/Ian's Interpreter/Github·Project/COMP-SCI-3021---Industry-Project-in-Information-Technology/Final-Report/references.bib): Invalid format '2015-6-1' of date field 'date' - ignoring
+[277] Biber.pm:131> WARN - online entry 'What_is_a_CVSS_score_and_how_to_prioritise_WordPress_vulnerabilities' (/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Documents/Ian's Interpreter/Github·Project/COMP-SCI-3021---Industry-Project-in-Information-Technology/Final-Report/references.bib): Invalid format '2024-11-1' of date field 'date' - ignoring
+[277] Biber.pm:131> WARN - online entry 'vulnerability_dashboard_examples' (/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Documents/Ian's Interpreter/Github·Project/COMP-SCI-3021---Industry-Project-in-Information-Technology/Final-Report/references.bib): Invalid format '2024-11-1' of date field 'date' - ignoring
+[277] Biber.pm:133> INFO - WARNINGS: 5

@@ -26,11 +26,9 @@
 }
 % --- REFERENCING (using biblatex) ---
 % This is a modern and flexible package for references
-% style=authoryear is like Harvard. You could also use style=ieee
-\usepackage[style=authoryear, backend=biber]{biblatex}
-% Tell biblatex where to find your references
+%\usepackage[style=authoryear, backend=biber]{biblatex}
+\usepackage[style=numeric, backend=biber, heading=bibintoc]{biblatex}
 \addbibresource{references.bib}
-
 % --- UTILITY PACKAGES ---
 \usepackage{fancyhdr} % For custom headers/footers
 \usepackage{lastpage} % For 'Page X of Y'
@@ -49,7 +47,6 @@
 % --- DOCUMENT START ---
 %==============================================================================
 \begin{document}
-
 %==============================================================================
 % --- TITLE PAGE & ABSTRACT ---
 %==============================================================================
@@ -121,20 +118,29 @@
 %==============================================================================
     \section{Introduction}
     % \lipsum[2]
-    % You can cite sources like this \parencite{example_book} or this \cite{example_article}.
     \subsection{Background / Context}
-    The effective management of cybersecurity risks is a critical priority for modern organisations. Central to this effort is the Common Vulnerabilities and Exposures (CVE) system, which provides a standardised identifier for publicly known security vulnerabilities. Datasets such as the National Vulnerability Database (NVD) aggregate CVE entries with supplementary information, including severity scores (CVSS), affected software, and mitigation links. Timely access to and comprehension of this data are essential for IT professionals and security teams to conduct risk assessments and prioritise remediation efforts. However, the official presentation of this data is typically dense, highly technical, and optimised for in-depth analysis rather than rapid assessment by a broader range of stakeholders.
+    The effective management of cybersecurity risks is a critical priority for modern organisations. Central to this effort is the Common Vulnerabilities and Exposures (CVE)\cite{CVE_Program}\cite{National_Vulnerability_Database} system, which provides a standardised identifier for publicly known security vulnerabilities.
+    Datasets such as the National Vulnerability Database (NVD)\cite{National_Vulnerability_Database} aggregate CVE entries with supplementary information, including severity scores (CVSS)\cite{CVSS_v3_Scoring_Systems_Documentation}, affected software, and mitigation links.
+    Timely access to and comprehension of this data are essential for IT professionals and security teams to conduct risk assessments and prioritise remediation efforts.
+    However, the official presentation of this data is typically dense, highly technical, and optimised for in-depth analysis rather than rapid assessment by a broader range of stakeholders.
     \subsection{Motivation}
-    This project was motivated by the need for a more accessible and intuitive interface for querying and visualising CVE information. For business clients or IT professionals who are not full-time security analysts, parsing the extensive technical data on standard databases can be time-consuming and cognitively demanding. A significant gap exists for a streamlined tool that can rapidly retrieve, parse, and present the most critical CVE details—such as severity, impact, and affected systems—in a clear, concise, and visually engaging format. This project addresses the demand for a "quick look" solution, enabling users to perform rapid initial assessments without being overwhelmed by technical minutiae.
+    This project was motivated by the need for a more accessible and intuitive interface for querying and visualising CVE information \cite{CVE_Program}\cite{National_Vulnerability_Database}.
+    For business clients or IT professionals who are not full-time security analysts, parsing the extensive technical data on standard databases can be time-consuming and cognitively demanding.
+    A significant gap exists for a streamlined tool that can rapidly retrieve, parse, and present the most critical CVE details—such as severity, impact, and affected systems—in a clear, concise, and visually engaging format.
+    This project addresses the demand for a ``quick look'' solution, enabling users to perform rapid initial assessments without being overwhelmed by technical minutiae.
     \subsection{Proposed Solution}
-    To address these challenges, the proposed solution is a full-stack web application built on a three-tier architecture. The presentation layer (front-end) is a static web interface developed with HTML, CSS, and client-side JavaScript, designed to present complex vulnerability data in an intuitive, newspaper-style layout. The application layer (backend) is a custom API developed using Node.js and Express.js. This API serves two primary functions: (1) It queries a local MySQL database to retrieve structured CVE data based on user searches; and (2) It provides an AI-augmented chat service by securely interfacing with the Anthropic Claude 3.5 Sonnet large language model (LLM), passing the relevant CVE data as context for analysis. The data layer consists of a local MySQL database containing a curated CVE_2024 table, which stores the pre-processed vulnerability information for rapid retrieval.
+    To address these challenges, the proposed solution is a full-stack web application built on a three-tier architecture.
+    The presentation layer (front-end) is a static web interface developed with HTML, CSS, and client-side JavaScript\cite{Nodejs}, designed to present complex vulnerability data in an intuitive, newspaper-style layout.
+    The application layer (backend) is a custom API developed using Node.js\cite{Nodejs} and Express.js\cite{Express_5.1.0}.
+    This API serves two primary functions: (1) It queries a local MySQL\cite{Mysql} database to retrieve structured CVE data based on user searches; and (2) It provides an AI-augmented chat service by securely interfacing with the Anthropic Claude 3.5 Sonnet large language model (LLM)\cite{Claude_Sonnet}, passing the relevant CVE data as context for analysis.
+    The data layer consists of a local MySQL database\cite{Mysql} containing a curated CVE 2024 table, which stores the pre-processed vulnerability information for rapid retrieval.
     \clearpage
     \subsection{Key Contributions}
     The primary contributions of this project are:
     \begin{itemize}[label=$\bullet$, leftmargin=*]
-        \item Designed and implemented a custom Node.js backend API and a relational MySQL database schema to efficiently store, query, and retrieve specific CVE data.
-        \item Developed a highly visual and intuitive front-end interface that transforms complex CVE data into accessible visualisations, including interactive timelines, CVSS score gauges, and risk metric charts.
-        \item Integrated a generative AI-powered chat assistant (Anthropic Claude 3.5 Sonnet) that leverages Retrieval-Augmented Generation (RAG) to provide users with contextual, natural-language explanations and analysis of the selected vulnerability.
+        \item Designed and implemented a custom Node.js\cite{Nodejs} backend API and a relational MySQL\cite{Mysql} database schema to efficiently store, query, and retrieve specific CVE data\cite{CVSS_v3_Scoring_Systems_Documentation}.
+        \item Developed a highly visual and intuitive front-end interface that transforms complex CVE data\cite{National_Vulnerability_Database} into accessible visualisations, including interactive timelines, CVSS score gauges, and risk metric charts\cite{What_is_a_CVSS_score_and_how_to_prioritise_WordPress_vulnerabilities}\cite{What_is_a_CVSS_score_and_how_to_prioritise_WordPress_vulnerabilities}\cite{National_Vulnerability_Database}.
+        \item Integrated a generative AI-powered chat assistant (Anthropic Claude 3.5 Sonnet)\cite{anthropic_Building_AI_for_cyber_defenders} that leverages Retrieval-Augmented Generation (RAG)\cite{bhartiya2025} to provide users with contextual, natural-language explanations and analysis of the selected vulnerability.
     \end{itemize}
 
 %==============================================================================
@@ -152,9 +158,9 @@
         \label{fig:methodology} % 俾你喺內文用 \ref{fig:methodology} 嚟 refer 呢張图
     \end{figure}
     \subsection{Requirements Engineering and Prototyping}
-    The initial phase involved translating the client's high-level objective—a streamlined CVE search website—into a tangible concept. A low-fidelity, hand-drawn wireframe was created to establish a shared visual understanding of the proposed layout and user journey. This prototype was presented to the client, facilitating a feedback loop that resulted in a concrete set of functional requirements. These requirements were formally defined and categorized into five key visualisation features (e.g., 'CVE Detail Panel', 'Severity Highlight') and six core interaction functions (e.g., 'Complete Search Functionality', 'Search History Cache'), which subsequently served as the development backlog.
+    The initial phase involved translating the client's high-level objective—a streamlined CVE search website—into a tangible concept. A low-fidelity, hand-drawn wireframe was created to establish a shared visual understanding of the proposed layout and user journey. This prototype was presented to the client, facilitating a feedback loop that resulted in a concrete set of functional requirements. These requirements were formally defined and categorized into five key visualisation features (e.g., 'CVE Detail Panel', 'Severity Highlight') and six core interaction functions (e.g., 'Complete Search Functionality', 'Search History Cache'), which subsequently served as the development backlog. \cite{10.1145/3491418.3535176} \cite{proofpoint_Data_Visualization} \cite{apriorit2025}
     \subsection{Data Acquisition and System Design}
-    This phase focused on establishing the data persistence layer and the overall system architecture. The complete 2024 CVE dataset was first acquired in its raw JSON format from the official cve.org repository. Due to the complexity of the nested JSON structure, a custom Python script was developed to parse the data, extract the essential fields (e.g., ID, description, scores, vendors), and transform it into a flattened CSV format. This structured CSV file was then imported into a local MySQL database, which defined the schema for the \texttt{CVE\_2024} table. Concurrently, the 3-tier application architecture was designed, separating the front-end (browser), the backend API (Node.js), and the data layer (MySQL).
+    This phase focused on establishing the data persistence layer and the overall system architecture. The complete 2024 CVE dataset was first acquired in its raw JSON format from the official cve.org repository. Due to the complexity of the nested JSON structure, a custom Python script was developed to parse the data, extract the essential fields (e.g., ID, description, scores, vendors), and transform it into a flattened CSV format. This structured CSV file was then imported into a local MySQL database, which defined the schema for the \texttt{CVE\_2024} table. Concurrently, the 3-tier application architecture was designed, separating the front-end (browser), the backend API (Node.js), and the data layer (MySQL). \cite{Mysql} \cite{Nodejs} \cite{National_Vulnerability_Database}
     \subsection{Full-Stack Implementation}
     With the architecture and data schema in place, implementation was divided between the two team members to enable parallel development:
     \begin{itemize}[label=$\bullet$, leftmargin=*]
@@ -181,16 +187,16 @@
     \subsection{Experimental Setup}
     The application was tested in a comprehensive, multi-platform local environment to ensure robustness and cross-browser compatibility. The testing setup was configured as follows:
     \begin{itemize}[label=$\bullet$, leftmargin=*]
-        \item \textbf{Operating Systems:} macOS 26 Tahoe and Windows 11.
-        \item \textbf{Web Browsers:} Google Chrome (\texttt{v128}), Mozilla Firefox (\texttt{v129}), Microsoft Edge (\texttt{v128}), and Apple Safari (\texttt{v18}).
-        \item \textbf{Backend Environment:} Node.js \texttt{v24.2.0}.
-        \item \textbf{Database Server:} MySQL (\texttt{v8.0}).
+        \item \textbf{Operating Systems:} macOS 26 Tahoe \cite{macOS_Tahoe} and Windows 11 \cite{Windows_11}.
+        \item \textbf{Web Browsers:} Google Chrome (\texttt{v128}) \cite{Google_Chrome}, Mozilla Firefox (\texttt{v129}) \cite{Firefox}, Microsoft Edge (\texttt{v128}) \cite{Microsoft_Edge}, and Apple Safari (\texttt{v18}) \cite{Apple_Safari}.
+        \item \textbf{Backend Environment:} Node.js \texttt{v24.2.0} \cite{Nodejs}.
+        \item \textbf{Database Server:} MySQL (\texttt{v8.0}) \cite{Mysql}.
     \end{itemize}
     This setup allowed for the validation of the front-end rendering, API connectivity, and backend logic across all major user platforms.
     \subsection{Results and Analysis}
     The project successfully translated the initial low-fidelity concept into a fully functional and visually rich web application.
     \subsubsection{Analysis of Core Visualisation (Prototype vs. Final)}
-    Figure \ref{fig:prototype} shows the initial, hand-drawn prototype that served as the foundational blueprint for the user interface. It established the core layout, including a main search, a timeline, a CVSS score gauge, and various metric panels.
+    Figure \ref{fig:prototype} shows the initial, hand-drawn prototype that served as the foundational blueprint for the user interface. It established the core layout, including a main search, a timeline, a CVSS score gauge \cite{National_Vulnerability_Database}\cite{What_is_a_CVSS_score_and_how_to_prioritise_WordPress_vulnerabilities},and various metric panels.
     \begin{figure}[h!]
         \centering
         \includegraphics[width=\textwidth]{prototype-website.jpg}
@@ -212,13 +218,13 @@
     \end{figure}
     \begin{itemize}[label=$\bullet$, leftmargin=*]
         \item \textbf{CVSS Score Analysis:} The simple gauge from the prototype was developed into a dynamic, colour-coded SVG gauge (displaying 7.2 in the example) that immediately communicates the 'HIGH PRIORITY' status.
-        \item \textbf{Timeline Information:} The conceptual monthly timeline was implemented as a clean, twelve-month visualisation, clearly marking the 'Published' (Jan 2024) and 'Last Modified' (Nov 2024) dates.
-        \item \textbf{Risk Metrics:} The 'Attack Profile' and 'Risk Metrics' tables were implemented as distinct components with clear labels (e.g., Exploitability, Impact) and horizontal bar charts, providing a quick-look assessment of risk factors.
-        \item \textbf{Comprehensive Threat Analysis:} The conceptual radar chart was successfully implemented, providing a multi-dimensional view of the threat by plotting metrics for CVSS, Exploitability, Impact, and Trending.
+        \item \textbf{Timeline Information:} The conceptual monthly timeline was implemented as a clean, twelve-month visualisation, clearly marking the 'Published' (Jan 2024) and 'Last Modified' (Nov 2024) dates \cite{CVSS_v3_Scoring_Systems_Documentation}.
+        \item \textbf{Risk Metrics:} The 'Attack Profile' and 'Risk Metrics' tables were implemented as distinct components with clear labels (e.g., Exploitability, Impact) and horizontal bar charts, providing a quick-look assessment of risk factors \cite{What_is_a_CVSS_score_and_how_to_prioritise_WordPress_vulnerabilities}\cite{CVSS_v3_Scoring_Systems_Documentation}\cite{National_Vulnerability_Database}.
+        \item \textbf{Comprehensive Threat Analysis:} The conceptual radar chart was successfully implemented, providing a multi-dimensional view of the threat by plotting metrics for CVSS, Exploitability, Impact, and Trending \cite{What_is_a_CVSS_score_and_how_to_prioritise_WordPress_vulnerabilities}\cite{CVSS_v3_Scoring_Systems_Documentation}\cite{National_Vulnerability_Database}.
     \end{itemize}
     This direct comparison validates that the core visualisation requirements were met, transforming raw data into an accessible, newspaper-style report.
     \subsubsection{Analysis of Advanced Interaction (AI Assistant)}
-    Beyond the static display of data, the project incorporated an advanced interaction feature: a generative AI assistant. As shown in Figure \ref{fig:ai_chatbox}, the 'CVE AI Assistant' is context-aware, loading with information specific to the CVE being viewed (e.g., \texttt{CVE-2024-1001}). It prompts the user with relevant questions, such as "How severe is this vulnerability?" and "What systems are affected?". This feature provides significant added value, allowing users to move beyond simple data consumption and engage in a natural-language dialogue to analyse the vulnerability's implications.
+    Beyond the static display of data, the project incorporated an advanced interaction feature: a generative AI assistant. As shown in Figure \ref{fig:ai_chatbox}, the 'CVE AI Assistant' is context-aware, loading with information specific to the CVE being viewed (e.g., \texttt{CVE-2024-1001}). It prompts the user with relevant questions, such as "How severe is this vulnerability?" and "What systems are affected?". This feature provides significant added value, allowing users to move beyond simple data consumption and engage in a natural-language dialogue to analyse the vulnerability's implications \cite{What_is_a_CVSS_score_and_how_to_prioritise_WordPress_vulnerabilities}\cite{CVSS_v3_Scoring_Systems_Documentation}\cite{National_Vulnerability_Database}.
     \begin{figure}[h!]
         \centering
         \includegraphics[width=0.8\textwidth]{AI-ChatBox.png}
@@ -233,51 +239,51 @@
     This section reflects on the project's outcomes, key challenges faced during development, and the practical implications of the solution.
     \\
     \subsection{Project Outcomes and Successes}
-    The project was highly successful in achieving its primary goal: transforming dense, technical CVE data into an accessible, user-friendly format. The most effective aspect of the project was the final UI/UX design. By simulating a "newspaper style" layout, the application provides a familiar and intuitive reading experience. This design choice directly addresses the client's "quick look" requirement, as users can rapidly scan headings, gauges, and charts to assess a vulnerability's severity, similar to how one would read a newspaper. The integration of multiple visualisation types—such as the 12-month timeline, CVSS gauge, and risk radar chart—proved to be an effective strategy for converting abstract text values into easily understandable information.
+    The project was highly successful in achieving its primary goal: transforming dense, technical CVE data into an accessible, user-friendly format. The most effective aspect of the project was the final UI/UX design. By simulating a "newspaper style" layout, the application provides a familiar and intuitive reading experience. This design choice directly addresses the client's "quick look" requirement, as users can rapidly scan headings, gauges, and charts to assess a vulnerability's severity, similar to how one would read a newspaper. The integration of multiple visualisation types—such as the 12-month timeline, CVSS gauge, and risk radar chart—proved to be an effective strategy for converting abstract text values into easily understandable information\cite{cybersecurity_dashboard_ui_ux_design} \cite{vulnerability_dashboard_examples} \cite{Vulnerability_Visualizations} \cite{Data_Visualization_for_UI_UX_Design}.
     \\
     \subsection{Challenges Encountered}
     Several challenges emerged during the development process, primarily related to data processing and design decisions:
     \begin{itemize}
-        \item \textbf{Data Ambiguity and Processing:} The raw CVE data, acquired as a bulk JSON download, was unexpectedly complex. A significant challenge was parsing this data, as a single CVE entry often contained multiple data objects representing different CVSS versions (v2, v3, v4). Deciding which version to prioritise and developing the Python script to effectively parse and flatten this nested, and at times redundant, data into a clean database schema was a major hurdle. Ultimately, CVSS v3 was selected as the standard for display.
+        \item \textbf{Data Ambiguity and Processing:} The raw CVE data, acquired as a bulk JSON download, was unexpectedly complex. A significant challenge was parsing this data, as a single CVE entry often contained multiple data objects representing different CVSS versions (v2, v3, v4). Deciding which version to prioritise and developing the Python script to effectively parse and flatten this nested, and at times redundant, data into a clean database schema was a major hurdle. Ultimately, CVSS v3 was selected as the standard for display\cite{JIANG2022100209} \cite{Notes_on_CVE_assessment} \cite{proofpoint_Data_Visualization} \cite{apriorit2025}.
         \item \textbf{Visualisation Design:} A core development challenge was determining the most effective method to visualise abstract data. The team was committed to a highly visual approach, but this required careful consideration of which chart types (e.g., bar, radar, gauge) best represented specific metrics. For example, designing the timeline as a literal 12-month calendar view was a deliberate choice to enhance clarity, but it required more design and implementation effort than a simple text-based date list.
     \end{itemize}
     \subsection{Practical Implications}
-    The practical utility of this project is clear. It serves as an effective "first-response" tool for IT professionals, managers, and other stakeholders who need to understand a vulnerability's risk without performing a deep technical dive. By providing a consolidated, high-level dashboard, it accelerates the triage and risk assessment process. Furthermore, the integration of the Claude-powered AI assistant demonstrates a viable path toward Retrieval-Augmented Generation (RAG) in security tools, allowing even non-experts to ask complex questions and receive immediate, context-aware analysis.
+    The practical utility of this project is clear.
+    It serves as an effective ``first-response'' tool for IT professionals, managers, and other stakeholders who need to understand a vulnerability's risk without performing a deep technical dive.
+    By providing a consolidated, high-level dashboard, it accelerates the triage and risk assessment process. \cite{10.1145/3491418.3535176} \cite{databahn_From_Noise_to_Knowledge} \cite{10152204}
+    Furthermore, the integration of the Claude-powered AI assistant demonstrates a viable path toward Retrieval-Augmented Generation (RAG) in security tools, allowing even non-experts to ask complex questions and receive immediate, context-aware analysis \cite{anthropic_Building_AI_for_cyber_defenders} \cite{bhartiya2025}.
 %==============================================================================
 % --- 5. LIMITATIONS ---
 %==============================================================================
     \clearpage
     \section{Limitations}
     The project achieved success but multiple restrictions need to be recognized during its execution.
-
-
     \subsection{Data and Technical Limitations}
     The most significant limitation is the static nature of the data.
-    The system's backend relies on a local MySQL database populated from a one-time data import.
+    The system's backend relies on a local MySQL\cite{Mysql} database populated from a one-time data import.
 %    [cite: COMP_SCI_3_021_Industry_Project_in_Information_Technology.js]
     There is no automated pipeline for data ingestion.
-    To incorporate new vulnerabilities, an administrator must manually download the latest CVE JSON data from cve.org,
-    then execute the Python parsing script to convert it to CSV, and then re-import it into the database.
+    To incorporate new vulnerabilities, an administrator must manually download the latest CVE JSON data from cve.org \cite{CVE_Program},
+    then execute the Python parsing script \cite{Python} to convert it to CSV, and then re-import it into the database.
     This means the application does not provide real-time information and its data will inevitably become outdated.
     \\
     \\
     Furthermore, the system has critical external dependencies.
     In its intended deployed state, the entire web application requires a stable internet connection to be accessible.
-    Moreover, the \textbf{AI Assistant} feature \ref{fig:ai_chatbox} is fundamentally dependent on the availability
-    and network connectivity of the third-party Anthropic Claude API.
-%    [cite: Claude.js].
+    Moreover, the ``AI Assistant'' feature \ref{fig:ai_chatbox} is fundamentally dependent on the availability
+    and network connectivity of the third-party Anthropic Claude API \cite{Claude_Sonnet}.
     \\
     Any downtime from this external service or a user's lack of internet access would render the chat feature non-functional.
     \\
     Finally, as the application was only tested in a local environment,its performance under real-world network latency or concurrent multi-user load has not been evaluated.
     \subsection{Scope and Feature Limitations}
-    The project's scope was explicitly defined by the client's request to use the 2024 CVE dataset as a test example.
+    The project's scope was explicitly defined by the client's request to use the 2024 CVE dataset \cite{CVSS_v3_Scoring_Systems_Documentation} as a test example.
 %    [cite: COMP_SCI_3_021_Industry_Project_in_Information_Technology.js].
-    As a result, the application in its current form cannot retrieve information for any vulnerabilities from previous years (e.g., CVE-2023-xxxx).
+    As a result, the application in its current form cannot retrieve information for any vulnerabilities from previous years (e.g., CVE-2023-xxxx) \cite{National_Vulnerability_Database}.
     \\
     \\
     Additionally, due to the strict time constraints of an academic semester,several planned ``quality-of-life'' features were postponed.
-    These descoped features include a ``Search History Cache'' for user convenience and a dynamic dashboard module to display the ``most recently updated'' CVEs.
+    These descoped features include a ``Search History Cache'' for user convenience and a dynamic dashboard module to display the ``most recently updated'' CVEs \cite{CVSS_v3_Scoring_Systems_Documentation}.
     Other complex functionalities, such as user authentication and advanced vendor-specific filtering, were also left for future development.
     \subsection{Purpose Limitation}
     It is important to clarify that this tool is an informational and visualisation platform, not an active security solution.
@@ -323,7 +329,6 @@
 %==============================================================================
 % --- 7. REPLICATION PACKAGE ---
 %==============================================================================
-    \clearpage
     \section{Replication Package}
     The complete source code, documentation, and setup instructions for this project are available at the following publicly accessible GitHub repository:
     \url{https://github.com/ianian-c-y/COMP-SCI-3021---Industry-Project-in-Information-Technology}
