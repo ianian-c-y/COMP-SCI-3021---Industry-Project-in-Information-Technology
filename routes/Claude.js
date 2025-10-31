@@ -9,7 +9,7 @@ const CLAUDE_API_KEY = process.env.CLAUDE_API_KEY;
 const Claude_Model = {
     Haiku_3: "claude-3-haiku-20240307",
     Sonnet_3: "claude-3-sonnet-20240229",
-    Sonnet_3_5: "claude-3-5-sonnet-20240620",
+    Sonnet_3_5: "claude-sonnet-4-5-20250929",
 };
 router.post('/cve-chat', async (req, res) => {
     try {
