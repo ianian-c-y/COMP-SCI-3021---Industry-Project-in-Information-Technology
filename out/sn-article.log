@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  1 NOV 2025 00:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  1 NOV 2025 00:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -732,34 +732,37 @@ LaTeX Info: Redefining \cite on input line 694.
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count341
 \l__pdf_internal_box=\box70
-) (./sn-article.aux)
+)
+(/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Documents/Ian's Inter
+preter/Github·Project/COMP-SCI-3021---Industry-Project-in-Information-Technolo
+gy/out/sn-article.aux)
 \openout1 = `sn-article.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
 \footinsA=\insert252
 \c@footnoteA=\count342
-LaTeX Font Info:    Redeclaring symbol font `AMSa' on input line 73.
+LaTeX Font Info:    Redeclaring symbol font `AMSa' on input line 33.
 LaTeX Font Info:    Overwriting symbol font `AMSa' in version `normal'
-(Font)                  U/msa/m/n --> U/msa/m/n on input line 73.
+(Font)                  U/msa/m/n --> U/msa/m/n on input line 33.
 LaTeX Font Info:    Overwriting symbol font `AMSa' in version `bold'
-(Font)                  U/msa/m/n --> U/msa/m/n on input line 73.
+(Font)                  U/msa/m/n --> U/msa/m/n on input line 33.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -833,71 +836,62 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \c@lstlisting=\count349
-Package hyperref Info: Link coloring ON on input line 73.
- (./sn-article.out) (./sn-article.out)
+Package hyperref Info: Link coloring ON on input line 33.
+
+(/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Documents/Ian's Inter
+preter/Github·Project/COMP-SCI-3021---Industry-Project-in-Information-Technolo
+gy/out/sn-article.out)
+(/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Documents/Ian's Inter
+preter/Github·Project/COMP-SCI-3021---Industry-Project-in-Information-Technolo
+gy/out/sn-article.out)
 \@outlinefile=\write3
 \openout3 = `sn-article.out'.
 
-LaTeX Font Info:    Calculating math sizes for size <12.045> on input line 120.
-
+LaTeX Font Info:    Calculating math sizes for size <12.045> on input line 49.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.43146> not available
-(Font)              size <8> substituted on input line 120.
+(Font)              size <8> substituted on input line 49.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <8.43146> not available
-(Font)              size <8> substituted on input line 120.
+(Font)              size <8> substituted on input line 49.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.43146> not available
-(Font)              size <8> substituted on input line 120.
+(Font)              size <8> substituted on input line 49.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <8.43146> not available
-(Font)              size <8> substituted on input line 120.
+(Font)              size <8> substituted on input line 49.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <8.43146> not available
-(Font)              size <8> substituted on input line 120.
+(Font)              size <8> substituted on input line 49.
 
-LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 12
-0.
+LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 49
+.
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.52061> not available
-(Font)              size <6> substituted on input line 120.
+(Font)              size <6> substituted on input line 49.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.52061> not available
-(Font)              size <6> substituted on input line 120.
+(Font)              size <6> substituted on input line 49.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.52061> not available
-(Font)              size <6> substituted on input line 120.
+(Font)              size <6> substituted on input line 49.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <5.52061> not available
-(Font)              size <6> substituted on input line 120.
+(Font)              size <6> substituted on input line 49.
 
+LaTeX Font Info:    Calculating math sizes for size <10.03749> on input line 49
+.
 
-Underfull \hbox (badness 1983) in paragraph at lines 120--120
- \OT1/cmr/m/n/9 lence of AI per-son-al-iza-tion are explained, along with asso-
-ci-ated 
- []
-
-
-Underfull \hbox (badness 1910) in paragraph at lines 120--120
- \OT1/cmr/m/n/9 over-sight and account-abil-ity mech-a-nisms. Enhanced ethics f
-rame- 
- []
-
-LaTeX Font Info:    Calculating math sizes for size <10.03749> on input line 12
-0.
-
-Underfull \hbox (badness 1237) in paragraph at lines 123--124
-\OT1/cmr/m/n/10 As com-puter tech-nol-ogy has advanced, com-pu-ta-tional capa-b
-il-i-ties have
- []
+Package natbib Warning: Citation `garvie2019' on page 1 undefined on input line
+ 52.
 
 
 
@@ -908,21 +902,43 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 pdmap/pdftex.map}
 
 ]
-Package epstopdf Info: Source file: <Fig1.eps>
-(epstopdf)                    date: 2024-10-24 18:09:36
-(epstopdf)                    size: 1663709 bytes
-(epstopdf)             Output file: <Fig1-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-10-24 18:13:47
-(epstopdf)                    size: 74748 bytes
-(epstopdf)             Command: <repstopdf --outfile=Fig1-eps-converted-to.pdf 
-Fig1.eps>
-(epstopdf)             \includegraphics on input line 141.
-Package epstopdf Info: Output file is already uptodate.
-<Fig1-eps-converted-to.pdf, id=95, 432.61626pt x 257.96375pt>
-File: Fig1-eps-converted-to.pdf Graphic file (type pdf)
-<use Fig1-eps-converted-to.pdf>
-Package pdftex.def Info: Fig1-eps-converted-to.pdf  used on input line 141.
-(pdftex.def)             Requested size: 304.72693pt x 181.71094pt.
+
+Package natbib Warning: Citation `ieee2019' on page 2 undefined on input line 5
+4.
+
+
+Underfull \hbox (badness 1122) in paragraph at lines 56--57
+[]\OT1/cmr/m/n/10 The research presents the Multi-Dimensional Eth-i-cal AI Fram
+e-work
+ []
+
+
+LaTeX Warning: File `figure1.png' not found on input line 60.
+
+
+./sn-article.tex:60: Package pdftex.def Error: File `figure1.png' not found: us
+ing draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.60 ...graphics[width=0.8\textwidth]{figure1.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package natbib Warning: Citation `kamiran2012' on page 2 undefined on input lin
+e 69.
+
+
+Package natbib Warning: Citation `doshi2017' on page 2 undefined on input line 
+69.
+
 
 
 
@@ -934,6 +950,29 @@ Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 [2]
 
+LaTeX Warning: File `figure2.png' not found on input line 73.
+
+
+./sn-article.tex:73: Package pdftex.def Error: File `figure2.png' not found: us
+ing draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.73 ...graphics[width=0.8\textwidth]{figure2.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Reference `tab:paradigms' on page 3 undefined on input line 78.
+
+
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -941,7 +980,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 
-[3 <./Fig1-eps-converted-to.pdf>]
+[3]
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -952,6 +991,55 @@ Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 [4]
 
+./sn-article.tex:94: Package amsmath Error: \hat allowed only in math mode.
+
+See the amsmath package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.94 \text{DPD} = |P(\hat{
+                          y}=1|A=0) - P(\hat{y}=1|A=1)|
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `figure3.png' not found on input line 109.
+
+
+./sn-article.tex:109: Package pdftex.def Error: File `figure3.png' not found: u
+sing draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.109 ...raphics[width=0.8\textwidth]{figure3.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+LaTeX Font Info:    Calculating math sizes for size <8.03> on input line 118.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4.015> not available
+(Font)              size <5> substituted on input line 118.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.015> not available
+(Font)              size <5> substituted on input line 118.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.015> not available
+(Font)              size <5> substituted on input line 118.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <4.015> not available
+(Font)              size <5> substituted on input line 118.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -961,6 +1049,31 @@ Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 [5]
 
+LaTeX Warning: File `figure4.png' not found on input line 138.
+
+
+./sn-article.tex:138: Package pdftex.def Error: File `figure4.png' not found: u
+sing draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.138 ...raphics[width=0.8\textwidth]{figure4.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (10.92232pt too wide) in paragraph at lines 151--160
+ [][] 
+ []
+
+
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -969,6 +1082,32 @@ Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 
 [6]
+
+LaTeX Warning: File `figure5.png' not found on input line 172.
+
+
+./sn-article.tex:172: Package pdftex.def Error: File `figure5.png' not found: u
+sing draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.172 ...raphics[width=0.8\textwidth]{figure5.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 1675) in paragraph at lines 179--180
+\OT1/cmr/m/n/10 The research intro-duced the Multi-Dimensional Eth-i-cal AI Fra
+me-work
+ []
+
+
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -999,6 +1138,10 @@ might try typing `S' now just to see what is salvageable.
 
 )
 
+Package natbib Warning: There were undefined citations.
+
+
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1019,37 +1162,47 @@ L3 programming layer <2025-01-18>
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.28pt have occurred.
 
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `sn-article.out' has not changed.
-(rerunfilecheck)             Checksum: EE36E4477CD88C1EAA01572C8BCFA651;4201.
+(rerunfilecheck)             Checksum: 57685B833A1129DD5B94CCEB90495409;1211.
  ) 
 Here is how much of TeX's memory you used:
- 14983 strings out of 473190
- 230115 string characters out of 5704335
- 641803 words of memory out of 5000000
- 37941 multiletter control sequences out of 15000+600000
- 579496 words of font info for 119 fonts, out of 8000000 for 9000
+ 15167 strings out of 473190
+ 234720 string characters out of 5704335
+ 646722 words of memory out of 5000000
+ 38123 multiletter control sequences out of 15000+600000
+ 583650 words of font info for 136 fonts, out of 8000000 for 9000
  1151 hyphenation exceptions out of 8191
- 90i,11n,93p,1365b,616s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,11n,93p,892b,614s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmbx10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmbx12.pfb></opt/homebrew/Cellar/texlive/20250
 308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></opt/homebrew/
 Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9
 .pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr12.pfb></opt/homebrew/Cellar/texlive/2025
-0308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></opt/homebrew
-/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7
+ic/amsfonts/cm/cmmi10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></opt/homebrew/Cellar/texlive/202
+50308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/homebre
+w/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr17.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></opt/homebrew/Cellar/texlive/202
+50308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></opt/homebrew
+/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9
 .pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr8.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr9.pfb></opt/homebrew/Cellar/texlive/202503
-08_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+ic/amsfonts/cm/cmss10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/homebrew/Cellar/texlive/20
+250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></opt/homeb
+rew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mtt10.pfb>
 Output written on "/Users/zebb/Library/Mobile Documents/com~apple~CloudDocs/Doc
 uments/Ian's Interpreter/Github·Project/COMP-SCI-3021---Industry-Project-in-In
-formation-Technology/out/sn-article.pdf" (9 pages, 242472 bytes).
+formation-Technology/out/sn-article.pdf" (9 pages, 231797 bytes).
 PDF statistics:
- 227 PDF objects out of 1000 (max. 8388607)
- 190 compressed objects within 2 object streams
- 41 named destinations out of 1000 (max. 500000)
- 150 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 195 PDF objects out of 1000 (max. 8388607)
+ 150 compressed objects within 2 object streams
+ 38 named destinations out of 1000 (max. 500000)
+ 49 words of extra memory for PDF output out of 10000 (max. 10000000)
 
