@@ -1,0 +1,239 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%\documentclass[referee,sn-basic]{sn-jnl}% referee option is meant for double line spacing
+
+%%=======================================================%%
+%% to print line numbers in the margin use lineno option %%
+%%=======================================================%%
+
+%%\documentclass[lineno,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%======================================================%%
+%% to compile with pdflatex/xelatex use pdflatex option %%
+%%======================================================%%
+
+%%\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%\documentclass[sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+\documentclass[sn-mathphys]{sn-jnl}% Math and Physical Sciences Reference Style
+%%\documentclass[sn-aps]{sn-jnl}% American Physical Society (APS) Reference Style
+%%\documentclass[sn-vancouver]{sn-jnl}% Vancouver Reference Style
+%%\documentclass[sn-apa]{sn-jnl}% APA Reference Style
+%%\documentclass[sn-chicago]{sn-jnl}% Chicago-based Humanities Reference Style
+%%\documentclass[sn-standardnature]{sn-jnl}% Standard Nature Portfolio Reference Style
+%%\documentclass[default]{sn-jnl}% Default
+%%\documentclass[default,iicol]{sn-jnl}% Default with double column layout
+
+%%%% Standard Packages
+%%<additional latex packages if required can be included here>
+%%%%
+\usepackage{graphicx}
+\usepackage{amsmath}
+%%%%%=============================================================================%%%%
+%%%%  Remarks: This template is provided to aid authors with the preparation
+%%%%  of original research articles intended for submission to journals published 
+%%%%  by Springer Nature. The guidance has been prepared in partnership with 
+%%%%  production teams to conform to Springer Nature technical requirements. 
+%%%%  Editorial and presentation requirements differ among journal portfolios and 
+%%%%  research disciplines. You may find sections in this template are irrelevant 
+%%%%  to your work and are empowered to omit any such section if allowed by the 
+%%%%  journal you intend to submit to. The submission guidelines and policies 
+%%%%  of the journal take precedence. A detailed User Manual is available in the 
+%%%%  template package for technical guidance.
+%%%%%=============================================================================%%%%
+
+\jyear{2021}%
+
+%% as per the requirement new theorem styles can be included as shown below
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%  meant for continuous numbers
+%%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
+%% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
+\newtheorem{proposition}[theorem]{Proposition}% 
+%%\newtheorem{proposition}{Proposition}% to get separate numbers for theorem and proposition etc.
+
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}%
+\newtheorem{remark}{Remark}%
+
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definition}%
+
+\raggedbottom
+%%\unnumbered% uncomment this for unnumbered level heads
+
+\begin{document}
+
+% \title[Article Title]{Article Title}
+\title[Article Title]{The Ethical Spectrum of Al Personalization: From User Experience to Societal Polarisation}
+% \title{The Ethical Spectrum of Al Personalization: From User Experience to Societal Polarisation}
+
+%%=============================================================%%
+%% Prefix	-> \pfx{Dr}
+%% GivenName	-> \fnm{Joergen W.}
+%% Particle	-> \spfx{van der} -> surname prefix
+%% FamilyName	-> \sur{Ploeg}
+%% Suffix	-> \sfx{IV}
+%% NatureName	-> \tanm{Poet Laureate} -> Title after name
+%% Degrees	-> \dgr{MSc, PhD}
+%% \author*[1,2]{\pfx{Dr} \fnm{Joergen W.} \spfx{van der} \sur{Ploeg} \sfx{IV} \tanm{Poet Laureate} 
+%%                 \dgr{MSc, PhD}}\email{iauthor@gmail.com}
+%%=============================================================%%
+
+\author*[1]{\fnm{Chak Yui} \sur{Wan}}\email{a1870877@adelaide.edu.au}
+\affil*[1]{\orgdiv{TECH 1004 - Artificial Intelligence Technologies}, \orgname{The University of Adelaide}, \orgaddress{\street{North Terrace}, \city{Adelaide}, \postcode{5000}, \state{South Australia}, \country{Australia}}}
+
+
+%%==================================%%
+%% sample for unstructured abstract %%
+%%==================================%%
+
+\abstract{This essay analyzes the ethical implications of AI personalization, using the Facebook-Cambridge Analytica scandal as a case study. It provides background on how AI personalization works through data collection and algorithmic curation. The mechanisms and prevalence of AI personalization are explained, along with associated benefits and risks. The scandal is then examined, revealing issues around consent, psychological manipulation, and democratic processes. Implications like lack of transparency, violation of user autonomy, and increased polarization are explored. Current policy changes and regulations are evaluated, and gaps identified, including insufficient oversight and accountability mechanisms. Enhanced ethics frameworks centered on user rights are proposed, emphasizing interdisciplinary research on transparency, audits, incentives, and education.}
+
+%%================================%%
+%% Sample for structured abstract %%
+%%================================%%
+
+% \abstract{\textbf{Purpose:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+% 
+% \textbf{Methods:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+% 
+% \textbf{Results:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+% 
+% \textbf{Conclusion:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.}
+
+\keywords{Data Ethics, Machine Learning, Algorithms}
+
+%%\pacs[JEL Classification]{D8, H51}
+
+%%\pacs[MSC Classification]{35A01, 65L10, 65L12, 65L20, 65L70}
+
+\maketitle
+
+
+\section{Introduction}\label{sec1}
+As computer technology has advanced, computational capabilities have matured, paving the way for groundbreaking innovations like artificial intelligence models. While powerful, these AI innovations' broader societal impacts and ethical implications, especially regarding AI personalization. 
+
+The allure of algorithms has grown as machine learning matured. Many companies now leverage these sophisticated algorithms, making them integral to operations. These algorithms now play a pivotal role in curating the content we consume. Especially from social media feeds to news sources, either algorithm or Artificial Intelligence, they have the power to shape our perceptions, sometimes even amplifying societal divides.These are play a concerning role in curating online content by subtly shaping perceptions and perspectives. As seen in the Facebook-Cambridge Analytical scandal, the misuse of such technologies for AI personalization highlighted pressing ethical dilemmas around transparency, consent, and societal divides.
+
+This essay will undertake an examination of the ethical issues surrounding AI personalization, focused specifically on the Facebook-Cambridge Analytical scandal case study. Through analysis of this high-profile scandal, we will evaluate the implications of improper use of user data for AI-driven personalized content.  
+
+Furthermore, current solutions proposed to address these ethical concerns will be critically assessed, gaps in these methods identified, and potential ways to enhance ethical practices in AI content curation moving forward will be proposed. The goal is to provide an in-depth analysis of the pressing ethical intricacies exposed by the Facebook-Cambridge Analytical scandal as a pivotal case study illuminating risks of AI personalization.
+
+
+
+\section{Background on AI Personalization}\label{sec2}
+\subsection{Definition of AI personalization}\label{subsec1}
+AI Personalization refers to the use of machine learning algorithms to tailor and customize content or product recommendations to individual users. This is achieved by collecting, analyzing, and utilizing user data and usage patterns \cite{Body1_define1}. These algorithms can dynamically adapt to changes in user behavior and preferences to deliver a more personalized experience \cite{Body1_define2}.
+\subsection{Mechanism of AI personalization}\label{subsec2}
+In the realm of AI personalization, the mechanism at work is a sophisticated interplay between data collection and algorithmic interpretation. Initially, comprehensive user-specific data sets are amassed, which include a plethora of variables such as browsing history, clicks, purchases, geolocation metrics, and user-provided information like age, gender, interests \cite{Body1_Mechanism1}\cite{Body1_define2}. This raw data serves as the input for machine learning models, often designed as recommendation systems or clustering algorithms. For instance, recommendation systems is mean a subject or items that based on user preferences and recommends the user interests. These algorithms employ techniques like collaborative filtering, matrix factorization, or deep learning to distill the gathered data into actionable insights.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{Fig1.eps} 
+    \caption{The Proposed Model Framework (Shen, Liu and Zhang 2022)}
+    \label{Fig1}
+\end{figure}
+
+The mechanism elucidated in Figure 1\cite{Body1_Mechanism2} showcases a harmonious melding of strategic data collation and intricate algorithmic analysis. Initially, we observe the curation of both brand-generated and user-generated posts, encompassing information like product details and user feedback. For instance, it applied the Semantic Feature Extraction, Textual Feature Extraction, Sentiment Feature Extraction and Visual Feature Extraction. These features combined as a comprehensive feature set and used as a detector to identify the certain content to specific users for further tailoring the user experience.
+
+Upon data ingestion, the machine learning models proceed to dissect this data meticulously, identifying intricate patterns and relationships that reveal user preferences and potential behavioral inclinations. Upon data ingestion, the machine learning models proceed to dissect this data meticulously, identifying intricate patterns and relationships that reveal user preferences, behaviors, and potential inclinations. After identified those data and user patterns, it will used to curate and prioritize content or product suggestions, relying on probabilistic models to predict what a user is likely to find appealing, useful or engaging based on their past activities.
+
+\subsection{AI personalisation application}\label{subsec3}
+AI personalisation were used in different commercialize, especially it extends across to user platform, like online platforms and services. In the social media platform, there lot of global social media already apply their own AI personalization to their platform. For example Facebook, Instagram and TikTok. They are used to customize individual user feeds and recommend relevant content. Furthermore, In the e-commerce business, like Amazon and Alibaba rely heavily on AI algorithms to suggest purchases tailored specifically to each customer's interests. Moreover, In the entertainment service, like YouTube, Netflix and Spotify, they also applied the AI algorithms to analyze user data and preferences to recommend customized video, music and podcast selections. 
+
+Those example from different realm have one common theme that they all using and leveraging AI to optimize their providing service and enhance individualize the user experience. 
+
+\subsection{Benefits of AI personalization}\label{subsec4}
+AI personalization revolutionizes the user experience by adeptly aligning content and product suggestions with individual preferences, eliminating the generic one-size-fits-all paradigm. For instance, user can get benefit from enhanced relevance, saving time and avoiding extraneous content. In addition, the Ai personalization  enables more relevant, useful suggestions versus a one-size-fits-all approach by tailoring content and product recommendations to align with individual interests and preferences.
+
+However, personalization powered by AI algorithms provides substantial benefits, legitimate concerns exist regarding transparency, privacy, and objectivity. A lack of visibility into how user data is utilized to customize experiences raises questions. There is also potential for filter bubbles, biased outcomes, and limiting serendipitous discoveries when experiences are narrowly tailored. Without oversight, the interests of platforms in maximizing engagement could take precedence over user agency and autonomy. There is a fine line between helpful personalization and manipulative or restrictive curation. These risks and challenges highlight the need for ethical evaluation of AI systems to complement the technological advancements.
+
+\section{Facebook-Cambridge Analytica Scandal Case Study}\label{sec3}
+In the following section will use Facebook-Cambridge Analytica data scandal as a case study to analyze existing research regarding AI personalization's bring the ethical problems. The Facebook-Cambridge Analytica data scandal provides a highly relevant case study for examining the AI personalized cased the ethics concerns and problems. While Facebook and Cambridge Analytica likely had terms of service agreeing to some data collection, the ways the data was ultimately leveraged went far beyond user expectations or consent. This incident revealed the glaring lack of oversight and safeguards when using AI algorithms for psychological profiling and manipulation. By exploring the technical details and ethical implications, valuable insights can be gained into the potential dangers of AI personalization absent transparency and meaningful consent.
+\subsection{Data unexpectedly abuseabuse and collected}
+In the Facebook-Cambridge Analytica scandal, it can be traced back to Facebook's terms of service and APIs, that Facebook make their service more commerce, and allowed the third party apps and partners to access their user data. Despite Facebook didn't allow thoe company transfer the user data to second company, but some of application they can bypass the restriction. \cite{Body2_citition1}. While users agreed to basic data sharing, the extent and uses far exceeded expectations. For instances, the data which set as only user visible but third party can still access it \cite{Body2_cition2}. Until 2014, A Cambridge University researcher named Aleksandr Kogan revelations that Cambridge Analytica were collected 87 millions of user data by a application call 'ThisisYourDigitalLife'  \cite{Body2_cition3}. The application 'ThisisYourDigitalLife' included the authority to accessing participants and their friend data, but most of the participants didn't know they will leak their friends data \cite{Body2_citition1}. This already exceeded and stretched the boundaries of meaningful consent. Moreover, those data were transferred to Cambridge Analytica company database for further analysis especially for targeted political advertising. This will be an egregious violation of that catalyzed the scandal \cite{Body2_cition4}.
+\subsection{Cambridge Analytica's Methodology and Analysis}
+Cambridge Analytica were used Facebook user data to extract the significant insights. They utilized classification algorithms to categorize users. For instance, they were used a personality traits to categories the user. These personality traits categories were called as "Big Five" which include "openness", "openness", "conscientiousness", "agreeableness" and "neuroticism" \cite{Body2_citition1}. By these categories, they applied to the user profile, post, activity and different user digital footprints collected on their dataset, and made it as quantified scores \cite{Body2_citition1}. 
+
+Furthermore, the Cambridge Analytica were applied the Regression model to make a further training by combining the classified psychographic data and those classified quantified data. the regression model trained as predict individuals' political leanings and policy concerns.
+
+\subsection{Psychological manipulation and unethical controversy}
+Cambridge Analytica's were used manipulated skill to affect the election by relied on manipulating voters' psychological vulnerabilities and anxieties. Since, the Cambridge Analytica categorize different user and the regression model, they can easy to find out and targeted the voters who likely neurotic and persuadable. Once those voter were targeted, Cambridge Analytica's will use the "Facebook personal attributes advertising" \cite{Body2_citition1}. For instance, the voter who where targeted as vulnerabilities and anxieties were served personalized negative content aimed specifically at amplifying their fears \cite{Body2_cition3}. Such as, they will receive the information like gun owners were shown ads falsely claiming Hillary Clinton wanted to take away their firearms. The lack of transparency meant people had no idea they were being psychologically influenced. This exploitation of data to surgically manipulate emotions and perceptions raised major ethical alarms about the power of platforms and algorithms over user autonomy.
+
+The ways in which Cambridge Analytica leveraged Facebook user data sparked intense controversy. It's not only about how they use about data, also they cased the entire social concern their personal data in different areas. Although user were agreed the terms of data collection, but the psychographic analysis and microtargetion advertising are clearly went far beyond reasonable user expectations or manipulated advertising that are clearly far beyond the reasonable of user expectations. The Cambridge Analytica and Facebook betrayed user trust, which they are prioritizing profit and electoral outcomes over ethics and democratic principles. Especially, they were used those data to weaponizing as psychological models. In the balance between technological capabilities and ethical norms, they were ignored the latter one and this will be disastrous. In this scandal, it reflected that the gaps in failure of supervision. That means the it's need to take action from curb unethical of using AI or machine learning.
+
+\section{Implications of Scandal}
+\subsection{Data intransparency and data ethics issues}
+Almost every user were no idea that someone were collecting their personal data, and used as harvested and utilized for voter profiling and targeting. The whole mechanisms of the Cambridge Analytica used were shrouded by a complex and personalised algorithms. Which entire process were invisible even though governments or professional. This lack of transparency meant that Cambridge Analytica's actions were immune to auditing or tracing, essentially placing them above the reach of accountability. Additionally, the obscurity surrounding these processes enabled the unchecked proliferation of disinformation. Without any visibility into how data was used for persuasion, there was no way to track the spread of computational propaganda or micro-targeted misinformation. 
+
+In essence, the complete lack of transparency not only allowed Cambridge Analytica to manipulate voters in the shadows but also rendered it impossible to hold anyone accountable for unethical data practices. The inability to monitor such AI systems operating at scale on sensitive data exposes gaping holes in oversight over societally impactful domains. Ensuring algorithms can be audited and traced by independent bodies is crucial to upholding ethical norms. The Facebook scandal revealed how transparency deficiencies in AI systems can enable mass-scale manipulation with zero guardrails or recourse.
+\subsection{Violation of user consent and democratic processes}
+The exploitation of Facebook user data for voter persuasion represents a grave violation of consent, user autonomy, and the integrity of democratic processes. This were cased the multiple ethical issues like democratic ethical concern, free will ethics concern...etc. Nevertheless, people agreed to authorities data collection in user terms. But there were no any informed consent around how their information would be leveraged for microtargeted psychological profiling. That were infringes the personal agency over private details like personality traits and vulnerabilities. Furthermore, this will cased the ethical concerns like people free will and critical thinking, because Facebook Cambridge Analytica were acted as influence their opinion and presentation. When the platforms are pursuing profit, the public will lose their trust.
+\subsection{Microtargeting increased polarization by amplifying extremes}
+Microtargeting inherently risks confining users to echo chambers that amplify polarized extremes. Platforms utilize user data to categorize personalities and craft feeds tailored to specific biases and predispositions. This enables selective exposure where users only encounter perspectives and narratives that adhere to their existing viewpoint and continually reinforces confirmation bias. Over time, users get embedded in bubbles devoid of nuance or objectivity, interacting solely with ideas and people who confirm their beliefs. Moderating influences get suppressed in favor of extremist rhetoric that resonates with the target audience. Disinformation gains traction when directed at already receptive individuals and groups. Consequently, balanced discourse gets marginalized on social platforms optimized for engagement through microtargeted polarization. While some personalization provides value, ethical risks arise when optimization undermines exposure to balanced perspectives in favor of keeping users emotionally engrossed. 
+\section{Evaluation of current solutions}
+In response to the scandal, Facebook implemented several policy and platform changes aimed at improving privacy protections, transparency, and data controls. These included restricting developer API access e.g. if user data were lacked, and all of the related people will receive the Information, streamlining privacy settings e.g. have a new setting ui 'META' \cite{Body4_1}. In the regulatory side, according European Parliament has strongly condemned Facebook's actions, calling for investigations and audits. The GDPR has also bolstered EU citizen data rights\cite{Body4_2}.
+\section{Gaps in Current Literature}
+Although differnet organisation have been enhanced and change their policy and regulatory, but it seems to be not enough for prevent future data misuse. For instance, 
+Facebook were focused the specific access issues, but they they were not fix the fundamentally problems, like block the underlying data collection and targeting models. In the GDPR didn't fix about the algorithmic, mechine learning. Although European parliaments settled the AI issues in transparency, but the detail like transparency and oversight are still not be clearly explained and a bit of ambiguous. In over all of the solution, most of the changes are only based on the scandal to react the superficial issues, but they didn't focus the core issues like business will make AI or algorithm commercial. Also it were lacked of accountability enabling data exploitation. There remain deep gaps around how to balance innovation and profit with human rights and democratic values. Literature needs to move beyond narrow technical fixes to envision a new data ethics paradigm.
+\section{Proposals for Enhanced Ethics}
+In the further research, that need to fix the fundamental gaps and research. The future solutions or research should centered on user, business and society. It's should studies and explore the frameworks and seeking the balanced in different stakeholder. For instance, in business commerce it need to balanced the transparent and collect ability. In user side, need to focus on avoiding  harmful information and the results freedom. In addition, the research can identify optimal models and structures for independent audits and oversight of platforms to monitor data practices and algorithms at scale. By using different surveys, interviews and comparative analyses the insights from the public and map best governance practices. Moreover, the research and guidelines should be seeking on the democratic principles and different principles like prevent truism. Overall there is a pressing need for research delineating how to uphold rights and accountability in the digital age.
+
+
+
+
+
+\section{Conclusion}\label{sec13}
+In conclusion, this analysis of AI personalization and the Facebook-Cambridge Analytica case unveils serious ethical risks when human rights are compromised for profit and influence. Lack of transparency, consent violations, and psychological manipulation represent a grave overreach of technological capabilities. While some policy and platform changes have occurred, comprehensive oversight and accountability mechanisms remain deficient. There is an urgent need for solutions prioritizing user agency, democratic ideals, and cooperative frameworks over polarized extremes. As AI becomes further enmeshed across industries, research must explore models upholding ethics and human values. Public expectations and rights should guide appropriate use cases. Only through proactive, interdisciplinary efforts can innovation and ethics co-exist in harmony. 
+
+
+
+%%=============================================%%
+%% For submissions to Nature Portfolio Journals %%
+%% please use the heading ``Extended Data''.   %%
+%%=============================================%%
+
+%%=============================================================%%
+%% Sample for another appendix section			       %%
+%%=============================================================%%
+
+%% \section{Example of another appendix section}\label{secA2}%
+%% Appendices may be used for helpful, supporting or essential material that would otherwise 
+%% clutter, break up or be distracting to the text. Appendices can consist of sections, figures, 
+%% tables and equations etc.
+\bibliographystyle{sn-basic} % or another appropriate style
+\bibliography{sn-bibliography} % common bib file
+%% if required, the content of .bbl file can be included here once bbl is generated
+%%\input{sn-article.bbl}
+
+%% Default %%
+%%\input sn-sample-bib.tex%
+
+\end{document}
+\end{appendices}
+
+%%===========================================================================================%%
+%% If you are submitting to one of the Nature Portfolio journals, using the eJP submission   %%
+%% system, please include the references within the manuscript file itself. You may do this  %%
+%% by copying the reference list from your .bbl file, paste it into the main manuscript .tex %%
+%% file, and delete the associated \verb+\bibliography+ commands.                            %%
+%%===========================================================================================%%
+
+\bibliography{sn-bibliography}% common bib file
+%% if required, the content of .bbl file can be included here once bbl is generated
+%%\input sn-article.bbl
+
+%% Default %%
+%%\input sn-sample-bib.tex%
+
+\end{document}
+
